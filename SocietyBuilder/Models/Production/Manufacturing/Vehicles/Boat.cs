@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Manufacturing.Vehicles
 {
-    public class Carts
+    public class Boat
     {
     }
 }
