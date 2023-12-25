@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector
 {
-    public interface ILearnable
+    public interface ILearnable : IFinalProduct
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Chemicals
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IChemicalSector;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Chemicals
 {
-    public class Drugs
+    public class Drugs : IDrug
     {
     }
 }

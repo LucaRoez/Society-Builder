@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector
 {
-    public interface IReasonable
+    public interface IReasonable : IFinalProduct
     {
     }
 }

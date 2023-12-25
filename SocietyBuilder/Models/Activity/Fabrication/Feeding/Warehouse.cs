@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Fabrication.Feeding
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Fabrication.Feeding
 {
-    public class Warehouse
+    public class Warehouse : IProcessingCategory
     {
     }
 }

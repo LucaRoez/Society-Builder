@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.FinancialInstruments
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IFinancialSector;
+
+namespace SocietyBuilder.Models.Production.Final.FinancialInstruments
 {
-    public class Stocks
+    public class Stocks : IFinancial
     {
     }
 }

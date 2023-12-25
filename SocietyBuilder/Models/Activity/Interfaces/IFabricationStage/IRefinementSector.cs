@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IFabricationStage
 {
-    public interface IRefinementSector
+    public interface IRefinementSector : IFabricationActivityStage
     {
     }
 }

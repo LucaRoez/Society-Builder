@@ -1,6 +1,9 @@
-﻿namespace SocietyBuilder.Models.Production.Raw.Maritime
+﻿using SocietyBuilder.Models.Production.Interfaces;
+using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
+
+namespace SocietyBuilder.Models.Production.Raw.Maritime
 {
-    public class HydraulicForce
+    public class HydraulicForce : IExtractable
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Population.Sociologic.Class
+﻿using SocietyBuilder.Models.Population.Interfaces.ISociologic;
+
+namespace SocietyBuilder.Models.Population.Sociologic.Class
 {
-    public class Employees
+    public class Employees : IClass
     {
     }
 }

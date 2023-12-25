@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Wool
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Wool
 {
-    public class Wool
+    public class Wool : IProcessed
     {
     }
 }

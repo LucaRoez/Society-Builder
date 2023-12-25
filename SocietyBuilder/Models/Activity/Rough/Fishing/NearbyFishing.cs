@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Rough.Fishing
+﻿using SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Rough.Fishing
 {
-    public class NearbyFishing
+    public class NearbyFishing : IMaritimeCategory
     {
     }
 }

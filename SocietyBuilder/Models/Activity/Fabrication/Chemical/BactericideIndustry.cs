@@ -1,6 +1,9 @@
-﻿namespace SocietyBuilder.Models.Activity.Fabrication.Chemical
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IChemicalSector;
+using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Fabrication.Chemical
 {
-    public class BactericideIndustry
+    public class BactericideIndustry : ILaboratoryCategory, IResearchCategory
     {
     }
 }

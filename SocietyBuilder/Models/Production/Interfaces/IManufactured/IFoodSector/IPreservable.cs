@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IManufactured.IFoodSector
 {
-    public class IPreservable
+    public interface IPreservable : IManufacturedProduct
     {
     }
 }

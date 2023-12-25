@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IFinal.ICommercialSector
 {
-    public interface IInterchangeable
+    public interface IInterchangeable : IFinalProduct
     {
     }
 }

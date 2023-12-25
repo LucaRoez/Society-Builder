@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Healthcare
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.IKnowledgeSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Healthcare
 {
-    public class Sanitation
+    public class Sanitation : IHealthCategory
     {
     }
 }

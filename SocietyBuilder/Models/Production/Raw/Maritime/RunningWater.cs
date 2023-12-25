@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Raw.Maritime
+﻿using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
+
+namespace SocietyBuilder.Models.Production.Raw.Maritime
 {
-    public class RunningWater
+    public class RunningWater : IEdible
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IManufactured.IGarmentSector
 {
-    public interface IWeavable
+    public interface IWeavable : IManufacturedProduct
     {
     }
 }

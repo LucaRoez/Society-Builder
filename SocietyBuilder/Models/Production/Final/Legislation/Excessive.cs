@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Legislation
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
+
+namespace SocietyBuilder.Models.Production.Final.Legislation
 {
-    public class Excessive
+    public class Excessive : IReasonable
     {
     }
 }

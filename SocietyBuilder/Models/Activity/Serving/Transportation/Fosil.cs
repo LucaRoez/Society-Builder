@@ -1,6 +1,9 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Transportation
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.IEnergySector;
+using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ITraffic;
+
+namespace SocietyBuilder.Models.Activity.Serving.Transportation
 {
-    public class Fosil
+    public class Fosil : ITrafficCategory
     {
     }
 }

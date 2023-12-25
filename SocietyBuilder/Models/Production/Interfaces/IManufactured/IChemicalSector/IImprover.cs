@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IManufactured.IChemicalSector
 {
-    public interface IImprover
+    public interface IImprover : IManufacturedProduct
     {
     }
 }

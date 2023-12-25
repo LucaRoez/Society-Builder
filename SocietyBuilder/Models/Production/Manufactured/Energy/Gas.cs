@@ -1,6 +1,9 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Energy
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IEnergySector;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Energy
 {
-    public class Gas
+    public class Gas : IProcessed, IEnergy
     {
     }
 }

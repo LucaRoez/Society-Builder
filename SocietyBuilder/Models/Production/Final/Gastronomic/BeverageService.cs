@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Gastronomic
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IFoodSector;
+
+namespace SocietyBuilder.Models.Production.Final.Gastronomic
 {
-    public class BeverageService
+    public class BeverageService : IServeable
     {
     }
 }

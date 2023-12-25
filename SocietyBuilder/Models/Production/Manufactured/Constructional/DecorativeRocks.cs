@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Constructional
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Constructional
 {
-    public class DecorativeRocks
+    public class DecorativeRocks : IProcessed
     {
     }
 }

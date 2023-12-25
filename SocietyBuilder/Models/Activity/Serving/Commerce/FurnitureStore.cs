@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Commerce
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ICommercialSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Commerce
 {
-    public class FurnitureStore
+    public class FurnitureStore : IMarket
     {
     }
 }

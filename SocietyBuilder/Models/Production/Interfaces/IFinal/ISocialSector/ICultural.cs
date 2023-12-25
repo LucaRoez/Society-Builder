@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector
 {
-    public interface ICultural
+    public interface ICultural : IFinalProduct
     {
     }
 }

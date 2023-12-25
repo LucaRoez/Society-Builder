@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Security
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ISocialSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Security
 {
-    public class Intelligence
+    public class Intelligence : ISecurityCategory
     {
     }
 }

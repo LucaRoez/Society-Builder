@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Fabrication.Refinery
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Fabrication.Refinery
 {
-    public class MineralRefinery
+    public class MineralRefinery : IRefineryCategory
     {
     }
 }

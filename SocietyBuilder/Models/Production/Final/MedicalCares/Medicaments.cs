@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.MedicalCares
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector;
+
+namespace SocietyBuilder.Models.Production.Final.MedicalCares
 {
-    public class Medicaments
+    public class Medicaments : IServiceable
     {
     }
 }

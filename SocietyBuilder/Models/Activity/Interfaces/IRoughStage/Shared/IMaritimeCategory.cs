@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared
 {
-    public interface IMaritimeCategory
+    public interface IMaritimeCategory : IHusbandrySector
     {
     }
 }

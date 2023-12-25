@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector
 {
-    public interface IProtector
+    public interface IProtector : IFinalProduct
     {
     }
 }

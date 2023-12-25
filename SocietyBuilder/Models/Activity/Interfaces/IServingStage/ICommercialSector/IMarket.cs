@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IServingStage.ICommercialSector
 {
-    public interface IMarket
+    public interface IMarket : IExchangeSector
     {
     }
 }

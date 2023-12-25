@@ -1,6 +1,9 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Education
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.IKnowledgeSector;
+using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ISocialSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Education
 {
-    public class Academic
+    public class Academic : IEducationCategory, IKnowledgeCategory
     {
     }
 }

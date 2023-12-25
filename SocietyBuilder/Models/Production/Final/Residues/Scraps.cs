@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Residues
+﻿using IDisposable = SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector.IDisposable;
+
+namespace SocietyBuilder.Models.Production.Final.Residues
 {
-    public class Scraps
+    public class Scraps : IDisposable
     {
     }
 }

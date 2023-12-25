@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IServingStage.IKnowledgeSector
 {
-    public interface IReligiousCategory
+    public interface IReligiousCategory : IBasicSector
     {
     }
 }

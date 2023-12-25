@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared
 {
-    public interface ILivestockCategory
+    public interface ILivestockCategory : IHusbandrySector
     {
     }
 }

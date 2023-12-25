@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IChemicalSector
 {
-    public interface ILaboratoryCategory
+    public interface ILaboratoryCategory : IManufacturingSector
     {
     }
 }

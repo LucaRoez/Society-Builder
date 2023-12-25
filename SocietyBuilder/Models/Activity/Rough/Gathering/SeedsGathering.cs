@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Rough.Gathering
+﻿using SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Rough.Gathering
 {
-    public class SeedsGathering
+    public class SeedsGathering : IFarmingCategory
     {
     }
 }

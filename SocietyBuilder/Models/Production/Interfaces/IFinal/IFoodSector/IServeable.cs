@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IFinal.IFoodSector
 {
-    public interface IServeable
+    public interface IServeable : IFinalProduct
     {
     }
 }

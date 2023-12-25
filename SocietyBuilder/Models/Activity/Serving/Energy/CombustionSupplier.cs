@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Energy
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.IEnergySector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Energy
 {
-    public class CombustionSupplier
+    public class CombustionSupplier : ISupplierCategory
     {
     }
 }

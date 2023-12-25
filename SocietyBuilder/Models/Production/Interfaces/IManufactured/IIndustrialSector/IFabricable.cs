@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector
 {
-    public interface IFabricable
+    public interface IFabricable : IManufacturedProduct
     {
     }
 }

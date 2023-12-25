@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces
 {
-    public interface IFinal
+    public interface IRawProduct : IProduct
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Armies
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IPoliticalSector;
+
+namespace SocietyBuilder.Models.Production.Final.Armies
 {
-    public class Infantery
+    public class Infantery : IArmedWing
     {
     }
 }

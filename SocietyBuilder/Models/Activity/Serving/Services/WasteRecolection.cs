@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Services
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ISocialSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Services
 {
-    public class WasteRecolection
+    public class WasteRecolection : IServicesCategory
     {
     }
 }

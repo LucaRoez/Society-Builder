@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Raw.Agricultural
+﻿using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
+
+namespace SocietyBuilder.Models.Production.Raw.Agricultural
 {
-    public class Grains
+    public class Grains : IEdible
     {
     }
 }

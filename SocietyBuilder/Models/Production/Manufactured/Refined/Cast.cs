@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Refined
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Refined
 {
-    public class Cast
+    public class Cast : IPurified
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Religiosity
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
+
+namespace SocietyBuilder.Models.Production.Final.Religiosity
 {
-    public class Assortment
+    public class Assortment : IBelievable
     {
     }
 }

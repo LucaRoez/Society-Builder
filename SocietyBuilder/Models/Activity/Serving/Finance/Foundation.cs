@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Finance
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ICommercialSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Finance
 {
-    public class Foundation
+    public class Foundation : IFinancialCategory
     {
     }
 }

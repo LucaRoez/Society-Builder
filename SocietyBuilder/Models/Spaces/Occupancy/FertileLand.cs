@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Spaces.Occupancy
 {
-    public class FertileLand
+    public class FertileLand : IOccupancy
     {
     }
 }

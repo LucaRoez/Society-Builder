@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector
 {
-    public interface IEdible
+    public interface IEdible : IRawProduct
     {
     }
 }

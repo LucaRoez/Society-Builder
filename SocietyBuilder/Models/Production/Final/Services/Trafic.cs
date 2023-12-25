@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Services
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector;
+
+namespace SocietyBuilder.Models.Production.Final.Services
 {
-    public class Trafic
+    public class Trafic : IServiceable
     {
     }
 }

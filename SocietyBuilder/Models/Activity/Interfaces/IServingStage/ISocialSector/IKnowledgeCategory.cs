@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IServingStage.ISocialSector
 {
-    public interface IKnowledgeCategory
+    public interface IKnowledgeCategory : ICulturalSector
     {
     }
 }

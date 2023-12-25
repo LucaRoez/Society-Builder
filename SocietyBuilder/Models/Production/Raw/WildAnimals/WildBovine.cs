@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Raw.WildAnimals
+﻿using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
+
+namespace SocietyBuilder.Models.Production.Raw.WildAnimals
 {
-    public class WildBovine
+    public class WildBovine : IEdible
     {
     }
 }

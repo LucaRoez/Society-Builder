@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Building
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IConstruction;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Building
 {
-    public class Started
+    public class Started : IBuildable
     {
     }
 }

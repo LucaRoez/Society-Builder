@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Feeding
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Feeding
 {
-    public class Fridging
+    public class Fridging : IProcessed
     {
     }
 }

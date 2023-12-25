@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IManufactured.IFoodSector
 {
-    public interface IRefined
+    public interface IRefined : IManufacturedProduct
     {
     }
 }

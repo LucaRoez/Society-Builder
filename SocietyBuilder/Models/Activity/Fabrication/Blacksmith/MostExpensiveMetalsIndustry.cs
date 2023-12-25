@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Fabrication.Blacksmith
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Fabrication.Blacksmith
 {
-    public class MostExpensiveMetalsIndustry
+    public class MostExpensiveMetalsIndustry : IProcessingCategory
     {
     }
 }

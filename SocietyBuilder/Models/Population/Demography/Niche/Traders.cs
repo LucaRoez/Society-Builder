@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Population.Demography.Niche
+﻿using SocietyBuilder.Models.Population.Interfaces.IDemography;
+
+namespace SocietyBuilder.Models.Population.Demography.Niche
 {
-    public class Traders
+    public class Traders : INiche
     {
     }
 }

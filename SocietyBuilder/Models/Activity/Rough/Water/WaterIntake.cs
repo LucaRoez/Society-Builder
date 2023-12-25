@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Rough.Water
+﻿using SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Rough.Water
 {
-    public class WaterIntake
+    public class WaterIntake : IMaritimeCategory
     {
     }
 }

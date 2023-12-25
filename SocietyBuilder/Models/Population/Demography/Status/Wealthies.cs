@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Population.Demography.Status
+﻿using SocietyBuilder.Models.Population.Interfaces.IDemography;
+
+namespace SocietyBuilder.Models.Population.Demography.Status
 {
-    public class Wealthies
+    public class Wealthies : IStatus
     {
     }
 }

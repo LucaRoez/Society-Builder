@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IManufactured.IEnergySector
 {
-    public interface IEnergy
+    public interface IEnergy : IManufacturedProduct
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Fabrication.Manufacture
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IIndustrialSector;
+
+namespace SocietyBuilder.Models.Activity.Fabrication.Manufacture
 {
-    public class ToolFactory
+    public class ToolFactory : IManufacturingCategory
     {
     }
 }

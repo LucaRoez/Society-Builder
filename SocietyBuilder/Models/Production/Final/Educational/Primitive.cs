@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Educational
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
+
+namespace SocietyBuilder.Models.Production.Final.Educational
 {
-    public class Primitive
+    public class Primitive : ILearnable
     {
     }
 }

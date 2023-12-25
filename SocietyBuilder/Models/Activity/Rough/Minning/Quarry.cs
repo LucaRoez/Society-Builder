@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Rough.Minning
+﻿using SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Rough.Minning
 {
-    public class Quarry
+    public class Quarry : IMiningCategory
     {
     }
 }

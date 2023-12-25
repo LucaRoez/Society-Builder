@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Raw.Vegetation
+﻿using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
+
+namespace SocietyBuilder.Models.Production.Raw.Vegetation
 {
-    public class HardWoods
+    public class HardWoods : IExtractable
     {
     }
 }

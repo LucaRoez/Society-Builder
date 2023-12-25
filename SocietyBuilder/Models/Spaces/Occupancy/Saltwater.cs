@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Spaces.Occupancy
+﻿using SocietyBuilder.Models.Spaces.Interfaces;
+
+namespace SocietyBuilder.Models.Spaces.Occupancy
 {
-    public class Saltwater
+    public class Saltwater : IOccupancy
     {
     }
 }

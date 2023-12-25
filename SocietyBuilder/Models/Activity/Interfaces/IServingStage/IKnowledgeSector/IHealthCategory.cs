@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IServingStage.IKnowledgeSector
 {
-    public class IHealthCategory
+    public interface IHealthCategory : IBasicSector
     {
     }
 }

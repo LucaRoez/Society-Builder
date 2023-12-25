@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Final.Knowledge
+﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
+
+namespace SocietyBuilder.Models.Production.Final.Knowledge
 {
-    public class SophisticatedKnowledge
+    public class SophisticatedKnowledge : IReasonable
     {
     }
 }

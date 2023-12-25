@@ -1,6 +1,9 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Politic
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.IPoliticalSector;
+using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ISocialSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Politic
 {
-    public class Right_Wing
+    public class Right_Wing : IPoliticCategory, IKnowledgeCategory
     {
     }
 }

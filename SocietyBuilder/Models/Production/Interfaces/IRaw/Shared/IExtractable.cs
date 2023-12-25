@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IRaw.Shared
 {
-    public interface IExtractable
+    public interface IExtractable : IRawProduct
     {
     }
 }

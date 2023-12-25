@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IIndustrialSector
 {
-    public interface ITechnologyCategory
+    public interface ITechnologyCategory : IManufacturingSector
     {
     }
 }

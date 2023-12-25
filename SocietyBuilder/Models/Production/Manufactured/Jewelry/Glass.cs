@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Jewelry
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Jewelry
 {
-    public class Glass
+    public class Glass : IProcessed
     {
     }
 }

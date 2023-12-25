@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Rough.Felling
+﻿using SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared;
+
+namespace SocietyBuilder.Models.Activity.Rough.Felling
 {
-    public class FellingIndustry
+    public class FellingIndustry : IFellingCategory
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces
 {
-    public interface IRoughActivityStage
+    public interface IRoughActivityStage : IActivity
     {
     }
 }

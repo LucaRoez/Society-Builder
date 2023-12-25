@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Serving.Culture
+﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ISocialSector;
+
+namespace SocietyBuilder.Models.Activity.Serving.Culture
 {
-    public class Avant_Garde
+    public class Avant_Garde : ICulturalCategory
     {
     }
 }

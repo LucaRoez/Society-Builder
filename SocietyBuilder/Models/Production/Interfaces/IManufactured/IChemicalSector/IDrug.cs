@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Production.Interfaces.IManufactured.IChemicalSector
 {
-    public interface IDrug
+    public interface IDrug : IManufacturedProduct
     {
     }
 }

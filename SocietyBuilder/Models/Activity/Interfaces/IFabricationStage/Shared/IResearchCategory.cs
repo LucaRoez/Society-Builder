@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared
 {
-    public interface IResearchCategory
+    public interface IResearchCategory : IFabricationActivityStage
     {
     }
 }

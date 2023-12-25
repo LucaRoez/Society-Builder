@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IEnergySector
 {
-    public interface ITransportationCategory
+    public interface ITransportationCategory : ITransportationSector
     {
     }
 }

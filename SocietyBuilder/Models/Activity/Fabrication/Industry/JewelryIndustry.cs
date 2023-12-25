@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Activity.Fabrication.Industry
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IIndustrialSector;
+
+namespace SocietyBuilder.Models.Activity.Fabrication.Industry
 {
-    public class JewelryIndustry
+    public class JewelryIndustry : IIndustrialCategory
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Manufactured.Transportation
+﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IEnergySector;
+
+namespace SocietyBuilder.Models.Production.Manufactured.Transportation
 {
-    public class HeavyTransport
+    public class HeavyTransport : ITransportation
     {
     }
 }

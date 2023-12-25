@@ -1,6 +1,8 @@
-﻿namespace SocietyBuilder.Models.Production.Raw.Vegetation
+﻿using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
+
+namespace SocietyBuilder.Models.Production.Raw.Vegetation
 {
-    public class MedicinalHerbs
+    public class MedicinalHerbs : IEdible
     {
     }
 }
