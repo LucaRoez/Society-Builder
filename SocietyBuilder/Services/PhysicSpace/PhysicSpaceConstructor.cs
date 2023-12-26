@@ -277,6 +277,65 @@ namespace SocietyBuilder.Services.PhysicSpace
             {
                 for (int y = 0; y < 16; y++)
                 {
+                    if (x < 12)
+                    {
+                        if (x == 0 && y >= 0 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 1 && y >= 1 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 2 && y >= 2 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 3 && y >= 2 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 4 && y >= 3 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 5 && y >= 3 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 6 && y >= 4 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 7 && y >= 4 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 8 && y >= 5 && y <= 0)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 9 && y >= 5 && y <= 1)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 10 && y >= 6 && y <= 4)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 11 && y >= 7 && y <= 7)
+                        {
+                            upperWestParcels[x, y] = new(oId); oId++;
+                        }
+                        else
+                        {
+                            upperWestParcels[x, y] = null;
+                        }
+                    }
+                    else
+                    {
+                        upperWestParcels[x, y] = null;
+                    }
                 }
             }
         }
@@ -288,9 +347,60 @@ namespace SocietyBuilder.Services.PhysicSpace
             {
                 for (int y = 0; y < 16; y++)
                 {
-                    if (x >= 4)
+                    if (x > 3)
                     {
-
+                        if (x == 4 && y >= 0 && y <= 0)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 5 && y >= 0 && y <= 1)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 6 && y >= 0 && y <= 2)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 7 && y >= 0 && y <= 2)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 8 && y >= 0 && y <= 3)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 9 && y >= 0 && y <= 3)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 10 && y >= 0 && y <= 4)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 11 && y >= 0 && y <= 4)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 12 && y >= 0 && y <= 5)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 13 && y >= 1 && y <= 5)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 14 && y >= 4 && y <= 6)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else if (x == 15 && y >= 7 && y <= 7)
+                        {
+                            upperEastParcels[x, y] = new(oId); oId++;
+                        }
+                        else
+                        {
+                            upperEastParcels[x, y] = null;
+                        }
                     }
                     else
                     {
