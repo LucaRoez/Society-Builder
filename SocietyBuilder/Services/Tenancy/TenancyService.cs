@@ -8,15 +8,28 @@ namespace SocietyBuilder.Services.Tenancy
     public class TenancyService<T>
         where T : IPopulation, IPhysicalSpace
     {
-        public T[] FirstContact(Population population, Area area)
+        public T[] Inhabit(Population population, Area area)
         {
-            Parcel center = area.CenterNorth.South;
-            var dwelling = Inhabit(population, center);
+            MicroParcel center = area.NorthCenter.South.MicroParcels[new Random().Next(0,10)];
+            T[] start = Inhabit(population, center);
+
+            return start;
         }
 
-        private object Inhabit(Population population, Parcel center)
-        {
-            throw new NotImplementedException();
-        }
+        //private T[] Inhabit(Population population, MicroParcel microParcel)
+        //{
+        //    var states = population.States = new();
+        //    var capabilities = population.Capabilities = new();
+        //    var endurances = population.Endurances = new();
+        //    var incomes = population.Incomes = new();
+
+        //    capabilities.Add(microParcel, microParcel.Inhabitants * microParcel.ProductionPower);
+        //    if (microParcel.BuildingKind == "Residency")
+        //    {
+        //        states.Add(microParcel, microParcel.States);
+        //        endurances.Add(microParcel, microParcel.Endurances);
+        //        incomes.Add(microParcel, microParcel.Incomes);
+        //    }
+        //}
     }
 }
