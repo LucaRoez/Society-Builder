@@ -3,7 +3,9 @@ using SocietyBuilder.Models.Population;
 using SocietyBuilder.Models.Population.Interfaces;
 using SocietyBuilder.Models.Spaces;
 using SocietyBuilder.Models.Spaces.Interfaces;
+using SocietyBuilder.Services.RealEconomy;
 using SocietyBuilder.Services.PhysicSpace;
+using SocietyBuilder.Services.PopulationGenerator;
 using SocietyBuilder.Services.Tenancy;
 using System.Text.Json.Serialization;
 
@@ -13,17 +15,23 @@ namespace SocietyBuilder.Controllers
     public class GameController<T> : Controller
         where T : IPopulation, IPhysicalSpace
     {
-        private readonly ITenancyService _tenancy;
         private readonly IPhysicConstructor _space;
-        public GameController(ITenancyService tenancy, IPhysicConstructor space)
+        private readonly IPopulationGenerator _pop;
+        private readonly ITenancyService _tenancy;
+        private readonly IEconomicActivityService _activity;
+        public GameController(IPhysicConstructor space, IPopulationGenerator pop, ITenancyService tenancy, IEconomicActivityService activity)
         {
-            _tenancy = tenancy;
             _space = space;
+            _pop = pop;
+            _tenancy = tenancy;
+            _activity = activity;
         }
         [HttpGet]
-        public OkResult NewGame()
+        public OkResult NewGame(string difficult)
         {
-            (Area area, Population pop) = _tenancy.Inhabit(new Population(), _space.CreateNewArea());
+            (Population population, Area space) = _pop.NewGame(difficult, _space.CreateNewArea());
+            (Area area, Population pop) = _tenancy.Inhabit(population, space);
+            //_activity.SwitchTurn();
 
             return Ok();
         }

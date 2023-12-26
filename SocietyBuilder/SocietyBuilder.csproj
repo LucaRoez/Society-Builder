@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Models\Activity\Interfaces\IRoughStage\IFoodSector\" />
     <Folder Include="Models\Activity\Interfaces\IRoughStage\IGarmentSector\" />
     <Folder Include="Models\Activity\Interfaces\IRoughStage\IConstructionSector\" />
@@ -42,8 +41,7 @@
     <Folder Include="Models\Production\Interfaces\IRaw\IConstruction\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IEnergySector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IIndustrialSector\" />
-    <Folder Include="Services\Market\" />
-    <Folder Include="Services\Economy\" />
+    <Folder Include="Services\CentralMarket\" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

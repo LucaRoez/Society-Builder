@@ -1,5 +1,6 @@
-using SocietyBuilder.Models.Spaces.Interfaces;
+using SocietyBuilder.Services.RealEconomy;
 using SocietyBuilder.Services.PhysicSpace;
+using SocietyBuilder.Services.PopulationGenerator;
 using SocietyBuilder.Services.Tenancy;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,9 @@ services.AddControllersWithViews();
 services.AddRouting(config => config.LowercaseQueryStrings = true);
 
 services.AddTransient<IPhysicConstructor, PhysicSpaceConstructor>();
-services.AddTransient<ITenancyService, TenancyService();
+services.AddTransient<IPopulationGenerator, PopulationGenerator>();
+services.AddTransient<ITenancyService, TenancyService>();
+services.AddTransient<IEconomicActivityService, EconomicActivityService>();
 
 services.AddSwaggerGen();
 

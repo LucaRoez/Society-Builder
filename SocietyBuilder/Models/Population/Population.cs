@@ -8,9 +8,10 @@ namespace SocietyBuilder.Models.Population
     {
         public Dictionary<MicroParcel, string[]> States { get; set; }
         public Dictionary<MicroParcel, int> Capabilities { get; set; }
-        public Dictionary<MicroParcel, Dictionary<string, int>> Satieties { get; set; }
+        public Dictionary<MicroParcel, Dictionary<string, Dictionary<string, int>>> Satieties { get; set; }
         public Dictionary<MicroParcel, Dictionary<string, int>> Endurances { get; set; }
-        public Dictionary<MicroParcel, Dictionary<int, Dictionary<IActivity, int>>> Incomes { get; set; }
+                                                // Sector   // Social Class // Income per class of sector
+        public Dictionary<MicroParcel, Dictionary<IActivity, Dictionary<string, int>>> Incomes { get; set; }
 
         public Population()
         {
