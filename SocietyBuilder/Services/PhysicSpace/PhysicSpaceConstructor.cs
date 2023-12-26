@@ -12,6 +12,19 @@ namespace SocietyBuilder.Services.PhysicSpace
             (area, zones) = FillArea(area, zones);
             zones = FillZones(zones);
 
+            for (int i = 0; i < 6; i++)
+            {
+                switch (i)
+                {
+                    case 0: area.NorthWest = zones[i]; break;
+                    case 1: area.NorthCenter = zones[i]; break;
+                    case 2: area.NorthEast = zones[i]; break;
+                    case 3: area.SouthWest = zones[i]; break;
+                    case 4: area.SouthCenter = zones[i]; break;
+                    default: area.SouthEast = zones[i]; break;
+                }
+            }
+
             return area;
         }
 
@@ -54,59 +67,61 @@ namespace SocietyBuilder.Services.PhysicSpace
                     var northParcels = zone.North.MicroParcels = new MicroParcel[16, 16];
                     var westParcels = zone.West.MicroParcels = new MicroParcel[16, 16];
                     var eastParcels = zone.East.MicroParcels = new MicroParcel[16, 16];
-                    DrawZoneWithNorth(northParcels, westParcels, eastParcels);
+                    (zone.North.MicroParcels, zone.West.MicroParcels, zone.East.MicroParcels) = DrawZoneWithNorth(northParcels, westParcels, eastParcels);
                 }
                 else
                 {
                     var southParcels = zone.South.MicroParcels = new MicroParcel[16, 16];
                     var westParcels = zone.West.MicroParcels = new MicroParcel[16, 16];
                     var eastParcels = zone.East.MicroParcels = new MicroParcel[16, 16];
-                    DrawZoneWithSouth(southParcels, westParcels, eastParcels);
+                    (zone.West.MicroParcels, zone.East.MicroParcels, zone.South.MicroParcels) = DrawZoneWithSouth(southParcels, westParcels, eastParcels);
                 }
             }
 
             return zones;
         }
 
-        private void DrawZoneWithNorth(MicroParcel[,] northParcels, MicroParcel[,] lowerWestParcels, MicroParcel[,] lowerEastParcels)
+        private (MicroParcel[,], MicroParcel[,], MicroParcel[,]) DrawZoneWithNorth(MicroParcel[,] northParcels, MicroParcel[,] lowerWestParcels, MicroParcel[,] lowerEastParcels)
         {
             for (int i = 0; i < 3; i++)
             {
                 if (i == 0)
                 {
-                    DrawNorthMicroParcels(northParcels);
+                    northParcels = DrawNorthMicroParcels(northParcels);
                 }
-                else if (i == 2)
+                else if (i == 1)
                 {
-                    DrawLowerWestParcels(lowerWestParcels);
+                    lowerWestParcels = DrawLowerWestParcels(lowerWestParcels);
                 }
                 else
                 {
-                    DrawLowerEastParcels(lowerEastParcels);
+                    lowerEastParcels = DrawLowerEastParcels(lowerEastParcels);
                 }
             }
+            return (northParcels, lowerWestParcels, lowerEastParcels);
         }
 
-        private void DrawZoneWithSouth(MicroParcel[,] southParcels, MicroParcel[,] upperEastParcels, MicroParcel[,] lowerWestParcels)
+        private (MicroParcel[,], MicroParcel[,], MicroParcel[,]) DrawZoneWithSouth(MicroParcel[,] southParcels, MicroParcel[,] upperWestParcels, MicroParcel[,] upperEastParcels)
         {
             for (int i = 0; i < 3; i++)
             {
                 if (i == 0)
                 {
-                    DrawSouthMicroParcels(southParcels);
+                    southParcels = DrawSouthMicroParcels(southParcels);
                 }
-                else if (i == 2)
+                else if (i == 1)
                 {
-                    DrawUpperWestMicroParcels(upperEastParcels);
+                    upperWestParcels = DrawUpperEastMicroParcels(upperWestParcels);
                 }
                 else
                 {
-                    DrawUpperEastMicroParcels(lowerWestParcels);
+                    upperEastParcels = DrawUpperWestMicroParcels(upperEastParcels);
                 }
             }
+            return (upperWestParcels, upperEastParcels, southParcels);
         }
 
-        private void DrawNorthMicroParcels(MicroParcel[,] northParcels)
+        private MicroParcel[,] DrawNorthMicroParcels(MicroParcel[,] northParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -186,9 +201,10 @@ namespace SocietyBuilder.Services.PhysicSpace
                     }
                 }
             }
+            return northParcels;
         }
 
-        private void DrawSouthMicroParcels(MicroParcel[,] southParcels)
+        private MicroParcel[,] DrawSouthMicroParcels(MicroParcel[,] southParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -268,9 +284,10 @@ namespace SocietyBuilder.Services.PhysicSpace
                     }
                 }
             }
+            return southParcels;
         }
 
-        private void DrawUpperWestMicroParcels(MicroParcel[,] upperWestParcels)
+        private MicroParcel[,] DrawUpperWestMicroParcels(MicroParcel[,] upperWestParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -338,9 +355,10 @@ namespace SocietyBuilder.Services.PhysicSpace
                     }
                 }
             }
+            return upperWestParcels;
         }
 
-        private void DrawUpperEastMicroParcels(MicroParcel[,] upperEastParcels)
+        private MicroParcel[,] DrawUpperEastMicroParcels(MicroParcel[,] upperEastParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -408,9 +426,10 @@ namespace SocietyBuilder.Services.PhysicSpace
                     }
                 }
             }
+            return upperEastParcels;
         }
 
-        private void DrawLowerWestParcels(MicroParcel[,] lowerWestParcels)
+        private MicroParcel[,] DrawLowerWestParcels(MicroParcel[,] lowerWestParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -478,9 +497,10 @@ namespace SocietyBuilder.Services.PhysicSpace
                     }
                 }
             }
+            return lowerWestParcels;
         }
 
-        private void DrawLowerEastParcels(MicroParcel[,] lowerEastParcels)
+        private MicroParcel[,] DrawLowerEastParcels(MicroParcel[,] lowerEastParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -548,6 +568,7 @@ namespace SocietyBuilder.Services.PhysicSpace
                     }
                 }
             }
+            return lowerEastParcels;
         }
     }
 }
