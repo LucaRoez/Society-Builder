@@ -2,7 +2,7 @@
 
 namespace SocietyBuilder.Services.PhysicSpace
 {
-    public class PhysicSpaceConstructor
+    public class PhysicSpaceConstructor : IPhysicConstructor
     {
         public Area CreateNewArea()
         {
@@ -40,20 +40,51 @@ namespace SocietyBuilder.Services.PhysicSpace
             zones.Add(zoneNW); zones.Add(zoneNC); zones.Add(zoneNE);
             zones.Add(zoneSW); zones.Add(zoneSC); zones.Add(zoneSE);
 
-            foreach (var zone in zones)
+            for (int i = 0; i < 6; i++)
             {
-                zone.North = new Parcel(1);
-                zone.South = new Parcel(2);
-                zone.West = new Parcel(3);
-                zone.East = new Parcel(4);
+                if (i == 0)
+                {
+                    zones[i].North = new Parcel(1);
+                    zones[i].South = null;
+                    zones[i].West = new Parcel(3);
+                    zones[i].East = new Parcel(4);
+                }
+                else if (i == 1)
+                {
+                    zones[i].North = null;
+                    zones[i].South = new Parcel(2);
+                    zones[i].West = new Parcel(3);
+                    zones[i].East = new Parcel(4);
+                }
+                else if (i == 2)
+                {
+                    zones[i].North = new Parcel(1);
+                    zones[i].South = null;
+                    zones[i].West = new Parcel(3);
+                    zones[i].East = new Parcel(4);
+                }
+                else if (i == 3)
+                {
+                    zones[i].North = null;
+                    zones[i].South = new Parcel(2);
+                    zones[i].West = new Parcel(3);
+                    zones[i].East = new Parcel(4);
+                }
+                else if (i == 4)
+                {
+                    zones[i].North = new Parcel(1);
+                    zones[i].South = null;
+                    zones[i].West = new Parcel(3);
+                    zones[i].East = new Parcel(4);
+                }
+                else
+                {
+                    zones[i].North = null;
+                    zones[i].South = new Parcel(2);
+                    zones[i].West = new Parcel(3);
+                    zones[i].East = new Parcel(4);
+                }
             }
-
-            zoneNW.South = null;
-            zoneNC.North = null;
-            zoneNE.South = null;
-            zoneSW.North = null;
-            zoneSC.South = null;
-            zoneSE.North = null;
 
             return (area, zones);
         }

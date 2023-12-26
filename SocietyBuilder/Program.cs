@@ -1,3 +1,7 @@
+using SocietyBuilder.Models.Spaces.Interfaces;
+using SocietyBuilder.Services.PhysicSpace;
+using SocietyBuilder.Services.Tenancy;
+
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
@@ -5,6 +9,9 @@ var services = builder.Services;
 
 services.AddControllersWithViews();
 services.AddRouting(config => config.LowercaseQueryStrings = true);
+
+services.AddTransient<IPhysicConstructor, PhysicSpaceConstructor>();
+services.AddTransient<ITenancyService, TenancyService();
 
 services.AddSwaggerGen();
 
