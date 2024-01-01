@@ -4,5 +4,6 @@ namespace SocietyBuilder.Models.Population.Sociologic.Class
 {
     public class Owners : IClass
     {
+        public string Name => "Owners";
     }
 }

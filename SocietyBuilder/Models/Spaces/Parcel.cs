@@ -1,17 +1,23 @@
-﻿using SocietyBuilder.Models.Spaces.Interfaces;
+﻿using SocietyBuilder.Models.Population;
+using SocietyBuilder.Models.Spaces.Interfaces;
 
 namespace SocietyBuilder.Models.Spaces
 {
     public class Parcel : IPhysicalSpace
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         public int OID { get; set; }
-        public int ZoneID { get; set; }
+        public Guid ZoneID { get; set; }
         public int ZoneOID { get; set; }
         public Zone Zone { get; set; }
-        public int[] MicroParcelIDs { get; set; }
+        public Guid[] MicroParcelIDs { get; set; }
         public MicroParcel[,] MicroParcels { get; set; }
         public string Location { get; set; }
+
+        public int ZonePopulationId { get; set; }
+        public int PopulationId { get; set; }
+        public Polis Population { get; set; }
+        public int[] PopulationIds { get; set; }
 
         public Parcel()
         {

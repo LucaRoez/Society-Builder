@@ -1,4 +1,5 @@
 ﻿using SocietyBuilder.Models.Population;
+using SocietyBuilder.Models.Population.Sociologic.Class;
 using SocietyBuilder.Models.Spaces;
 using System.Linq;
 
@@ -6,22 +7,23 @@ namespace SocietyBuilder.Services.PopulationGenerator
 {
     public class PopulationGenerator : IPopulationGenerator
     {
-        public (Population, Area) NewGame(string difficult, Area area)
+        public Area NewGame(string difficult, Area area)
         {
-            Population population = new();
             switch (difficult)
             {
-                case "Easy": population = PopulatePop(100, "Rich", area); break;
-                case "Normal": population = PopulatePop(100, "Proffessionals", area); break;
-                default: population = PopulatePop(100, "Poor", area); break;
+                case "For Fools": area = PopulatePop(100, "Wealthies", area); break;
+                case "Easy": area = PopulatePop(100, "Richs", area); break;
+                case "Normal": area = PopulatePop(100, "Proffessionals", area); break;
+                case "Hard": area = PopulatePop(100, "Poor", area); break;
+                case "For Thorough People": area = PopulatePop(100, "Pauper", area); break;
+                default: area = PopulatePop(100, "Poor", area); break;
             }
 
-            return (population, area);
+            return area;
         }
 
-        private Population PopulatePop(int quantity, string socialStatus, Area area)
+        private Area PopulatePop(int quantity, string socialStatus, Area area)
         {
-            Population pop = new();
             var parcels = area.NorthCenter.South.MicroParcels;
             int i = 0;
             while (i < quantity)
@@ -30,22 +32,25 @@ namespace SocietyBuilder.Services.PopulationGenerator
                 {
                     if (littleParcel != null)
                     {
+                        Polis pop = new();
+                        pop.Location = littleParcel;
+                        pop.SocialClass = new Owners();
+                        pop.SocialStatus = PopulationUtilities.SetSocialStatus(socialStatus);
+                        (double capital, double capability) = PopulationUtilities.SetCapabilities(socialStatus);
+                        pop.Capabilities = capability;
+                        pop.Capital = capital;
+
+                        pop.States = PopulationUtilities.States;
+                        pop.Satieties = PopulationUtilities.Satities;
+                        pop.Endurances = PopulationUtilities.Endurance;
+
                         littleParcel.Inhabitants += 1; i++;
-                        pop = PopulationUtilities.SetCapabilities(socialStatus, littleParcel);
-                        pop.Satieties = new Dictionary<MicroParcel, Dictionary<string, Dictionary<string, int>>>()
-                        {
-                            {littleParcel, PopulationUtilities.Satities }
-                        };
-                        pop.Endurances = new Dictionary<MicroParcel, Dictionary<string, int>>()
-                        {
-                            { littleParcel, PopulationUtilities.Endurance }
-                        };
-                        pop.States = new() { { littleParcel, PopulationUtilities.States } };
+                        littleParcel.Population = pop;
                         continue;
                     }
                 }
             }
-            return pop;
+            return area;
         }
     }
 }

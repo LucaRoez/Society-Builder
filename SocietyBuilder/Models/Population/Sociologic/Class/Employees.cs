@@ -4,5 +4,6 @@ namespace SocietyBuilder.Models.Population.Sociologic.Class
 {
     public class Employees : IClass
     {
+        public string Name => "Employees";
     }
 }

@@ -2,7 +2,8 @@
 
 namespace SocietyBuilder.Models.Population.Demography.Status
 {
-    public class Proffesionals : IStatus
+    public class Professionals : IStatus
     {
+        public string Name => "Professionals";
     }
 }

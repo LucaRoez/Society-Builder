@@ -29,8 +29,8 @@ namespace SocietyBuilder.Controllers
         [HttpGet]
         public OkResult NewGame(string difficult)
         {
-            (Population population, Area space) = _pop.NewGame(difficult, _space.CreateNewArea());
-            (Area area, Population pop) = _tenancy.Inhabit(population, space);
+            Area space = _pop.NewGame(difficult, _space.CreateNewArea());
+            Area area = _tenancy.Inhabit(space);
             //_activity.SwitchTurn();
 
             return Ok();

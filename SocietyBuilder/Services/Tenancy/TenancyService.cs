@@ -5,11 +5,11 @@ namespace SocietyBuilder.Services.Tenancy
 {
     public class TenancyService : ITenancyService
     {
-        public (Area, Population) Inhabit(Population population, Area area)
+        public Area Inhabit(Area area)
         {
-            (Area, Population) start = Inhabit(population, area);
 
-            return start;
+
+            return area;
         }
     }
 }

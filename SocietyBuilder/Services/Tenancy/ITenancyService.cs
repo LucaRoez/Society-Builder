@@ -7,6 +7,6 @@ namespace SocietyBuilder.Services.Tenancy
 {
     public interface ITenancyService
     {
-        (Area, Population) Inhabit(Population population, Area area);
+        Area Inhabit(Area area);
     }
 }

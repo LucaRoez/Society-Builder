@@ -5,6 +5,6 @@ namespace SocietyBuilder.Services.PopulationGenerator
 {
     public interface IPopulationGenerator
     {
-        (Population, Area) NewGame(string difficult, Area space);
+        Area NewGame(string difficult, Area space);
     }
 }

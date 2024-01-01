@@ -2,5 +2,6 @@
 {
     public interface IPopulation
     {
+        public string Name { get; }
     }
 }
