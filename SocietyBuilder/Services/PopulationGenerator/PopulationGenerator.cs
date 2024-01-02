@@ -32,7 +32,7 @@ namespace SocietyBuilder.Services.PopulationGenerator
                 {
                     if (littleParcel != null)
                     {
-                        Polis pop = new();
+                        Citizen pop = new();
                         pop.Location = littleParcel;
                         pop.SocialClass = new Owners();
                         pop.SocialStatus = PopulationUtilities.SetSocialStatus(socialStatus);
@@ -45,7 +45,7 @@ namespace SocietyBuilder.Services.PopulationGenerator
                         pop.Endurances = PopulationUtilities.Endurance;
 
                         littleParcel.Inhabitants += 1; i++;
-                        littleParcel.Population = pop;
+                        littleParcel.Population.Append(pop);
                         continue;
                     }
                 }

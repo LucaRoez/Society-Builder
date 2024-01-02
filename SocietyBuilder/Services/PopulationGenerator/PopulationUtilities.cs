@@ -1,8 +1,8 @@
 ﻿using SocietyBuilder.Models.Population.Demography.Status;
+using SocietyBuilder.Models.Population.Elements;
 using SocietyBuilder.Models.Population.Interfaces.IDemography;
 using SocietyBuilder.Models.Population.Interfaces.ISociologic;
 using SocietyBuilder.Models.Population.Sociologic.Class;
-using SocietyBuilder.Models.Spaces;
 
 namespace SocietyBuilder.Services.PopulationGenerator
 {
@@ -33,18 +33,60 @@ namespace SocietyBuilder.Services.PopulationGenerator
             "Tired", "Exausted", "Drained", "Spent",                                //  Forsake
             "Upset", "Frustrated", "Annoyed", "Vexed", "Angry", "Subversive"        //  Temper
         };
-        public static Dictionary<string, (string, int)> Satities = new()
+        public static KeyValuePair<Necessity, AggregateDemand>[] RelativeNeeds = new[]
         {
-            { "Water", ("Feeding", 1) },
-            { "Feed", ("Feeding", 1) },
-            { "Cover", ("Cover", 1) },
-            { "Dwelling", ("Shelter", 1) },
-            { "Energy", ("Heat", 1) },
-            { "Social", ("Amusement", 1) },
-            { "Security", ("Stability", 1) },
-            { "Knowledge", ("Faith", 1) }
+            new KeyValuePair<Necessity, AggregateDemand>(new(1, "Water"), new(1, "Feeding", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(2, "Feed"), new(1, "Feeding", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(3, "Garment"), new(1, "Coat", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(4, "Dwelling"), new(1, "Shelter", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(5, "Security"), new(1, "Defense", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(6, "Knowledge"), new(1, "Faith", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(7, "Energy"), new(1, "Heat", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(8, "Social"), new(1, "Amusement", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(1, "Feed"), new(2, "Nutrition", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(2, "Garment"), new(2, "Clothes", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(3, "Dwelling"), new(2, "Homely", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(4, "Social"), new(2, "Recreation", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(5, "Security"), new(3, "Politics", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(6, "Knowledge"), new(2, "Reasoning", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(7, "Health"), new(2, "Hygiene", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(8, "Energy"), new(2, "Energy", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(9, "Security"), new(2, "Stability", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(1, "Feed"), new(3, "Plenty", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(2, "Garment"), new(3, "Outfit", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(3, "Dwelling"), new(3, "Coverage", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(4, "Health"), new(3, "Medical Attention", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(5, "Security"), new(3, "Security", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(6, "Social"), new(3, "Syncretism", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(7, "Knowledge"), new(3, "Cience", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(8, "Energy"), new(3, "Steam", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(1, "Security"), new(4, "Reliance", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(2, "Health"), new(4, "Surgeries", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(3, "Garment"), new(4, "Plenty", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(4, "Dwelling"), new(4, "Plenty", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(5, "Knowledge"), new(4, "Virtue", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(6, "Security"), new(4, "Insurance", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(8, "Security"), new(4, "Armed Defense", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(9, "Social"), new(4, "Institutionality", true)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(1, "Energy"), new(5, "Electricity", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(2, "Basics"), new(5, "Luxury", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(3, "Knowledge"), new(5, "Wisdom", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(4, "Dwelling"), new(5, "Monumental", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(5, "Knowledge"), new(5, "Tolerance", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(6, "Energy"), new(5, "Fusel Oil", false)),
         };
-        public static Dictionary<string, int> Endurance = new()
+        public static Dictionary<Necessity, AggregateDemand> Satities = new()
+        {
+            { new(1, "Water"), new(1, "Feeding", false) },
+            { new(2, "Feed"), new(1, "Feeding", true) },
+            { new(3, "Security"), new(1, "Defense", false) },
+            { new(4, "Garment"), new(1, "Coat", true) },
+            { new(5, "Dwelling"), new(1, "Shelter", false) },
+            { new(6, "Knowledge"), new(1, "Faith", true) },
+            { new(7, "Energy"), new(1, "Heat", false) },
+            { new(8, "Social"), new(1, "Amusement", true) }
+        };
+        public static Dictionary<string, double> Endurance = new()
         {
             { "Water", 0 },
             { "Feed", 0 },

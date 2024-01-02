@@ -1,19 +1,31 @@
 ﻿using SocietyBuilder.Models.Population;
+using SocietyBuilder.Models.Population.Elements;
 
 namespace SocietyBuilder.Services.RealEconomy
 {
     public class EconomicActivityService : IEconomicActivityService
     {
-        public Polis CommandActivity(Polis pop)
+        public Citizen CommandActivity(Citizen citizen)
         {
-            Array needKind = pop.Satieties.Keys.Select(need => need).ToArray();
-            Array needRank = pop.Satieties.Values.Select(need => need).ToArray();
-            PrioritizeNecessities((string[])needKind, ((string, int)[])needRank);
+            citizen.Satieties = PrioritizeNecessities(citizen.Satieties);
+            citizen.WorkNiche = SetActivity(citizen);
         }
 
-        private string[] PrioritizeNecessities(string[] needKind, (string,int)[] needRank)
+        private Dictionary<Necessity, AggregateDemand> PrioritizeNecessities(Dictionary<Necessity, AggregateDemand> needKinds)
         {
-            return needRank.OrderBy(n => n!!!)
+            var orderedNeeds = needKinds
+                .OrderBy(nk => nk.Key.Priority)
+                .ThenByDescending(nk => nk.Value.Level)
+                .ThenByDescending(nk => nk.Value.Level + 1 == needKinds.Values.Max(ad => ad.Level))
+                .ToDictionary(pair => pair.Key, pair => pair.Value);
+
+            return orderedNeeds;
+        }
+
+        private void SetActivity(Citizen citizen)
+        {
+            KeyValuePair<Necessity, AggregateDemand> needToSatisfy = citizen.Satieties.FirstOrDefault();
+            ActivityUtilities.SearchActivity(needToSatisfy);
         }
     }
 }

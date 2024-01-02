@@ -16,12 +16,9 @@ namespace SocietyBuilder.Models.Spaces
 
         public int ParcelPopulationId { get; set; }
         public int PopulationId { get; set; }
-        public Polis Population { get; set; }
+        public Citizen[] Population { get; set; }
         public int Inhabitants { get; set; }
-        public Dictionary<string, int> Resources { get; set; }
-        public int ProductionPower { get; set; }
-        public Dictionary<string, int> Endurances { get; set; }
-        public Dictionary<int, Dictionary<IActivity, int>> Incomes { get; set; }
+        public Dictionary<string, double> Resources { get; set; }
 
         public MicroParcel()
         {

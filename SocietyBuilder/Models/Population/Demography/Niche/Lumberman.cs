@@ -2,8 +2,8 @@
 
 namespace SocietyBuilder.Models.Population.Demography.Niche
 {
-    public class Police : INiche
+    public class Lumberman : INiche
     {
-        public string Name => "Police";
+        public string Name => "Lumberman";
     }
 }
