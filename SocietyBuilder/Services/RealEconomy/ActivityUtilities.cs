@@ -42,7 +42,7 @@ namespace SocietyBuilder.Services.RealEconomy
 {
     public static class ActivityUtilities
     {
-        private static Dictionary<IActivity[], INiche> ActivityTable = new()
+        private static Dictionary<IActivity[], INiche> _ActivityTable = new()
         {
             ////////////////////////////    Rough Stage    ////////////////////////////
             { new[] { new WaterIntake() }, new WaterSupplier() }, { new[] { new Hunting() }, new Hunter() },
@@ -90,7 +90,7 @@ namespace SocietyBuilder.Services.RealEconomy
             { new[] { new Assistance() }, new Assistant() }, { new[] { new Army() }, new Chevalier() }, { new[] { new AirForce() }, new Pilot() },
             { new IActivity[] { new Centrism(), new Right_Wing(), new Left_Wing(), new ThirdForce(), new Relegated() }, new Politic() }
         };
-        private static readonly (string, string)[] NecessitiesMap = new[]
+        private static readonly (string, string)[] _NecessitiesMap = new[]
         {
             ("Water","Feed"), ("Feeding","Feed"), ("Nutrition","Feed"), ("Plenty","Feed"), ("Luxury","Feed"), ("Plastic","Feed"),
             ("Coat","Garment"), ("Clothes","Garment"), ("Outfit","Garment"), ("Plenty","Garment"), ("Luxury","Garment"), ("Latex","Garment"), ("Plastic","Garment"),
@@ -101,7 +101,7 @@ namespace SocietyBuilder.Services.RealEconomy
             ("Amusement","Social"), ("Recreation","Social"), ("Syncretism","Social"), ("Institutionality","Social"),
             ("Hygiene","Health"), ("Medical Attention","Health"), ("Surgeries","Health"), ("Luxury","Health"), ("Plastic","Health")
         };
-        private static Dictionary<IActivity[], Necessity> SatietyMap = new()
+        private static Dictionary<IActivity[], Necessity> _SatietyMap = new()
         {
             { new IActivity[] { new WaterIntake(), new WaterTreatmentPlant(), new InfrastructureBuilding() }, new Necessity(1, "Water") },
             { new IActivity[] { new Hunting(), new CoastalFishing(), new NearbyFishing(), new FruitsGathering(), new Butchery(),
@@ -167,8 +167,8 @@ namespace SocietyBuilder.Services.RealEconomy
 
         public static INiche SearchActivity(KeyValuePair<Necessity, AggregateDemand> needToSatisfy)
         {
-
-            KeyValuePair<IActivity[], INiche> activityProvider = ActivityTable.Where(a => a.Value.Name????)
+            KeyValuePair<IActivity[], INiche> activityProvider = _ActivityTable.First(a => a.Value.Name.Equals(_SatietyMap.First(an => an.Value.Name.Equals(needToSatisfy.Key.Name)).Value.Name));
+            return activityProvider.Value;
         }
     }
 }

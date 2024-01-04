@@ -25,7 +25,7 @@ namespace SocietyBuilder.Services.RealEconomy
         private void SetActivity(Citizen citizen)
         {
             KeyValuePair<Necessity, AggregateDemand> needToSatisfy = citizen.Satieties.FirstOrDefault();
-            ActivityUtilities.SearchActivity(needToSatisfy);
+            citizen.WorkNiche = ActivityUtilities.SearchActivity(needToSatisfy);
         }
     }
 }
