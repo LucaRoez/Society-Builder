@@ -52,7 +52,7 @@ namespace SocietyBuilder.Services.PopulationGenerator
             new KeyValuePair<Necessity, AggregateDemand>(new(7, "Health"), new(2, "Hygiene", true)),
             new KeyValuePair<Necessity, AggregateDemand>(new(8, "Energy"), new(2, "Energy", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(9, "Security"), new(2, "Stability", true)),
-            new KeyValuePair<Necessity, AggregateDemand>(new(1, "Feed"), new(3, "Plenty", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(1, "Feed"), new(3, "Food Plenty", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(2, "Garment"), new(3, "Outfit", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(3, "Dwelling"), new(3, "Coverage", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(4, "Health"), new(3, "Medical Attention", true)),
@@ -62,8 +62,8 @@ namespace SocietyBuilder.Services.PopulationGenerator
             new KeyValuePair<Necessity, AggregateDemand>(new(8, "Energy"), new(3, "Steam", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(1, "Security"), new(4, "Reliance", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(2, "Health"), new(4, "Surgeries", false)),
-            new KeyValuePair<Necessity, AggregateDemand>(new(3, "Garment"), new(4, "Plenty", false)),
-            new KeyValuePair<Necessity, AggregateDemand>(new(4, "Dwelling"), new(4, "Plenty", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(3, "Garment"), new(4, "Vestment Plenty", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(4, "Dwelling"), new(4, "Building Plenty", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(5, "Knowledge"), new(4, "Virtue", true)),
             new KeyValuePair<Necessity, AggregateDemand>(new(6, "Security"), new(4, "Insurance", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(8, "Security"), new(4, "Armed Defense", false)),
@@ -74,6 +74,8 @@ namespace SocietyBuilder.Services.PopulationGenerator
             new KeyValuePair<Necessity, AggregateDemand>(new(4, "Dwelling"), new(5, "Monumental", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(5, "Knowledge"), new(5, "Tolerance", false)),
             new KeyValuePair<Necessity, AggregateDemand>(new(6, "Energy"), new(5, "Fusel Oil", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(7, "Garment"), new(5, "Latex", false)),
+            new KeyValuePair<Necessity, AggregateDemand>(new(8, "Basics"), new(5, "Plastic", false)),
         };
         public static Dictionary<Necessity, AggregateDemand> Satities = new()
         {
