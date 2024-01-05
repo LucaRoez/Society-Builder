@@ -2,6 +2,7 @@ using SocietyBuilder.Services.RealEconomy;
 using SocietyBuilder.Services.PhysicSpace;
 using SocietyBuilder.Services.PopulationGenerator;
 using SocietyBuilder.Services.Tenancy;
+using SocietyBuilder.Services.GameCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -15,6 +16,7 @@ services.AddTransient<IPhysicConstructor, PhysicSpaceConstructor>();
 services.AddTransient<IPopulationGenerator, PopulationGenerator>();
 services.AddTransient<ITenancyService, TenancyService>();
 services.AddTransient<IEconomicActivityService, EconomicActivityService>();
+services.AddTransient<IGameCore, GameCore>();
 
 services.AddSwaggerGen();
 
