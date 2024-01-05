@@ -1,5 +1,7 @@
-﻿using SocietyBuilder.Models.Spaces.Interfaces;
+﻿using SocietyBuilder.Models.Production.Raw.Livestock;
+using SocietyBuilder.Models.Spaces.Interfaces;
 using SocietyBuilder.Models.Spaces.Occupancy;
+using SocietyBuilder.Models.Spaces.Occupancy.Elements;
 
 namespace SocietyBuilder.Services.PhysicSpace
 {
@@ -128,6 +130,26 @@ namespace SocietyBuilder.Services.PhysicSpace
                     { new DenseForest() as IOccupancy, (0, 0) }
                 }
             },
+        };
+
+        public static Resource[] Resources = new[]
+        {
+            new Resource()
+            {
+                Name = "",
+                Products = new[] { new },
+                Humidity = "",
+                Temperature = "",
+                Height = 0.0
+            },
+            new Resource()
+            {
+                Name = "",
+                Products = new[] { new },
+                Humidity = "",
+                Temperature = "",
+                Height = 0.0
+            }
         };
     }
 }
