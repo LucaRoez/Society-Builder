@@ -1,6 +1,7 @@
 ﻿namespace SocietyBuilder.Models.Spaces.Interfaces
 {
-    public interface IAltitude
+    public interface IAltitude : ITerrainFeature
     {
+        double Levels { get; }
     }
 }

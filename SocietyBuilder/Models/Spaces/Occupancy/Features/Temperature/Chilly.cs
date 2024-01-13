@@ -2,8 +2,8 @@
 
 namespace SocietyBuilder.Models.Spaces.Wheather
 {
-    public static  class Cool : IWeather
+    public class Chilly : ITemperature
     {
-        public static int Temperature = -1;
+        public static int Temperature = -4;
     }
 }

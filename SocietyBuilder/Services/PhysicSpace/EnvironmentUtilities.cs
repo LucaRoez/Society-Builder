@@ -2,153 +2,149 @@
 using SocietyBuilder.Models.Spaces.Interfaces;
 using SocietyBuilder.Models.Spaces.Occupancy;
 using SocietyBuilder.Models.Spaces.Occupancy.Elements;
+using SocietyBuilder.Models.Spaces.Occupancy.Features.Biome;
 
 namespace SocietyBuilder.Services.PhysicSpace
 {
     public static class EnvironmentUtilities
     {
                 //  Environment Name  //  Land Types Involved   //  Percentage Range
-        public static Dictionary<Dictionary<string, string[]>, Dictionary<IOccupancy, (int, int)>> Environments = new()
+        public static Dictionary<IBiome, IOccupancy[]> Environments = new()
         {
             {
-                new Dictionary<string, string[]>
+                new Tundra(),
+                new IOccupancy[]
                 {
-                    { "Damp Steppe", new string[] { "Cool", "Mid-High-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) },
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new AridLand() as IOccupancy, (0, 0) },
-                    { new DenseForest() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) }
+                    new AridLand()
                 }
             },
             {
-                new Dictionary<string, string[]>
+                new AridDesert(),
+                new IOccupancy[]
                 {
-                    { "Dried Steppe", new string[] { "Cold", "Mid-Low-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) },
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new AridLand() as IOccupancy, (0, 0) },
-                    { new DenseForest() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) }
+                    new AridLand()
+                    {
+
+                    }
                 }
             },
             {
-                new Dictionary<string, string[]>
+                new SemiaridDesert(),
+                new IOccupancy[]
                 {
-                    { "Chilly Dried Forest", new string[] { "Chilly", "Mid-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) },
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new DenseForest() as IOccupancy, (0, 0) },
-                    { new AridLand() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) }
+                    new AridLand(),
+                    new Woodland()
                 }
             },
             {
-                new Dictionary<string, string[]>
+                new Taiga(),
+                new IOccupancy[]
                 {
-                    { "Subtropical Damp Forest", new string[] { "Warm", "Mid-High-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new DenseForest() as IOccupancy, (0, 0) },
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) },
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) },
-                    { new AridLand() as IOccupancy, (0, 0) }
+                    new AridLand(),
+                    new FertileLand(),
+                    new Woodland()
                 }
             },
             {
-                new Dictionary<string, string[]>
+                new GrassSavanna(),
+                new IOccupancy[]
                 {
-                    { "Tropical Jungle", new string[] { "Hot", "High-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new DenseForest() as IOccupancy, (0, 0) },
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) },
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) },
-                    { new AridLand() as IOccupancy, (0, 0) }
+                    new AridLand(),
+                    new FertileLand()
                 }
             },
             {
-                new Dictionary<string, string[]>
+                new XericShrubland(),
+                new IOccupancy[]
                 {
-                    { "Savanna", new string[] { "Stifling", "Mid-Low-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new AridLand() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) },
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new DenseForest() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) }
+                    new AridLand(),
+                    new Woodland(),
+                    new FertileLand()
                 }
             },
             {
-                new Dictionary<string, string[]>
+                new TreeSavanna(),
+                new IOccupancy[]
                 {
-                    { "Arid Desert", new string[] { "Suffocating", "Low-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new AridLand() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) },
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new DenseForest() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) }
+                    new Woodland(),
+                    new AridLand(),
+                    new FertileLand()
                 }
             },
             {
-                new Dictionary<string, string[]>
+                new DrySteppe(),
+                new IOccupancy[]
                 {
-                    { "Tundra", new string[] { "Frosty", "Mid-Humidity", "Shore:false-Lake:false" } }
-                },
-                new Dictionary<IOccupancy, (int, int)>
-                {
-                    { new AridLand() as IOccupancy, (0, 0) },
-                    { new Saltwater() as IOccupancy, (0, 0) },
-                    { new SweetWater() as IOccupancy, (0, 0) },
-                    { new FertileLand() as IOccupancy, (0, 0) },
-                    { new Woodland() as IOccupancy, (0, 0) },
-                    { new DenseForest() as IOccupancy, (0, 0) }
+                    new AridLand(),
+                    new FertileLand(),
+                    new Woodland()
                 }
             },
+            {
+                new TemperateSteppe(),
+                new IOccupancy[]
+                {
+                    new FertileLand(),
+                    new Woodland(),
+                    new AridLand()
+                }
+            },
+            {
+                new TemperateForest(),
+                new IOccupancy[]
+                {
+                    new Woodland(),
+                    new FertileLand(),
+                    new DenseForest(),
+                    new AridLand()
+                }
+            },
+            {
+                new SubtropicalDryForest(),
+                new IOccupancy[]
+                {
+                    new Woodland(),
+                    new FertileLand(),
+                    new AridLand()
+                }
+            },
+            {
+                new SubtropicalRainforest(),
+                new IOccupancy[]
+                {
+                    new DenseForest(),
+                    new Woodland(),
+                    new FertileLand()
+                }
+            },
+            {
+                new TropicalDryForest(),
+                new IOccupancy[]
+                {
+                    new Woodland(),
+                    new DenseForest(),
+                    new FertileLand(),
+                    new AridLand()
+                }
+            },
+            {
+                new TropicalRainforest(),
+                new IOccupancy[]
+                {
+                    new DenseForest(),
+                    new Woodland(),
+                    new FertileLand()
+                }
+            }
         };
 
         public static Resource[] Resources = new[]
         {
             new Resource()
             {
-                Name = "",
-                Products = new[] { new },
-                Humidity = "",
-                Temperature = "",
-                Height = 0.0
             },
             new Resource()
             {
-                Name = "",
-                Products = new[] { new },
-                Humidity = "",
-                Temperature = "",
-                Height = 0.0
             }
         };
     }

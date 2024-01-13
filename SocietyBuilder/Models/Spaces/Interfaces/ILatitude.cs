@@ -1,6 +1,7 @@
 ﻿namespace SocietyBuilder.Models.Spaces.Interfaces
 {
-    public interface ILatitude
+    public interface ILatitude : ITerrainFeature
     {
+        double Parallel { get; }
     }
 }

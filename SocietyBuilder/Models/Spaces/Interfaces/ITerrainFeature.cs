@@ -1,6 +1,7 @@
 ﻿namespace SocietyBuilder.Models.Spaces.Interfaces
 {
-    public interface IWeather
+    public interface ITerrainFeature
     {
+        string Name { get; }
     }
 }

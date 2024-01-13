@@ -2,8 +2,10 @@
 {
     public interface IOccupancy
     {
-        string Humidity { get; set; }
-        string Temperature { get; set; }
-        double Height { get; set; }
+        (double,double) Range { get; }
+        IHumidity Humidity { get; set; }
+        ITemperature Temperature { get; set; }
+        IAltitude Height { get; set; }
+        ILatitude Latitude { get; set; }
     }
 }

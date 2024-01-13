@@ -2,7 +2,7 @@
 
 namespace SocietyBuilder.Models.Spaces.Altitude
 {
-    public class  : IAltitude
+    public class Prairie : IAltitude
     {
     }
 }
