@@ -38,10 +38,9 @@
     <Folder Include="Models\Activity\Interfaces\IRoughStage\IIndustrialSector\" />
     <Folder Include="Models\Activity\Interfaces\IRoughStage\IChemicalSector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IChemicalSector\" />
-    <Folder Include="Models\Production\Interfaces\IRaw\IConstruction\" />
-    <Folder Include="Models\Production\Interfaces\IRaw\IEnergySector\" />
+    <Folder Include="Models\Production\Interfaces\IRaw\IConstructionSector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IIndustrialSector\" />
-    <Folder Include="Services\CentralMarket\" />
+    <Folder Include="Services\MarketHub\" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

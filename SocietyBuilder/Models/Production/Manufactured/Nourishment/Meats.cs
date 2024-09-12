@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IFoodSector;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Nourishment
 {
-    public class Meats : IPreservable
+    public class Meats : IPerishable, IFoodSector
     {
     }
 }

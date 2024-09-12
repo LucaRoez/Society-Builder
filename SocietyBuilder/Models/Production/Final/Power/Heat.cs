@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IEnergySector;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IFinal.IEnergySector;
 
 namespace SocietyBuilder.Models.Production.Final.Power
 {
-    public class Heat : ISupplyable
+    public class Heat : ISupplyable, IEnergySector
     {
     }
 }

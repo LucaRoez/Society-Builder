@@ -1,8 +1,9 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IConstructionSector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Infrastructure
 {
-    public class MidBuilding : IBuildingCategory
+    public class MidBuilding : IBuildingCategory, IConstructionSector
     {
     }
 }

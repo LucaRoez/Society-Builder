@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IChemicalSector;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.IChemicalSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Chemicals
 {
-    public class MaterialProtectors : IImprover
+    public class MaterialProtectors : IImprover, IChemicalSector
     {
     }
 }

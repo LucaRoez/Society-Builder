@@ -1,9 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector;
-using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.IndustryMachines
 {
-    public class Furnace : IFabricable, IResearchable
+    public class Furnace : IFabricable, IIndustrialSector
     {
     }
 }

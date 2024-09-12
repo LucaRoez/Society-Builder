@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector;
 
 namespace SocietyBuilder.Models.Production.Final.Services
 {
-    public class Assistance : IServiceable
+    public class Assistance : IServiceable, ISocialSector
     {
     }
 }

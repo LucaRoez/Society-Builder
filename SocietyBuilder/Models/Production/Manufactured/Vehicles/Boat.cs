@@ -1,9 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector;
-using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Vehicles
 {
-    public class Boat : IFabricable, IResearchable
+    public class Boat : IFabricable, IIndustrialSector
     {
     }
 }

@@ -1,8 +1,9 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IWasteSector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.WasteIndustry
 {
-    public class SwageTreatmentPlant : IWasteCategory
+    public class SwageTreatmentPlant : IWasteCategory, IWasteSector
     {
     }
 }

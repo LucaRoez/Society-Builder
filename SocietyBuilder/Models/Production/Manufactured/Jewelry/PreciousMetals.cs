@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Jewelry
 {
-    public class PreciousMetals : IProcessed
+    public class PreciousMetals : IProcessed, IIndustrialSector, IGarmentSector, IConstructionSector
     {
     }
 }

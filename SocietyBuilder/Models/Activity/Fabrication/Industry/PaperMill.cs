@@ -1,8 +1,9 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IIndustrialSector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Industry
 {
-    public class PaperMill : IIndustrialCategory
+    public class PaperMill : IIndustrialCategory, IIndustrialSector
     {
     }
 }

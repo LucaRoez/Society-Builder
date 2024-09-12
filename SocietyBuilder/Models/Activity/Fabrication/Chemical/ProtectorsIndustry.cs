@@ -1,9 +1,10 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IChemicalSector;
-using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared;
+using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IIndustrialSector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Chemical
 {
-    public class ProtectorsIndustry : ILaboratoryCategory, IResearchCategory
+    public class ProtectorsIndustry : ILaboratoryCategory, ITechnologyCategory, IChemicalSector
     {
     }
 }

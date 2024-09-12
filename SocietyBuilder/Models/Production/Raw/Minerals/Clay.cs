@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
 
 namespace SocietyBuilder.Models.Production.Raw.Minerals
 {
-    public class Clay : IExtractable
+    public class Clay : IExtractable, IConstructionSector, IIndustrialSector
     {
     }
 }

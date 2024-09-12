@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage;
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IEnergySector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Harbor
 {
-    public class Harbor : ITransportationSector
+    public class Harbor : ITransportationCategory, ITraffic
     {
     }
 }

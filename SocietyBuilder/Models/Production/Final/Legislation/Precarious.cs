@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
 
 namespace SocietyBuilder.Models.Production.Final.Legislation
 {
-    public class Precarious : IReasonable
+    public class Precarious : IReasonable, IPoliticalSector
     {
     }
 }

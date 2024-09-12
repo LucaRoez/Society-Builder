@@ -2,7 +2,7 @@
 
 namespace SocietyBuilder.Models.Activity.Rough.Fishing
 {
-    public class CoastalFishing : IMaritimeCategory
+    public class CoastalFishing : IMaritimeCategory, IFoodSector
     {
     }
 }

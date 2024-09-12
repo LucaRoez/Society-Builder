@@ -1,6 +1,6 @@
 ﻿namespace SocietyBuilder.Models.Activity.Interfaces.IRoughStage.Shared
 {
-    public interface IFellingCategory : ExtractiveSector
+    public interface IFellingCategory : IExtractiveSector
     {
     }
 }

@@ -1,8 +1,9 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Refinery
 {
-    public class SubstanceRefinery : IRefineryCategory
+    public class SubstanceRefinery : IRefineryCategory, IIndustrialSector
     {
     }
 }

@@ -1,8 +1,9 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IServingStage.ISocialSector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Serving.Security
 {
-    public class CivilIntelligence : ISecurityCategory
+    public class CivilIntelligence : ISecurityCategory, ISocialSector
     {
     }
 }

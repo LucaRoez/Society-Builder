@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
 
 namespace SocietyBuilder.Models.Production.Raw.Metals
 {
-    public class PreciousMetals : IExtractable
+    public class PreciousMetals : IExtractable, IIndustrialSector, IConstructionSector, IGarmentSector
     {
     }
 }

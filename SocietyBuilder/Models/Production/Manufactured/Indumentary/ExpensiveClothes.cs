@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IGarmentSector;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.IGarmentSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Indumentary
 {
-    public class ExpensiveClothes : IWeavable
+    public class ExpensiveClothes : IWeavable, IGarmentSector
     {
     }
 }

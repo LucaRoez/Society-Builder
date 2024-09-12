@@ -1,8 +1,9 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.Shared;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Blacksmith
 {
-    public class SteelIndustry : IProcessingCategory
+    public class SteelIndustry : IProcessingCategory, IIndustrialSector
     {
     }
 }

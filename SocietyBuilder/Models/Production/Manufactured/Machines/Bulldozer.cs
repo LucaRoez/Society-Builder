@@ -1,9 +1,10 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector;
-using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IIndustrialSector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Machines
 {
-    public class Bulldozer : IFabricable, IResearchable
+    public class Bulldozer : IFabricable, ITechnologyCategory, IIndustrialSector
     {
     }
 }

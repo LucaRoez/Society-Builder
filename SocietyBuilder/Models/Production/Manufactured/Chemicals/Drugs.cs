@@ -2,7 +2,7 @@
 
 namespace SocietyBuilder.Models.Production.Manufactured.Chemicals
 {
-    public class Drugs : IDrug
+    public class Drugs : IDrug, IChemicalSector
     {
     }
 }

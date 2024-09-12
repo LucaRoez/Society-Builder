@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Refined
 {
-    public class Cast : IPurified
+    public class Cast : IPurified, IIndustrialSector, IConstructionSector
     {
     }
 }

@@ -1,8 +1,9 @@
-﻿using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
+﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Wool
 {
-    public class Wool : IProcessed
+    public class Wool : IProcessed, IGarmentSector
     {
     }
 }

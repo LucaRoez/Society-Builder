@@ -1,8 +1,9 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.IFabricationStage.IFoodSector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Feeding
 {
-    public class Mill : INourishmentCategory
+    public class Mill : INourishmentCategory, IFoodSector
     {
     }
 }
