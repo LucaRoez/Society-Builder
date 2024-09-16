@@ -4,6 +4,6 @@ namespace SocietyBuilder.Models.Spaces.Wheather
 {
     public class Chilly : ITemperature
     {
-        public static int Temperature = -4;
+        public static int Temperature = -2;
     }
 }

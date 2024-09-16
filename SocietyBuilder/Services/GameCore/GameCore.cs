@@ -22,8 +22,8 @@ namespace SocietyBuilder.Services.GameCore
 
         public void NewGame(string difficult)
         {
-            Area space = _pop.NewGame(difficult, _space.CreateNewArea());
-            Area area = _tenancy.Inhabit(space);
+            Region space = _pop.NewGame(difficult, _space.CreateNewArea());
+            Region area = _tenancy.Inhabit(space);
             _activity.CommandActivity(area.NorthCenter.South);
             //_activity.SwitchTurn();
         }

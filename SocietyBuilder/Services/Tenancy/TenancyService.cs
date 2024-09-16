@@ -5,7 +5,7 @@ namespace SocietyBuilder.Services.Tenancy
 {
     public class TenancyService : ITenancyService
     {
-        public Area Inhabit(Area area)
+        public Region Inhabit(Region area)
         {
 
 

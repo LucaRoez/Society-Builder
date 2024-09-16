@@ -3,7 +3,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.IPoliticalSector;
 
 namespace SocietyBuilder.Models.Production.Final.Policies
 {
-    public class Politics : IPolitical, IPoliticalSector
+    public class Politics : IPolitical, IPoliticalSector, IPolicy
     {
     }
 }

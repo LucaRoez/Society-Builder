@@ -1,9 +1,10 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+﻿using SocietyBuilder.Models.Activity.Interfaces.SectorClassification.SecondarySector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 using SocietyBuilder.Models.Production.Interfaces.IManufactured.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Nourishment
 {
-    public class Seeds : IPerishable, IFoodSector
+    public class Seeds : INonPerishable, IFoodSector, IFood
     {
     }
 }

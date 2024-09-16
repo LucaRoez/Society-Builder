@@ -1,9 +1,10 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+﻿using SocietyBuilder.Models.Activity.Interfaces.SectorClassification.PrimarySector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Raw.Livestock
 {
-    public class PigCattle : IEdible, IFoodSector
+    public class PigCattle : IEdible, IFoodSector, ILivestock
     {
     }
 }

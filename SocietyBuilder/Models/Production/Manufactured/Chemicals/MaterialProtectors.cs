@@ -3,7 +3,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IChemicalSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Chemicals
 {
-    public class MaterialProtectors : IImprover, IChemicalSector
+    public class MaterialProtectors : IImprover, IChemicalSector, IChemical
     {
     }
 }

@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Serving.Transportation
 {
-    public class Blood : ITrafficCategory, ITraffic
+    public class Blood : ITrafficCategory, ITransportSector
     {
     }
 }

@@ -3,7 +3,7 @@ using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 
 namespace SocietyBuilder.Models.Activity.Fabrication.Harbor
 {
-    public class Harbor : ITransportationCategory, ITraffic
+    public class Harbor : ITransportationCategory, ITransportSector
     {
     }
 }

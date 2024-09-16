@@ -10,7 +10,7 @@ namespace SocietyBuilder.Models.Population
     public class Citizen : IPopulation
     {
         public string Name => "Citizen";
-        public MicroParcel Location { get; set; }
+        public Parcel Location { get; set; }
         public IClass SocialClass { get; set; }
         public IStatus SocialStatus { get; set; }
         public INiche WorkNiche { get; set; }

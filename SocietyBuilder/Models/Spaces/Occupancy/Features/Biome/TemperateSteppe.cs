@@ -12,7 +12,7 @@ namespace SocietyBuilder.Models.Spaces.Occupancy.Features.Biome
 
         public ILatitude Latitude => new SubPolar();
 
-        public ITemperature[] Temperatures => new ITemperature[] { new Templated(), new Cool(), new Chilly(), new Warm() };
+        public ITemperature[] Temperatures => new ITemperature[] { new Tempered(), new Cool(), new Chilly(), new Warm() };
 
         public IHumidity[] Humidities => new IHumidity[] { new Damp(), new Moist(), new Dry(), new Humid() };
 

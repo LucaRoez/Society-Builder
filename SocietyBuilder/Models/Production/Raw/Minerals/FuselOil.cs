@@ -1,9 +1,10 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+﻿using SocietyBuilder.Models.Activity.Interfaces.SectorClassification.PrimarySector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
 
 namespace SocietyBuilder.Models.Production.Raw.Minerals
 {
-    public class FuselOil : IExtractable, IEnergySector
+    public class FuselOil : IExtractable, IEnergySector, IRawMineral
     {
     }
 }

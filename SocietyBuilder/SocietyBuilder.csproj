@@ -32,11 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Activity\Interfaces\IRoughStage\IFoodSector\" />
-    <Folder Include="Models\Activity\Interfaces\IRoughStage\IGarmentSector\" />
-    <Folder Include="Models\Activity\Interfaces\IRoughStage\IConstructionSector\" />
-    <Folder Include="Models\Activity\Interfaces\IRoughStage\IIndustrialSector\" />
-    <Folder Include="Models\Activity\Interfaces\IRoughStage\IChemicalSector\" />
+    <Folder Include="Models\Activity\Interfaces\RoughStage\IFoodSector\" />
+    <Folder Include="Models\Activity\Interfaces\RoughStage\IGarmentSector\" />
+    <Folder Include="Models\Activity\Interfaces\RoughStage\IConstructionSector\" />
+    <Folder Include="Models\Activity\Interfaces\RoughStage\IIndustrialSector\" />
+    <Folder Include="Models\Activity\Interfaces\RoughStage\IChemicalSector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IChemicalSector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IConstructionSector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IIndustrialSector\" />

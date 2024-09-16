@@ -7,9 +7,9 @@ namespace SocietyBuilder.Services.RealEconomy
 {
     public class EconomicActivityService : IEconomicActivityService
     {
-        public Parcel CommandActivity(Parcel parcel)
+        public Area CommandActivity(Area parcel)
         {
-            foreach (MicroParcel space in parcel.MicroParcels)
+            foreach (Parcel space in parcel.MicroParcels)
             {
                 if (space != null)
                 {

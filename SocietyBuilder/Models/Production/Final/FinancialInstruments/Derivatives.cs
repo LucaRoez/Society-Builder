@@ -3,7 +3,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.IFinancialSector;
 
 namespace SocietyBuilder.Models.Production.Final.FinancialInstruments
 {
-    public class Derivatives : IFinancial, IFinancialSector
+    public class Derivatives : IFinancial, IFinancialSector, IFinancial
     {
     }
 }

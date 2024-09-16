@@ -11,9 +11,9 @@ namespace SocietyBuilder.Services.PopulationGenerator
                                     // multiplicator, modificator
         public static Dictionary<IClass, (double, double)> SocialClass = new()
         {
-            { new Employees(), (1, 0) },
+            { new Worker(), (1, 0) },
             { new Owners(), (1, 1) },
-            { new Investors(), (1, 0) }
+            { new Capitalist(), (1, 0) }
         };
                                         // mult., mod.
         public static Dictionary<IStatus, (double, double)> SocialStatus = new()

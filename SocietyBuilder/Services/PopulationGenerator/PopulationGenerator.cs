@@ -7,7 +7,7 @@ namespace SocietyBuilder.Services.PopulationGenerator
 {
     public class PopulationGenerator : IPopulationGenerator
     {
-        public Area NewGame(string difficult, Area area)
+        public Region NewGame(string difficult, Region area)
         {
             switch (difficult)
             {
@@ -22,13 +22,13 @@ namespace SocietyBuilder.Services.PopulationGenerator
             return area;
         }
 
-        private Area PopulatePop(int quantity, string socialStatus, Area area)
+        private Region PopulatePop(int quantity, string socialStatus, Region area)
         {
             var parcels = area.NorthCenter.South.MicroParcels;
             int i = 0;
             while (i < quantity)
             {
-                foreach (MicroParcel littleParcel in parcels)
+                foreach (Parcel littleParcel in parcels)
                 {
                     if (littleParcel != null)
                     {

@@ -1,9 +1,10 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces.Sectors;
+﻿using SocietyBuilder.Models.Activity.Interfaces.SectorClassification.SecondarySector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.IndustryMachines
 {
-    public class Boiler : IFabricable, IIndustrialSector
+    public class Boiler : IFabricable, IIndustrialSector, IIndustrial
     {
     }
 }

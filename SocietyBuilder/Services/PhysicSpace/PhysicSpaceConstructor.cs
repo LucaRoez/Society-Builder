@@ -4,9 +4,9 @@ namespace SocietyBuilder.Services.PhysicSpace
 {
     public class PhysicSpaceConstructor : IPhysicConstructor
     {
-        public Area CreateNewArea()
+        public Region CreateNewArea()
         {
-            Area area = new();
+            Region area = new();
             List<Zone> zones = new();
 
             (area, zones) = FillArea(area, zones);
@@ -28,7 +28,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return area;
         }
 
-        private (Area, List<Zone>) FillArea(Area area, List<Zone> zones)
+        private (Region, List<Zone>) FillArea(Region area, List<Zone> zones)
         {
             var zoneNW = area.NorthWest = new Zone(1);
             var zoneNC = area.NorthCenter = new Zone(2);
@@ -44,45 +44,45 @@ namespace SocietyBuilder.Services.PhysicSpace
             {
                 if (i == 0)
                 {
-                    zones[i].North = new Parcel(1);
+                    zones[i].North = new Area(1);
                     zones[i].South = null;
-                    zones[i].West = new Parcel(3);
-                    zones[i].East = new Parcel(4);
+                    zones[i].West = new Area(3);
+                    zones[i].East = new Area(4);
                 }
                 else if (i == 1)
                 {
                     zones[i].North = null;
-                    zones[i].South = new Parcel(2);
-                    zones[i].West = new Parcel(3);
-                    zones[i].East = new Parcel(4);
+                    zones[i].South = new Area(2);
+                    zones[i].West = new Area(3);
+                    zones[i].East = new Area(4);
                 }
                 else if (i == 2)
                 {
-                    zones[i].North = new Parcel(1);
+                    zones[i].North = new Area(1);
                     zones[i].South = null;
-                    zones[i].West = new Parcel(3);
-                    zones[i].East = new Parcel(4);
+                    zones[i].West = new Area(3);
+                    zones[i].East = new Area(4);
                 }
                 else if (i == 3)
                 {
                     zones[i].North = null;
-                    zones[i].South = new Parcel(2);
-                    zones[i].West = new Parcel(3);
-                    zones[i].East = new Parcel(4);
+                    zones[i].South = new Area(2);
+                    zones[i].West = new Area(3);
+                    zones[i].East = new Area(4);
                 }
                 else if (i == 4)
                 {
-                    zones[i].North = new Parcel(1);
+                    zones[i].North = new Area(1);
                     zones[i].South = null;
-                    zones[i].West = new Parcel(3);
-                    zones[i].East = new Parcel(4);
+                    zones[i].West = new Area(3);
+                    zones[i].East = new Area(4);
                 }
                 else
                 {
                     zones[i].North = null;
-                    zones[i].South = new Parcel(2);
-                    zones[i].West = new Parcel(3);
-                    zones[i].East = new Parcel(4);
+                    zones[i].South = new Area(2);
+                    zones[i].West = new Area(3);
+                    zones[i].East = new Area(4);
                 }
             }
 
@@ -95,16 +95,16 @@ namespace SocietyBuilder.Services.PhysicSpace
             {
                 if (zone.North != null)
                 {
-                    var northParcels = zone.North.MicroParcels = new MicroParcel[16, 16];
-                    var westParcels = zone.West.MicroParcels = new MicroParcel[16, 16];
-                    var eastParcels = zone.East.MicroParcels = new MicroParcel[16, 16];
+                    var northParcels = zone.North.MicroParcels = new Parcel[16, 16];
+                    var westParcels = zone.West.MicroParcels = new Parcel[16, 16];
+                    var eastParcels = zone.East.MicroParcels = new Parcel[16, 16];
                     (zone.North.MicroParcels, zone.West.MicroParcels, zone.East.MicroParcels) = DrawZoneWithNorth(northParcels, westParcels, eastParcels);
                 }
                 else
                 {
-                    var southParcels = zone.South.MicroParcels = new MicroParcel[16, 16];
-                    var westParcels = zone.West.MicroParcels = new MicroParcel[16, 16];
-                    var eastParcels = zone.East.MicroParcels = new MicroParcel[16, 16];
+                    var southParcels = zone.South.MicroParcels = new Parcel[16, 16];
+                    var westParcels = zone.West.MicroParcels = new Parcel[16, 16];
+                    var eastParcels = zone.East.MicroParcels = new Parcel[16, 16];
                     (zone.West.MicroParcels, zone.East.MicroParcels, zone.South.MicroParcels) = DrawZoneWithSouth(southParcels, westParcels, eastParcels);
                 }
             }
@@ -112,7 +112,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return zones;
         }
 
-        private (MicroParcel[,], MicroParcel[,], MicroParcel[,]) DrawZoneWithNorth(MicroParcel[,] northParcels, MicroParcel[,] lowerWestParcels, MicroParcel[,] lowerEastParcels)
+        private (Parcel[,], Parcel[,], Parcel[,]) DrawZoneWithNorth(Parcel[,] northParcels, Parcel[,] lowerWestParcels, Parcel[,] lowerEastParcels)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -132,7 +132,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return (northParcels, lowerWestParcels, lowerEastParcels);
         }
 
-        private (MicroParcel[,], MicroParcel[,], MicroParcel[,]) DrawZoneWithSouth(MicroParcel[,] southParcels, MicroParcel[,] upperWestParcels, MicroParcel[,] upperEastParcels)
+        private (Parcel[,], Parcel[,], Parcel[,]) DrawZoneWithSouth(Parcel[,] southParcels, Parcel[,] upperWestParcels, Parcel[,] upperEastParcels)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -152,7 +152,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return (upperWestParcels, upperEastParcels, southParcels);
         }
 
-        private MicroParcel[,] DrawNorthMicroParcels(MicroParcel[,] northParcels)
+        private Parcel[,] DrawNorthMicroParcels(Parcel[,] northParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -235,7 +235,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return northParcels;
         }
 
-        private MicroParcel[,] DrawSouthMicroParcels(MicroParcel[,] southParcels)
+        private Parcel[,] DrawSouthMicroParcels(Parcel[,] southParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -318,7 +318,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return southParcels;
         }
 
-        private MicroParcel[,] DrawUpperWestMicroParcels(MicroParcel[,] upperWestParcels)
+        private Parcel[,] DrawUpperWestMicroParcels(Parcel[,] upperWestParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -389,7 +389,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return upperWestParcels;
         }
 
-        private MicroParcel[,] DrawUpperEastMicroParcels(MicroParcel[,] upperEastParcels)
+        private Parcel[,] DrawUpperEastMicroParcels(Parcel[,] upperEastParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -460,7 +460,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return upperEastParcels;
         }
 
-        private MicroParcel[,] DrawLowerWestParcels(MicroParcel[,] lowerWestParcels)
+        private Parcel[,] DrawLowerWestParcels(Parcel[,] lowerWestParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -531,7 +531,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return lowerWestParcels;
         }
 
-        private MicroParcel[,] DrawLowerEastParcels(MicroParcel[,] lowerEastParcels)
+        private Parcel[,] DrawLowerEastParcels(Parcel[,] lowerEastParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
