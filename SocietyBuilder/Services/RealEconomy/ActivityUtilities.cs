@@ -92,11 +92,11 @@ namespace SocietyBuilder.Services.RealEconomy
         };
         private static readonly (string, string)[] _NecessitiesMap = new[]
         {
-            ("Water","Feed"), ("Feeding","Feed"), ("Nutrition","Feed"), ("Plenty","Feed"), ("Luxury","Feed"), ("Plastic","Feed"),
-            ("Coat","Garment"), ("Clothes","Garment"), ("Outfit","Garment"), ("Plenty","Garment"), ("Luxury","Garment"), ("Latex","Garment"), ("Plastic","Garment"),
-            ("Shelter","Dwelling"), ("Homely","Dwelling"), ("Coverage","Dwelling"), ("Plenty","Dwelling"), ("Luxury","Dwelling"), ("Monumental","Dwelling"), ("Plastic","Dwelling"),
+            ("Water","Feed"), ("Feeding","Feed"), ("Nutrition","Feed"), ("Plenty","Feed"), ("Assortment","Feed"), ("Luxury","Feed"), ("Plastic","Feed"),
+            ("Coat","Garment"), ("Clothes","Garment"), ("Outfit","Garment"), ("Plenty","Garment"), ("Assortment","Garment"), ("Luxury","Garment"), ("Plastic","Garment"),
+            ("Shelter","Dwelling"), ("Homely","Dwelling"), ("Extension","Dwelling"), ("Plenty","Dwelling"), ("Luxury","Dwelling"), ("Monumental","Dwelling"), ("Plastic","Dwelling"),
             ("Defense","Security"), ("Politics","Security"), ("Stability","Security"), ("Security","Security"), ("Reliance","Security"), ("Insurance","Security"), ("Armed Defense","Security"),
-            ("Faith","Knowledge"), ("Reasoning","Knowledge"), ("Cience","Knowledge"), ("Virtue","Knowledge"), ("Wisdom","Knowledge"), ("Tolerance","Knowledge"),
+            ("Faith","Knowledge"), ("Reasoning","Knowledge"), ("Science","Knowledge"), ("Advanced","Knowledge"), ("Virtue","Knowledge"), ("Wisdom","Knowledge"), ("Tolerance","Knowledge"),
             ("Heat","Energy"), ("Energy","Energy"), ("Steam","Energy"), ("Electricyty","Energy"), ("Fusel Oil","Energy"),
             ("Amusement","Social"), ("Recreation","Social"), ("Syncretism","Social"), ("Institutionality","Social"),
             ("Hygiene","Health"), ("Medical Attention","Health"), ("Surgeries","Health"), ("Luxury","Health"), ("Plastic","Health")
