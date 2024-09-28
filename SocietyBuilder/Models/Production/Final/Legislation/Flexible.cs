@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
 
 namespace SocietyBuilder.Models.Production.Final.Legislation
 {
-    public class Flexible : IReasonable, IPoliticalSector, ILegislation
+    public class Flexible : IReasonable, IPoliticalSector, ILegislationClassification
     {
     }
 }

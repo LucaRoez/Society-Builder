@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.IndustryMachines
 {
-    public class GigantTanks : IFabricable, IIndustrialSector, IIndustrial
+    public class GigantTanks : IFabricable, IIndustrialSector, IIndustrialClassification
     {
     }
 }

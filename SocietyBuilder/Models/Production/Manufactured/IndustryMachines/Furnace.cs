@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.IndustryMachines
 {
-    public class Furnace : IFabricable, IIndustrialSector, IIndustrial
+    public class Furnace : IFabricable, IIndustrialSector, IIndustrialClassification
     {
     }
 }

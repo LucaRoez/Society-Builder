@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
 
 namespace SocietyBuilder.Models.Production.Raw.Minerals
 {
-    public class FuselOil : IExtractable, IEnergySector, IRawMineral
+    public class FuselOil : IExtractable, IEnergySector, IRawMineralClassification
     {
     }
 }

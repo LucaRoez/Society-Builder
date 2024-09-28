@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Raw.Agricultural
 {
-    public class Grains : IEdible, IFoodSector, IAgriculture, IVegetation
+    public class Grains : IEdible, IFoodSector, IAgricultureClassification, IVegetationClassification
     {
     }
 }

@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IGarmentSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Fabics
 {
-    public class Fabrics : IWeavable, IGarmentSector, IFabric
+    public class Fabrics : IWeavable, IGarmentSector, IFabricClassification
     {
     }
 }

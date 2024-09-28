@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.IPoliticalSector;
 
 namespace SocietyBuilder.Models.Production.Final.Armies
 {
-    public class Cavarly : IArmedWing, IPoliticalSector, IArmy
+    public class Cavarly : IArmedWing, IPoliticalSector, IArmyClassification
     {
     }
 }

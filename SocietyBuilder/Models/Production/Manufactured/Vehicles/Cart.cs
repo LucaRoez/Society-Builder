@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Vehicles
 {
-    public class Cart : IFabricable, IIndustrialSector, IVehicle
+    public class Cart : IFabricable, IIndustrialSector, IVehicleClassification
     {
     }
 }

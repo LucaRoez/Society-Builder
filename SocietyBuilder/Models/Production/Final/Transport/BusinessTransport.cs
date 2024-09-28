@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.ITraffic;
 
 namespace SocietyBuilder.Models.Production.Final.Transport
 {
-    public class BusinessTransport : ITransit, ITransportSector, ITraffic
+    public class BusinessTransport : ITransit, ITransportSector, ITrafficClassification
     {
     }
 }

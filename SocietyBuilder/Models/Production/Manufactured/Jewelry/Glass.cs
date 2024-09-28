@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Jewelry
 {
-    public class Glass : IProcessed, IIndustrialSector, IConstructionSector, IJewerly
+    public class Glass : IProcessed, IIndustrialSector, IConstructionSector, IJewerlyClassification
     {
     }
 }

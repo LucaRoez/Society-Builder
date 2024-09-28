@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Fabricated
 {
-    public class TextileTools : IFabricable, IGarmentSector, IManufactured
+    public class TextileTools : IFabricable, IGarmentSector, IManufacturedClassification
     {
     }
 }

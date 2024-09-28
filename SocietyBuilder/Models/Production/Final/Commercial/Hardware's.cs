@@ -1,9 +1,10 @@
 ﻿using SocietyBuilder.Models.Activity.Interfaces.SectorClassification.TerciarySector;
+using SocietyBuilder.Models.Activity.Interfaces.Sectors;
 using SocietyBuilder.Models.Production.Interfaces.IFinal.ICommercialSector;
 
 namespace SocietyBuilder.Models.Production.Final.Commercial
 {
-    public class Hardware_s : IInterchangeable, ICommercial
+    public class Hardware_s : IInterchangeable, ICommercialSector, ICommercialClassification
     {
     }
 }

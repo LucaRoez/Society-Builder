@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Raw.WildAnimals
 {
-    public class WildBovine : IEdible, IFoodSector, IWildAnimal
+    public class WildBovine : IEdible, IFoodSector, IWildAnimalClassification
     {
     }
 }

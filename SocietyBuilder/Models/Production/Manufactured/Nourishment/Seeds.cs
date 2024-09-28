@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Nourishment
 {
-    public class Seeds : INonPerishable, IFoodSector, IFood
+    public class Seeds : INonPerishable, IFoodSector, IFoodClassification
     {
     }
 }

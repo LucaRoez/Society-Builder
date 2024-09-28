@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.ICommercialSector;
 
 namespace SocietyBuilder.Models.Production.Final.Transportal
 {
-    public class Squadron : IInterchangeable, ICommercialSector, ITransport
+    public class Squadron : IInterchangeable, ICommercialSector, ITransportClassification
     {
     }
 }

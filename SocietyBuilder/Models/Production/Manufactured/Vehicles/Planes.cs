@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Vehicles
 {
-    public class Planes : IFabricable, ITechnologyCategory, IIndustrialSector, IVehicle
+    public class Planes : IFabricable, ITechnologyCategory, IIndustrialSector, IVehicleClassification
     {
     }
 }

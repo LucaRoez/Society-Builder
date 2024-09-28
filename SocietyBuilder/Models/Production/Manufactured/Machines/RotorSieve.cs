@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Machines
 {
-    public class RotorSieve : IFabricable, ITechnologyCategory, IIndustrialSector, IMachine
+    public class RotorSieve : IFabricable, ITechnologyCategory, IIndustrialSector, IMachineClassification
     {
     }
 }

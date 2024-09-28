@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Constructional
 {
-    public class DecorativeRocks : IProcessed, IConstructionSector, IConstruction
+    public class DecorativeRocks : IProcessed, IIndustrialSector, IConstructionSector, IConstructionClassification
     {
     }
 }

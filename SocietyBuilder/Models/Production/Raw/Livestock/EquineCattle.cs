@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IRaw.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Raw.Livestock
 {
-    public class EquineCattle : IEdible, ILively, IFoodSector, IEnergySector, ILivestock
+    public class EquineCattle : IEdible, ILively, IFoodSector, IEnergySector, ILivestockClassification
     {
     }
 }

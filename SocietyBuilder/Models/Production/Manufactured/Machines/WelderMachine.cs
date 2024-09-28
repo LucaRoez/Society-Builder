@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Machines
 {
-    public class WelderMachine : IFabricable, ITechnologyCategory, IIndustrialSector, IMachine
+    public class WelderMachine : IFabricable, ITechnologyCategory, IIndustrialSector, IMachineClassification
     {
     }
 }

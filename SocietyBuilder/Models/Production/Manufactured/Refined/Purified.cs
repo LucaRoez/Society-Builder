@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Refined
 {
-    public class Purified : IPurified, IIndustrialSector, IConstructionSector, IRefinery
+    public class Purified : IPurified, IIndustrialSector, IConstructionSector, IRefineryClassification
     {
     }
 }

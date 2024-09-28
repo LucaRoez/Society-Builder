@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector;
 
 namespace SocietyBuilder.Models.Production.Final.MedicalCares
 {
-    public class Hospitalization : IServiceable, ISocialSector, IMedical
+    public class Hospitalization : IServiceable, ISocialSector, IMedicalClassification
     {
     }
 }

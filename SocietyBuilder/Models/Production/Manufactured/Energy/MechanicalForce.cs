@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Energy
 {
-    public class MechanicalForce : IProcessed, IEnergy, IEnergySector, IPower
+    public class MechanicalForce : IProcessed, IEnergy, IEnergySector, IPowerClassification
     {
     }
 }

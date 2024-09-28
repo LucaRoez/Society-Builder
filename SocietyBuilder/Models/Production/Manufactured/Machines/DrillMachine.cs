@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Machines
 {
-    public class DrillMachine : IFabricable, ITechnologyCategory, IIndustrialSector, IMachine
+    public class DrillMachine : IFabricable, ITechnologyCategory, IIndustrialSector, IMachineClassification
     {
     }
 }

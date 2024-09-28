@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.IEnergySector;
 
 namespace SocietyBuilder.Models.Production.Final.Power
 {
-    public class Kinetic : ISupplyable, IEnergySector, IPower
+    public class Kinetic : ISupplyable, IEnergySector, IPowerClassification
     {
     }
 }

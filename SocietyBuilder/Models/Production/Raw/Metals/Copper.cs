@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
 
 namespace SocietyBuilder.Models.Production.Raw.Metals
 {
-    public class Copper : IExtractable, IIndustrialSector, IConstructionSector, IGarmentSector, IRawMetal
+    public class Copper : IExtractable, IIndustrialSector, IConstructionSector, IGarmentSector, IRawMetalClassification
     {
     }
 }

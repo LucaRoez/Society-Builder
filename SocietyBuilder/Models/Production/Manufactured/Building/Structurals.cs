@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IConstruction;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Building
 {
-    public class Structurals : IBuildable, IConstructionSector, IBuilding
+    public class Structurals : IBuildable, IConstructionSector, IBuildingClassification
     {
     }
 }

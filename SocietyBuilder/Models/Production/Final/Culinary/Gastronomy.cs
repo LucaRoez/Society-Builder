@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.IFoodSector;
 
 namespace SocietyBuilder.Models.Production.Final.Gastronomic
 {
-    public class Gastronomy : IServeable, IFoodSector, ICulinary
+    public class Gastronomy : IServeable, IFoodSector, ICulinaryClassification
     {
     }
 }

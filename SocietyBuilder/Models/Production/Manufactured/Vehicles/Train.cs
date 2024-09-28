@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Vehicles
 {
-    public class Train : IFabricable, ITechnologyCategory, IIndustrialSector, IVehicle
+    public class Train : IFabricable, ITechnologyCategory, IIndustrialSector, IVehicleClassification
     {
     }
 }

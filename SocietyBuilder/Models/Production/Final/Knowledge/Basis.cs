@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.IKnowledgeSector;
 
 namespace SocietyBuilder.Models.Production.Final.Knowledge
 {
-    public class Basis : IReasonable, IKnowledgeSector, IScience
+    public class Basis : IReasonable, IKnowledgeSector, IScienceClassification
     {
     }
 }

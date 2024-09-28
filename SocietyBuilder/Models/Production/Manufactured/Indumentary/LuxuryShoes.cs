@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Indumentary
 {
-    public class LuxuryShoes : IFabricable, IGarmentSector, IClothing
+    public class LuxuryShoes : IFabricable, IGarmentSector, IClothingClassification
     {
     }
 }

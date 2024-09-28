@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Fabricated
 {
-    public class Furnitures : IFabricable, IIndustrialSector, IManufactured
+    public class Furnitures : IFabricable, IIndustrialSector, IManufacturedClassification
     {
     }
 }

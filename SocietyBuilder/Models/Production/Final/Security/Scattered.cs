@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSector;
 
 namespace SocietyBuilder.Models.Production.Final.Security
 {
-    public class Scattered : IProtector, ISocialSector, ISecurity
+    public class Scattered : IProtector, ISocialSector, ISecurityClassification
     {
     }
 }

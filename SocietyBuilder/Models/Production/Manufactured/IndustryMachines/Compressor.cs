@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.IndustryMachines
 {
-    public class Compressor : IFabricable, ITechnologyCategory, IIndustrialSector, IIndustrial
+    public class Compressor : IFabricable, ITechnologyCategory, IIndustrialSector, IIndustrialClassification
     {
     }
 }

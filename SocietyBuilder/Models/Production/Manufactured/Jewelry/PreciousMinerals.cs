@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Jewelry
 {
-    public class PreciousMinerals : IProcessed, IIndustrialSector, IGarmentSector, IConstructionSector, IJewerly
+    public class PreciousMinerals : IProcessed, IIndustrialSector, IGarmentSector, IConstructionSector, IJewerlyClassification
     {
     }
 }

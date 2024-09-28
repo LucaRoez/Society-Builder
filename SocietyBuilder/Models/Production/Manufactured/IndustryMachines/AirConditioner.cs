@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufacturing.IndustryMachines
 {
-    public class AirConditioner : IFabricable, ITechnologyCategory, IIndustrialSector, IIndustrial
+    public class AirConditioner : IFabricable, ITechnologyCategory, IIndustrialSector, IIndustrialClassification
     {
     }
 }

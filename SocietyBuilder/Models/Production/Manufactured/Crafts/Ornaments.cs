@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.IIndustrialSecto
 
 namespace SocietyBuilder.Models.Production.Manufactured.Crafts
 {
-    public class Ornaments : IFabricable, IIndustrialSector, ICraft
+    public class Ornaments : IFabricable, IIndustrialSector, ICraftClassification
     {
     }
 }

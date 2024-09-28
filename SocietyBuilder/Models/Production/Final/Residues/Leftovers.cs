@@ -4,7 +4,7 @@ using IDisposable = SocietyBuilder.Models.Production.Interfaces.IFinal.ISocialSe
 
 namespace SocietyBuilder.Models.Production.Final.Residues
 {
-    public class Leftovers : IDisposable, IWasteSector, IResidue
+    public class Leftovers : IDisposable, IWasteSector, IResidueClassification
     {
     }
 }

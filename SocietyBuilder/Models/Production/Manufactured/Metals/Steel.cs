@@ -4,7 +4,7 @@ using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 
 namespace SocietyBuilder.Models.Production.Manufactured.Metals
 {
-    public class Steel : IProcessed, IIndustrialSector, IConstructionSector, IMetal
+    public class Steel : IProcessed, IIndustrialSector, IConstructionSector, IMetalClassification
     {
     }
 }

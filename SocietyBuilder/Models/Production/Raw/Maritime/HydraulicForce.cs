@@ -5,7 +5,7 @@ using SocietyBuilder.Models.Production.Interfaces.IRaw.Shared;
 
 namespace SocietyBuilder.Models.Production.Raw.Maritime
 {
-    public class HydraulicForce : IExtractable, IEnergySector, IMaritime
+    public class HydraulicForce : IExtractable, IEnergySector, IMaritimeClassification
     {
     }
 }
