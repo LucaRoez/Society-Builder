@@ -2,5 +2,6 @@
 {
     public interface INiche : IDemographyFactor
     {
+        int Id { get; }
     }
 }
