@@ -1,56 +1,67 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces;
-using SocietyBuilder.Models.Population.Elements;
+﻿using SocietyBuilder.Models.Population.Features;
 using SocietyBuilder.Models.Population.Interfaces;
 using SocietyBuilder.Models.Population.Interfaces.IDemography;
 using SocietyBuilder.Models.Population.Interfaces.ISociologic;
-using SocietyBuilder.Models.Production.Interfaces;
+using SocietyBuilder.Models.Production;
+using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 using SocietyBuilder.Models.Spaces;
 
 namespace SocietyBuilder.Models.Population
 {
     public class Citizen : IPopulation
     {
-        public string Name => "Citizen";
+        public string Name { get; }
+        public IAge Age { get; set; }
         public Parcel Location { get; set; }
-        public IClass SocialClass { get; set; }
+        public Parcel Home { get; set; }
+        public IFamily FamilyKind { get; set; }
+        public IClass[] SocialClass { get; set; } = new IClass[3];
         public IStatus SocialStatus { get; set; }
-        public INiche WorkNiche { get; set; }
-        public string[] States { get; set; }
+        public List<INiche> WorkNiche { get; set; }
+        public float Health { get; set; }
+        public List<ICondition> Condition { get; set; }
         public float Capacity { get; set; }
-        public Dictionary<Necessity, float> Satieties { get; set; }
-        public Dictionary<string, double> Endurances { get; set; }
-        public double Incomes { get; set; }
-        public double Capital { get; set; }
+        public List<Satiety> Satieties { get; set; }
+        public List<Product> Capital { get; set; }
 
         public Citizen()
         {
-
         }
 
-        float SetCapacity(INiche job, List<IProduct> technologies, float capacity)
+        float SetCapacity(INiche job, List<ITechnological> technologies, float capacity)
         {
             this.Capacity = this.Capacity - capacity;
             float capacityUsed = capacity * job.Level;
-            float improvements = 0.0;
-            foreach (IProduct tech in technologies)
+            float improvements = 0.0f;
+            foreach (ITechnological tech in technologies)
             {
                 improvements = improvements + tech.Multiplier;
             }
             return capacityUsed * improvements;
         }
 
-        (Lis﻿t<IProduct>?, Lis﻿t<IProduct>) DoWork(Lis﻿t<IProduct> inputs, IProduct raw, INiche job)
+        (Product?, Lis﻿t<Product>) DoWork(Lis﻿t<Product> inputs, Product raw, INiche job)
         {
-            (bool value, Lis﻿t<IProduct>?) response = raw.CanProduce(inputs, job);
-            (Lis﻿t<I﻿Product>?, Lis﻿t<IProduct>) finalResponse = (null, response.missedInputs);
+            (bool value, Lis﻿t<Product>? missedInputs) response = raw.CanProduce(inputs, job);
+            (Product?, Lis﻿t<Product>?) finalResponse = (null, response.missedInputs);
 
             if (response.value)
             {
-                float capacity = this.SetCapacity();
-                Lis﻿t<IProduct> output = raw.BeUsed(capacity, job.id);
-                Lis﻿t<IProduct> waste = raw.ConsumeInputs(output.Count, this.CapacityOfUse, inputs, job.id);
+                List<ITechnological> techs = new List<ITechnological>();
+                foreach (Product input in inputs)
+                {
+                    if (input is ITechnological tech)
+                    {
+                        techs.Add(tech);
+                    }
+                }
+
+                float capacity = this.SetCapacity(job, techs, Capacity);
+                Product output = raw.BeUsed(capacity, inputs, job.Id);
+                Lis﻿t<Product> waste = raw.ConsumeInputs(output.Quantity, job.CapacityOfUse, inputs, job.Id);
                 return (output, waste);
             }
+
             return finalResponse;
         }
     }
