@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\production\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\population\\interfaces\\idemography\\iniche.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\population\\interfaces\\idemography\\iniche.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\production\\general\\requirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\production\\general\\requirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\production\\general\\requirements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\production\\general\\requirements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\production\\interfaces\\iproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\production\\interfaces\\iproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\population\\citizen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\population\\citizen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,32 +26,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "INiche.cs",
-              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Population\\Interfaces\\IDemography\\INiche.cs",
-              "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Population\\Interfaces\\IDemography\\INiche.cs",
-              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Population\\Interfaces\\IDemography\\INiche.cs",
-              "RelativeToolTip": "SocietyBuilder\\Models\\Population\\Interfaces\\IDemography\\INiche.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T11:14:24.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IProduct.cs",
               "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T10:40:52.83Z",
+              "WhenOpened": "2024-10-30T22:23:57.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Requirements.cs",
+              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\General\\Requirements.cs",
+              "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Production\\General\\Requirements.cs",
+              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\General\\Requirements.cs",
+              "RelativeToolTip": "SocietyBuilder\\Models\\Production\\General\\Requirements.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T22:20:31.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Requirement.cs",
+              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\General\\Requirement.cs",
+              "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Production\\General\\Requirement.cs",
+              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\General\\Requirement.cs",
+              "RelativeToolTip": "SocietyBuilder\\Models\\Production\\General\\Requirement.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T22:19:42.097Z",
               "EditorCaption": ""
             },
             {
@@ -62,27 +79,10 @@
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Production\\Product.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\Product.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\Production\\Product.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAuAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T07:15:00.502Z",
+              "WhenOpened": "2024-10-30T11:03:25.249Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Citizen.cs",
-              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Population\\Citizen.cs",
-              "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Population\\Citizen.cs",
-              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Population\\Citizen.cs",
-              "RelativeToolTip": "SocietyBuilder\\Models\\Population\\Citizen.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T06:59:27.194Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             }
           ]
         }
