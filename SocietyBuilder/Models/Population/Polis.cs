@@ -5,7 +5,6 @@ namespace SocietyBuilder.Models.Population
 {
     public class Polis : IPopulation
     {
-        public string Name => "Population";
-        public Dictionary<Parcel, Citizen[]> Population { get; set; }
+        public string Name => "Macro-Data";
     }
 }

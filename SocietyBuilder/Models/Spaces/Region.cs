@@ -5,28 +5,21 @@ namespace SocietyBuilder.Models.Spaces
 {
     public class Region : IPhysicalSpace
     {
-        public Guid ID { get; set; }
-        public int OID { get; set; }
-        public Guid[] ZoneIDs { get; set; }
+        public Guid ID { get; set; } = Guid.NewGuid();
+        public Guid[] ZoneIDs { get; set; } = new Guid[6];
         public Zone NorthCenter { get; set; }
         public Zone SouthCenter { get; set; }
         public Zone NorthWest { get; set; }
         public Zone SouthWest { get; set; }
         public Zone NorthEast { get; set; }
         public Zone SouthEast { get; set; }
-        public string EnvironmentType { get; set; }
 
-        public int PopulationId { get; set; }
-        public Polis Population { get; set; }
-        public int[] PopulationIds { get; set; }
+        public Region[] Neighbors { get; set; } = new Region[6];
+
+        public Polis Population { get; set; } = new Polis();
 
         public Region()
         {
-            OID = 1;
-        }
-        public Region(int id)
-        {
-            OID = id;
         }
     }
 }

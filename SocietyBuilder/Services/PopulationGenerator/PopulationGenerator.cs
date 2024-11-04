@@ -1,4 +1,5 @@
 ﻿using SocietyBuilder.Models.Population;
+using SocietyBuilder.Models.Population.Features;
 using SocietyBuilder.Models.Population.Sociologic.Class;
 using SocietyBuilder.Models.Spaces;
 using System.Linq;
@@ -24,28 +25,26 @@ namespace SocietyBuilder.Services.PopulationGenerator
 
         private Region PopulatePop(int quantity, string socialStatus, Region area)
         {
-            var parcels = area.NorthCenter.South.MicroParcels;
+            var parcels = area.NorthCenter.South.Parcels;
             int i = 0;
             while (i < quantity)
             {
-                foreach (Parcel littleParcel in parcels)
+                foreach (Parcel parcel in parcels)
                 {
-                    if (littleParcel != null)
+                    if (parcel != null)
                     {
-                        Citizen pop = new();
-                        pop.Location = littleParcel;
-                        pop.SocialClass = new Owners();
-                        pop.SocialStatus = PopulationUtilities.SetSocialStatus(socialStatus);
-                        (double capital, double capability) = PopulationUtilities.SetCapabilities(socialStatus);
-                        pop.Capabilities = capability;
-                        pop.Capital = capital;
+                        Citizen citizen = new()
+                        {
+                            KnownPlaces = new() { parcel.Ken() },
+                            Satieties = new()
+                        };
+                        foreach (Necessity necessity in PopulationUtilities.Necessities)
+                        {
+                            citizen.Satieties.Add(new(necessity, 0));
+                        }
 
-                        pop.States = PopulationUtilities.States;
-                        pop.Satieties = PopulationUtilities.Satities;
-                        pop.Endurances = PopulationUtilities.Endurance;
-
-                        littleParcel.Inhabitants += 1; i++;
-                        littleParcel.Population.Append(pop);
+                        parcel.Inhabitants += 1; i++;
+                        parcel.Population.Append(citizen);
                         continue;
                     }
                 }

@@ -1,4 +1,4 @@
-﻿namespace SocietyBuilder.Models.Population.Polis
+﻿namespace SocietyBuilder.Models.Population.Society
 {
     public class AggregateDemand
     {

@@ -14,6 +14,7 @@ namespace SocietyBuilder.Models.Population
         public IAge Age { get; set; }
         public Parcel Location { get; set; }
         public Parcel Home { get; set; }
+        public List<Parcel> KnownPlaces { get; set; }
         public IFamily FamilyKind { get; set; }
         public IClass[] SocialClass { get; set; } = new IClass[3];
         public IStatus SocialStatus { get; set; }

@@ -4,121 +4,123 @@ namespace SocietyBuilder.Services.PhysicSpace
 {
     public class PhysicSpaceConstructor : IPhysicConstructor
     {
-        public Region CreateNewArea()
+        public Region CreateNewRegion()
         {
-            Region area = new();
+            Region region = new();
             List<Zone> zones = new();
 
-            (area, zones) = FillArea(area, zones);
-            zones = FillZones(zones);
+            (region, zones) = FillZones(region, zones);
+            zones = FillAreas(zones);
 
             for (int i = 0; i < 6; i++)
             {
                 switch (i)
                 {
-                    case 0: area.NorthWest = zones[i]; break;
-                    case 1: area.NorthCenter = zones[i]; break;
-                    case 2: area.NorthEast = zones[i]; break;
-                    case 3: area.SouthWest = zones[i]; break;
-                    case 4: area.SouthCenter = zones[i]; break;
-                    default: area.SouthEast = zones[i]; break;
+                    case 0: region.NorthWest = zones[i]; break;
+                    case 1: region.NorthCenter = zones[i]; break;
+                    case 2: region.NorthEast = zones[i]; break;
+                    case 3: region.SouthWest = zones[i]; break;
+                    case 4: region.SouthCenter = zones[i]; break;
+                    default: region.SouthEast = zones[i]; break;
                 }
             }
 
-            return area;
+            return region;
         }
 
-        private (Region, List<Zone>) FillArea(Region area, List<Zone> zones)
+        private (Region, List<Zone>) FillZones(Region region, List<Zone> zones)
         {
-            var zoneNW = area.NorthWest = new Zone(1);
-            var zoneNC = area.NorthCenter = new Zone(2);
-            var zoneNE = area.NorthEast = new Zone(3);
-            var zoneSW = area.SouthWest = new Zone(4);
-            var zoneSC = area.SouthCenter = new Zone(5);
-            var zoneSE = area.SouthEast = new Zone(6);
+            // first I split the original Region object from their children Zones
+            var zoneNW = region.NorthWest = new Zone(1, region);
+            var zoneNC = region.NorthCenter = new Zone(2, region);
+            var zoneNE = region.NorthEast = new Zone(3, region);
+            var zoneSW = region.SouthWest = new Zone(4, region);
+            var zoneSC = region.SouthCenter = new Zone(5, region);
+            var zoneSE = region.SouthEast = new Zone(6, region);
 
+            // just to work later comfortably
             zones.Add(zoneNW); zones.Add(zoneNC); zones.Add(zoneNE);
             zones.Add(zoneSW); zones.Add(zoneSC); zones.Add(zoneSE);
 
             for (int i = 0; i < 6; i++)
             {
-                if (i == 0)
+                if (i == 0)         // North West
                 {
-                    zones[i].North = new Area(1);
+                    zones[i].North = new Area(1, zoneNW);
                     zones[i].South = null;
-                    zones[i].West = new Area(3);
-                    zones[i].East = new Area(4);
+                    zones[i].West = new Area(3, zoneNW);
+                    zones[i].East = new Area(4, zoneNW);
                 }
-                else if (i == 1)
+                else if (i == 1)    // North Center
                 {
                     zones[i].North = null;
-                    zones[i].South = new Area(2);
-                    zones[i].West = new Area(3);
-                    zones[i].East = new Area(4);
+                    zones[i].South = new Area(2, zoneNC);
+                    zones[i].West = new Area(3, zoneNC);
+                    zones[i].East = new Area(4, zoneNC);
                 }
-                else if (i == 2)
+                else if (i == 2)    // North East
                 {
-                    zones[i].North = new Area(1);
+                    zones[i].North = new Area(1, zoneNE);
                     zones[i].South = null;
-                    zones[i].West = new Area(3);
-                    zones[i].East = new Area(4);
+                    zones[i].West = new Area(3, zoneNE);
+                    zones[i].East = new Area(4, zoneNE);
                 }
-                else if (i == 3)
+                else if (i == 3)    // South West
                 {
                     zones[i].North = null;
-                    zones[i].South = new Area(2);
-                    zones[i].West = new Area(3);
-                    zones[i].East = new Area(4);
+                    zones[i].South = new Area(2, zoneSW);
+                    zones[i].West = new Area(3, zoneSW);
+                    zones[i].East = new Area(4, zoneSW);
                 }
-                else if (i == 4)
+                else if (i == 4)    // South Center
                 {
-                    zones[i].North = new Area(1);
+                    zones[i].North = new Area(1, zoneSC);
                     zones[i].South = null;
-                    zones[i].West = new Area(3);
-                    zones[i].East = new Area(4);
+                    zones[i].West = new Area(3, zoneSC);
+                    zones[i].East = new Area(4, zoneSC);
                 }
-                else
+                else if (i == 5)    // South East
                 {
                     zones[i].North = null;
-                    zones[i].South = new Area(2);
-                    zones[i].West = new Area(3);
-                    zones[i].East = new Area(4);
+                    zones[i].South = new Area(2, zoneSE);
+                    zones[i].West = new Area(3, zoneSE);
+                    zones[i].East = new Area(4, zoneSE);
                 }
             }
 
-            return (area, zones);
+            return (region, zones);
         }
 
-        private List<Zone> FillZones(List<Zone> zones)
+        private List<Zone> FillAreas(List<Zone> zones)
         {
             foreach (var zone in zones)
             {
                 if (zone.North != null)
                 {
-                    var northParcels = zone.North.MicroParcels = new Parcel[16, 16];
-                    var westParcels = zone.West.MicroParcels = new Parcel[16, 16];
-                    var eastParcels = zone.East.MicroParcels = new Parcel[16, 16];
-                    (zone.North.MicroParcels, zone.West.MicroParcels, zone.East.MicroParcels) = DrawZoneWithNorth(northParcels, westParcels, eastParcels);
+                    var northParcels = zone.North.Parcels = new Parcel?[16, 16];
+                    var westParcels = zone.West.Parcels = new Parcel?[16, 16];
+                    var eastParcels = zone.East.Parcels = new Parcel?[16, 16];
+                    (zone.North.Parcels, zone.West.Parcels, zone.East.Parcels) = DrawAreaWithNorth(northParcels, westParcels, eastParcels);
                 }
-                else
+                else if (zone.South != null)
                 {
-                    var southParcels = zone.South.MicroParcels = new Parcel[16, 16];
-                    var westParcels = zone.West.MicroParcels = new Parcel[16, 16];
-                    var eastParcels = zone.East.MicroParcels = new Parcel[16, 16];
-                    (zone.West.MicroParcels, zone.East.MicroParcels, zone.South.MicroParcels) = DrawZoneWithSouth(southParcels, westParcels, eastParcels);
+                    var southParcels = zone.South.Parcels = new Parcel?[16, 16];
+                    var westParcels = zone.West.Parcels = new Parcel?[16, 16];
+                    var eastParcels = zone.East.Parcels = new Parcel?[16, 16];
+                    (zone.West.Parcels, zone.East.Parcels, zone.South.Parcels) = DrawAreaWithSouth(southParcels, westParcels, eastParcels);
                 }
             }
 
             return zones;
         }
 
-        private (Parcel[,], Parcel[,], Parcel[,]) DrawZoneWithNorth(Parcel[,] northParcels, Parcel[,] lowerWestParcels, Parcel[,] lowerEastParcels)
+        private (Parcel?[,], Parcel?[,], Parcel?[,]) DrawAreaWithNorth(Parcel?[,] northParcels, Parcel?[,] lowerWestParcels, Parcel?[,] lowerEastParcels)
         {
             for (int i = 0; i < 3; i++)
             {
                 if (i == 0)
                 {
-                    northParcels = DrawNorthMicroParcels(northParcels);
+                    northParcels = DrawNorthParcels(northParcels);
                 }
                 else if (i == 1)
                 {
@@ -132,27 +134,27 @@ namespace SocietyBuilder.Services.PhysicSpace
             return (northParcels, lowerWestParcels, lowerEastParcels);
         }
 
-        private (Parcel[,], Parcel[,], Parcel[,]) DrawZoneWithSouth(Parcel[,] southParcels, Parcel[,] upperWestParcels, Parcel[,] upperEastParcels)
+        private (Parcel?[,], Parcel?[,], Parcel?[,]) DrawAreaWithSouth(Parcel?[,] southParcels, Parcel?[,] upperWestParcels, Parcel?[,] upperEastParcels)
         {
             for (int i = 0; i < 3; i++)
             {
                 if (i == 0)
                 {
-                    southParcels = DrawSouthMicroParcels(southParcels);
+                    southParcels = DrawSouthParcels(southParcels);
                 }
                 else if (i == 1)
                 {
-                    upperWestParcels = DrawUpperEastMicroParcels(upperWestParcels);
+                    upperWestParcels = DrawUpperEastParcels(upperWestParcels);
                 }
                 else
                 {
-                    upperEastParcels = DrawUpperWestMicroParcels(upperEastParcels);
+                    upperEastParcels = DrawUpperWestParcels(upperEastParcels);
                 }
             }
             return (upperWestParcels, upperEastParcels, southParcels);
         }
 
-        private Parcel[,] DrawNorthMicroParcels(Parcel[,] northParcels)
+        private Parcel?[,] DrawNorthParcels(Parcel?[,] northParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -163,68 +165,70 @@ namespace SocietyBuilder.Services.PhysicSpace
                     {
                         if (x == 1 && y >= 7 && y <=8)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 2 && y >= 6 && y <= 9)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 3 && y >= 6 && y <= 9)
+                        else if (x == 3 && y >= 5 && y <= 10)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 4 && y >= 5 && y <= 10)
+                        else if (x == 4 && y >= 4 && y <= 11)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 5 && y >= 5 && y <= 10)
+                        else if (x == 5 && y >= 4 && y <= 11)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 6 && y >= 4 && y <= 11)
+                        else if (x == 6 && y >= 3 && y <= 12)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 7 && y >= 4 && y <= 11)
+                        else if (x == 7 && y >= 3 && y <= 12)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 8 && y >= 3 && y <= 12)
+                        else if (x == 8 && y >= 2 && y <= 13)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 9 && y >= 3 && y <= 12)
+                        else if (x == 9 && y >= 2 && y <= 13)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 10 && y >= 2 && y <= 13)
+                        else if (x == 10 && y >= 1 && y <= 14)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 11 && y >= 1 && y <= 14)
+                        else if (x == 11 && y >= 0 && y <= 15)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 12 && y >= 0 && y <= 15)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 13 && y >= 1 && y <= 14)
+                        else if (x == 13 && y >= 0 && y <= 15)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 14 && y >= 4 && y <= 11)
+                        else if (x == 14 && y >= 3 && y <= 12)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 15 && y >= 7 && y <= 8)
+                        else if (x == 15 && y >= 6 && y <= 9)
                         {
-                            northParcels[x, y] = new(oId); oId++;
+                            northParcels[x, y] = new(oId, x, y);
                         }
                         else
                         {
                             northParcels[x, y] = null;
                         }
+
+                        if (northParcels[x, y] != null) oId++;
                     }
                     else
                     {
@@ -235,79 +239,81 @@ namespace SocietyBuilder.Services.PhysicSpace
             return northParcels;
         }
 
-        private Parcel[,] DrawSouthMicroParcels(Parcel[,] southParcels)
+        private Parcel?[,] DrawSouthParcels(Parcel?[,] southParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
             {
                 for (int y = 0; y < 16; y++)
                 {
-                    if (x > 0)
+                    if (x < 15)
                     {
-                        if (x == 1 && y >= 7 && y <= 8)
+                        if (x == 0 && y >= 6 && y <= 9)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 2 && y >= 4 && y <= 11)
+                        else if (x == 1 && y >= 3 && y <= 12)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 3 && y >= 1 && y <= 14)
+                        else if (x == 2 && y >= 0 && y <= 15)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
+                        }
+                        else if (x == 3 && y >= 0 && y <= 15)
+                        {
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 4 && y >= 0 && y <= 15)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 5 && y >= 1 && y <= 14)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 6 && y >= 2 && y <= 13)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 7 && y >= 3 && y <= 12)
+                        else if (x == 7 && y >= 2 && y <= 13)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 8 && y >= 3 && y <= 12)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 9 && y >= 4 && y <= 11)
+                        else if (x == 9 && y >= 3 && y <= 12)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 10 && y >= 4 && y <= 11)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 11 && y >= 5 && y <= 10)
+                        else if (x == 11 && y >= 4 && y <= 11)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 12 && y >= 5 && y <= 10)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 13 && y >= 6 && y <= 9)
                         {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 14 && y >= 6 && y <= 9)
+                        else if (x == 14 && y >= 7 && y <= 8)
                         {
-                            southParcels[x, y] = new(oId); oId++;
-                        }
-                        else if (x == 15 && y >= 7 && y <= 8)
-                        {
-                            southParcels[x, y] = new(oId); oId++;
+                            southParcels[x, y] = new(oId, x, y);
                         }
                         else
                         {
                             southParcels[x, y] = null;
                         }
+
+                        if (southParcels[x, y] != null) oId++;
                     }
                     else
                     {
@@ -318,7 +324,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return southParcels;
         }
 
-        private Parcel[,] DrawUpperWestMicroParcels(Parcel[,] upperWestParcels)
+        private Parcel?[,] DrawUpperWestParcels(Parcel?[,] upperWestParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -327,58 +333,60 @@ namespace SocietyBuilder.Services.PhysicSpace
                 {
                     if (x < 12)
                     {
-                        if (x == 0 && y >= 0 && y <= 0)
+                        if (x == 0 && y >= 0 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 1 && y >= 1 && y <= 0)
+                        else if (x == 1 && y >= 1 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 2 && y >= 2 && y <= 0)
+                        else if (x == 2 && y >= 2 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 3 && y >= 2 && y <= 0)
+                        else if (x == 3 && y >= 3 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 4 && y >= 3 && y <= 0)
+                        else if (x == 4 && y >= 3 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 5 && y >= 3 && y <= 0)
+                        else if (x == 5 && y >= 4 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 6 && y >= 4 && y <= 0)
+                        else if (x == 6 && y >= 4 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 7 && y >= 4 && y <= 0)
+                        else if (x == 7 && y >= 5 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 8 && y >= 5 && y <= 0)
+                        else if (x == 8 && y >= 5 && y <= 15)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 9 && y >= 5 && y <= 1)
+                        else if (x == 9 && y >= 6 && y <= 13)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 10 && y >= 6 && y <= 4)
+                        else if (x == 10 && y >= 7 && y <= 10)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 11 && y >= 7 && y <= 7)
+                        else if (x == 11 && y >= 7 && y <= 8)
                         {
-                            upperWestParcels[x, y] = new(oId); oId++;
+                            upperWestParcels[x, y] = new(oId, x, y);
                         }
                         else
                         {
                             upperWestParcels[x, y] = null;
                         }
+
+                        if (upperWestParcels[x, y] != null) oId++;
                     }
                     else
                     {
@@ -389,67 +397,69 @@ namespace SocietyBuilder.Services.PhysicSpace
             return upperWestParcels;
         }
 
-        private Parcel[,] DrawUpperEastMicroParcels(Parcel[,] upperEastParcels)
+        private Parcel?[,] DrawUpperEastParcels(Parcel?[,] upperEastParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
             {
                 for (int y = 0; y < 16; y++)
                 {
-                    if (x > 3)
+                    if (x < 12)
                     {
-                        if (x == 4 && y >= 0 && y <= 0)
+                        if (x == 0 && y >= 0 && y <= 15)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 5 && y >= 0 && y <= 1)
+                        else if (x == 1 && y >= 0 && y <= 14)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 6 && y >= 0 && y <= 2)
+                        else if (x == 2 && y >= 0 && y <= 13)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 7 && y >= 0 && y <= 2)
+                        else if (x == 3 && y >= 0 && y <= 12)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 8 && y >= 0 && y <= 3)
+                        else if (x == 4 && y >= 0 && y <= 12)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 9 && y >= 0 && y <= 3)
+                        else if (x == 5 && y >= 0 && y <= 11)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 10 && y >= 0 && y <= 4)
+                        else if (x == 6 && y >= 0 && y <= 11)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 11 && y >= 0 && y <= 4)
+                        else if (x == 7 && y >= 0 && y <= 10)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 12 && y >= 0 && y <= 5)
+                        else if (x == 8 && y >= 0 && y <= 10)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 13 && y >= 1 && y <= 5)
+                        else if (x == 9 && y >= 2 && y <= 9)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 14 && y >= 4 && y <= 6)
+                        else if (x == 10 && y >= 5 && y <= 8)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 15 && y >= 7 && y <= 7)
+                        else if (x == 11 && y >= 7 && y <= 8)
                         {
-                            upperEastParcels[x, y] = new(oId); oId++;
+                            upperEastParcels[x, y] = new(oId, x, y);
                         }
                         else
                         {
                             upperEastParcels[x, y] = null;
                         }
+
+                        if (upperEastParcels[x, y] != null) oId++;
                     }
                     else
                     {
@@ -460,7 +470,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return upperEastParcels;
         }
 
-        private Parcel[,] DrawLowerWestParcels(Parcel[,] lowerWestParcels)
+        private Parcel?[,] DrawLowerWestParcels(Parcel?[,] lowerWestParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -471,56 +481,58 @@ namespace SocietyBuilder.Services.PhysicSpace
                     {
                         if (x == 4 && y >= 7 && y <= 8)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 5 && y >= 6 && y <= 11)
+                        else if (x == 5 && y >= 7 && y <= 10)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 6 && y >= 5 && y <= 14)
+                        else if (x == 6 && y >= 6 && y <= 13)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 7 && y >= 5 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 8 && y >= 4 && y <= 15)
+                        else if (x == 8 && y >= 5 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 9 && y >= 4 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 10 && y >= 3 && y <= 15)
+                        else if (x == 10 && y >= 4 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 11 && y >= 3 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 12 && y >= 2 && y <= 15)
+                        else if (x == 12 && y >= 3 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 13 && y >= 2 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 14 && y >= 1 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 15 && y >= 0 && y <= 15)
                         {
-                            lowerWestParcels[x, y] = new(oId); oId++;
+                            lowerWestParcels[x, y] = new(oId, x, y);
                         }
                         else
                         {
                             lowerWestParcels[x, y] = null;
                         }
+
+                        if (lowerWestParcels[x, y] != null) oId++;
                     }
                     else
                     {
@@ -531,7 +543,7 @@ namespace SocietyBuilder.Services.PhysicSpace
             return lowerWestParcels;
         }
 
-        private Parcel[,] DrawLowerEastParcels(Parcel[,] lowerEastParcels)
+        private Parcel?[,] DrawLowerEastParcels(Parcel?[,] lowerEastParcels)
         {
             int oId = 1;
             for (int x = 0; x < 16; x++)
@@ -542,56 +554,58 @@ namespace SocietyBuilder.Services.PhysicSpace
                     {
                         if (x == 4 && y >= 7 && y <= 8)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 5 && y >= 4 && y <= 9)
+                        else if (x == 5 && y >= 5 && y <= 8)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 6 && y >= 1 && y <= 14)
+                        else if (x == 6 && y >= 2 && y <= 9)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 7 && y >= 0 && y <= 15)
+                        else if (x == 7 && y >= 0 && y <= 10)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 8 && y >= 0 && y <= 15)
+                        else if (x == 8 && y >= 0 && y <= 10)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 9 && y >= 0 && y <= 15)
+                        else if (x == 9 && y >= 0 && y <= 11)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 10 && y >= 0 && y <= 15)
+                        else if (x == 10 && y >= 0 && y <= 11)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 11 && y >= 0 && y <= 15)
+                        else if (x == 11 && y >= 0 && y <= 12)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 12 && y >= 0 && y <= 15)
+                        else if (x == 12 && y >= 0 && y <= 12)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 13 && y >= 0 && y <= 15)
+                        else if (x == 13 && y >= 0 && y <= 13)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 14 && y >= 0 && y <= 15)
+                        else if (x == 14 && y >= 0 && y <= 14)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
                         else if (x == 15 && y >= 0 && y <= 15)
                         {
-                            lowerEastParcels[x, y] = new(oId); oId++;
+                            lowerEastParcels[x, y] = new(oId, x, y);
                         }
                         else
                         {
                             lowerEastParcels[x, y] = null;
                         }
+
+                        if (lowerEastParcels[x, y] != null) oId++;
                     }
                     else
                     {
