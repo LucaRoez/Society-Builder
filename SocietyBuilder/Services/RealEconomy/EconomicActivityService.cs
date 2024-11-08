@@ -1,7 +1,5 @@
 ﻿using SocietyBuilder.Models.Population;
-using SocietyBuilder.Models.Population.Elements;
 using SocietyBuilder.Models.Population.Features;
-using SocietyBuilder.Models.Population.Interfaces.IDemography;
 using SocietyBuilder.Models.Spaces;
 
 namespace SocietyBuilder.Services.RealEconomy
@@ -10,7 +8,7 @@ namespace SocietyBuilder.Services.RealEconomy
     {
         public Area CommandActivity(Area parcel)
         {
-            foreach (Parcel space in parcel.Parcels)
+            foreach (Parcel? space in parcel.Parcels)
             {
                 if (space != null)
                 {

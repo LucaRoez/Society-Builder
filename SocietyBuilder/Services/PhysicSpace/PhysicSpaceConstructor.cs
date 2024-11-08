@@ -24,6 +24,7 @@ namespace SocietyBuilder.Services.PhysicSpace
                     default: region.SouthEast = zones[i]; break;
                 }
             }
+            region.SetCoordinates();
 
             return region;
         }
@@ -97,17 +98,11 @@ namespace SocietyBuilder.Services.PhysicSpace
             {
                 if (zone.North != null)
                 {
-                    var northParcels = zone.North.Parcels = new Parcel?[16, 16];
-                    var westParcels = zone.West.Parcels = new Parcel?[16, 16];
-                    var eastParcels = zone.East.Parcels = new Parcel?[16, 16];
-                    (zone.North.Parcels, zone.West.Parcels, zone.East.Parcels) = DrawAreaWithNorth(northParcels, westParcels, eastParcels);
+                    (zone.North.Parcels, zone.West.Parcels, zone.East.Parcels) = DrawAreaWithNorth(zone.North.Parcels, zone.West.Parcels, zone.East.Parcels);
                 }
                 else if (zone.South != null)
                 {
-                    var southParcels = zone.South.Parcels = new Parcel?[16, 16];
-                    var westParcels = zone.West.Parcels = new Parcel?[16, 16];
-                    var eastParcels = zone.East.Parcels = new Parcel?[16, 16];
-                    (zone.West.Parcels, zone.East.Parcels, zone.South.Parcels) = DrawAreaWithSouth(southParcels, westParcels, eastParcels);
+                    (zone.West.Parcels, zone.East.Parcels, zone.South.Parcels) = DrawAreaWithSouth(zone.South.Parcels, zone.West.Parcels, zone.East.Parcels);
                 }
             }
 
@@ -211,7 +206,7 @@ namespace SocietyBuilder.Services.PhysicSpace
                         {
                             northParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 13 && y >= 0 && y <= 15)
+                        else if (x == 13 && y >= 1 && y <= 14)
                         {
                             northParcels[x, y] = new(oId, x, y);
                         }
@@ -256,7 +251,7 @@ namespace SocietyBuilder.Services.PhysicSpace
                         {
                             southParcels[x, y] = new(oId, x, y);
                         }
-                        else if (x == 2 && y >= 0 && y <= 15)
+                        else if (x == 2 && y >= 1 && y <= 14)
                         {
                             southParcels[x, y] = new(oId, x, y);
                         }

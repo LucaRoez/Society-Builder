@@ -11,7 +11,8 @@ namespace SocietyBuilder.Models.Spaces
         public int ZoneOID { get; set; }
         public Zone Zone { get; set; }
         public Guid[] ParcelIDs { get; set; }
-        public Parcel?[,] Parcels { get; set; }
+
+        public Parcel?[,] Parcels { get; set; } = new Parcel?[16, 16];
 
         public Area?[] Neighbors { get; set; } = new Area[7];
 
