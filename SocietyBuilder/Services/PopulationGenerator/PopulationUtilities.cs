@@ -41,49 +41,65 @@ namespace SocietyBuilder.Services.PopulationGenerator
             {
                 Name = "Feeding",
                 Priority = 1,
-                Level = 1
+                Weighing = 1.2f,
+                Level = 1,
+                Satiety = 0
             },
             new Necessity()
             {
                 Name = "Garment",
-                Priority = 1,
-                Level = 1
+                Priority = 2,
+                Weighing = 1.1f,
+                Level = 1,
+                Satiety = 0
             },
             new Necessity()
             {
                 Name = "Dwelling",
-                Priority = 1,
-                Level = 1
+                Priority = 3,
+                Weighing = 1f,
+                Level = 1,
+                Satiety = 0
             },
             new Necessity()
             {
                 Name = "Security",
-                Priority = 1,
-                Level = 1
+                Priority = 4,
+                Weighing = 0.9f,
+                Level = 1,
+                Satiety = 0
             },
             new Necessity()
             {
                 Name = "Knowledge",
-                Priority = 1,
-                Level = 1
+                Priority = 5,
+                Weighing = 0.2f,
+                Level = 1,
+                Satiety = 0
             },
             new Necessity()
             {
                 Name = "Energy",
-                Priority = 1,
-                Level = 1
+                Priority = 6,
+                Weighing = 1f,
+                Level = 1,
+                Satiety = 0
             },
             new Necessity()
             {
                 Name = "Social",
-                Priority = 1,
-                Level = 1
+                Priority = 7,
+                Weighing = 0.8f,
+                Level = 1,
+                Satiety = 0
             },
             new Necessity()
             {
                 Name = "Health",
-                Priority = 1,
-                Level = 1
+                Priority = 8,
+                Weighing = 0.4f,
+                Level = 1,
+                Satiety = 0
             }
         };
 

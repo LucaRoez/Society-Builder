@@ -35,13 +35,8 @@ namespace SocietyBuilder.Services.PopulationGenerator
                     {
                         Citizen citizen = new()
                         {
-                            KnownPlaces = new() { parcel.Ken() },
-                            Satieties = new()
+                            KnownPlaces = new() { parcel.Ken() }
                         };
-                        foreach (Necessity necessity in PopulationUtilities.Necessities)
-                        {
-                            citizen.Satieties.Add(new(necessity, 0));
-                        }
 
                         parcel.Inhabitants += 1; i++;
                         parcel.Population.Append(citizen);

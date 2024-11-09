@@ -24,7 +24,7 @@ namespace SocietyBuilder.Services.GameCore
         {
             Region space = _pop.NewGame(difficult, _space.CreateNewRegion());
             Region region = _tenancy.Inhabit(space);
-            _activity.CommandActivity(region.NorthCenter.South);
+            _activity.CommandActivity(region);
             //_activity.SwitchTurn();
         }
     }

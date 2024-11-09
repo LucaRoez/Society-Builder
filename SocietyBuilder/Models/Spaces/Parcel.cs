@@ -2,7 +2,6 @@
 using SocietyBuilder.Models.Population;
 using SocietyBuilder.Models.Production.Interfaces.IManufactured.IConstruction;
 using SocietyBuilder.Models.Production;
-using SocietyBuilder.Models.Spaces.Occupancy.Features.Humidity;
 
 namespace SocietyBuilder.Models.Spaces
 {
@@ -16,17 +15,18 @@ namespace SocietyBuilder.Models.Spaces
 
         public IBuildable[,] Lands = new IBuildable[3,3];
 
-        public int Col {  get; set; }
-        public int Row { get; set; }
+        public int RelativeCol {  get; set; }
+        public int RelativeRow { get; set; }
+        public (int, int) AbsoluteCoordinate {  get; set; }
         public Citizen[] Population { get; set; }
         public int Inhabitants { get; set; }
         public List<Product> Resources { get; set; }
 
-        public Parcel?[] Neighbor { get; set; } = new Parcel[8];
-        public Parcel LastClosest {  get; set; }
+        public Parcel[] Neighbors { get; set; } = new Parcel[8];
+        public Parcel? LastClosest {  get; set; }
         public int G_Cost { get; set; }
         public int H_Cost { get; set; }
-        public int F_Cost { get; set; }
+        public int F_Cost => H_Cost + F_Cost;
         public bool IsDiagonal { get; set; }
         public bool IsBorder { get; set; }
 
@@ -36,76 +36,266 @@ namespace SocietyBuilder.Models.Spaces
         public Parcel(int id, int row, int col)
         {
             OID = id;
-            Row = row;
-            Col = col;
+            RelativeRow = row;
+            RelativeCol = col;
+            LocateCoordinate();
+            GetNeighbors();
         }
 
-        public Parcel?[] SetNeighbors()
+        public (int, int) LocateCoordinate()
         {
-            foreach (Parcel? parcel in Area.Parcels)
+            (int, int)?[,] region = Area.Zone.Region.Coordinates;
+            for (int x = 0; x < 48; x++)
+            {
+                for (int y = 0; y < 66; y++)
+                {
+                    if (region[x, y] == (RelativeRow, RelativeCol)) AbsoluteCoordinate = (x, y);
+                }
+            }
+
+            return AbsoluteCoordinate;
+        }
+        public Parcel[] GetNeighbors()
+        {
+            Region region = Area.Zone.Region;
+            (int, int)[] neighborCoordinates = new (int, int)[8];
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                for (int dy = -1; dy <= 1; dy++)
+                {
+                    if (dx == 0 && dy == 0) continue;
+
+                    neighborCoordinates.Append((AbsoluteCoordinate.Item1 + dx, AbsoluteCoordinate.Item2 + dy));
+                }
+            }
+
+            Parcel?[] neighbors = new Parcel[8]; int i = 0;
+            foreach ((int, int) neighborCoordinate in neighborCoordinates)
+            {
+                if (neighborCoordinate.Item1 < 24)
+                    neighbors[i] = SearchInNorth(neighborCoordinate);
+                else
+                    neighbors[i] = SearchInSouth(neighborCoordinate);
+                i++;
+            }
+            i = 0;
+            foreach (Parcel? parcel in neighbors)   // absurd null checking
+            {
+                if (parcel == null)
+                {
+                    (int, int) neighborCoordinate = neighborCoordinates[i];
+                    if (neighborCoordinate.Item1 < 24)
+                        neighbors[i] = SearchInSouth(neighborCoordinate);
+                    else
+                        neighbors[i] = SearchInNorth(neighborCoordinate);
+                }
+                i++;
+            }
+            Neighbors = neighbors;
+
+            return Neighbors;
+        }
+        private Parcel? SearchInNorth((int, int) neighborCoordinate)
+        {
+            Region region = Area.Zone.Region;
+            // north center
+            foreach (Parcel? parcel in region.NorthCenter.South.Parcels)
             {
                 if (parcel != null)
-                {
-                    // left top neighbor
-                    if (parcel.Row == Row - 1 && parcel.Col == Col - 1) Neighbor[0] = parcel;
-                    // top neighbor
-                    else if (parcel.Row == Row - 1 && parcel.Col == Col) Neighbor[1] = parcel;
-                    // right top neighbor
-                    else if (parcel.Row == Row - 1 && parcel.Col == Col + 1) Neighbor[2] = parcel;
-                    // left neighbor
-                    else if (parcel.Row == Row && parcel.Col == Col - 1) Neighbor[3] = parcel;
-                    // right neighbor
-                    else if (parcel.Row == Row && parcel.Col == Col + 1) Neighbor[4] = parcel;
-                    // left bottom neighbor
-                    else if (parcel.Row == Row + 1 && parcel.Col == Col - 1) Neighbor[5] = parcel;
-                    // bottom neighbor
-                    else if (parcel.Row == Row + 1 && parcel.Col == Col) Neighbor[6] = parcel;
-                    // right bottom neighbor
-                    else if (parcel.Row == Row + 1 && parcel.Col == Col + 1) Neighbor[7] = parcel;
-                }
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
             }
-
-            return Neighbor;
+            foreach (Parcel? parcel in region.NorthCenter.West.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.NorthCenter.East.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            // north west
+            foreach (Parcel? parcel in region.NorthWest.North.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.NorthWest.West.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.NorthWest.East.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            // north east
+            foreach (Parcel? parcel in region.NorthEast.North.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.NorthEast.West.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.NorthEast.East.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            return null;
+        }
+        private Parcel? SearchInSouth((int, int) neighborCoordinate)
+        {
+            Region region = Area.Zone.Region;
+            // south center
+            foreach (Parcel? parcel in region.SouthCenter.South.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.SouthCenter.West.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.SouthCenter.East.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            // south west
+            foreach (Parcel? parcel in region.SouthWest.North.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.SouthWest.West.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.SouthWest.East.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            // south east
+            foreach (Parcel? parcel in region.SouthEast.North.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.SouthEast.West.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            foreach (Parcel? parcel in region.SouthEast.East.Parcels)
+            {
+                if (parcel != null)
+                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                        return parcel;
+            }
+            return null;
         }
 
-
-
-        public int RelativeDistance(Parcel startingPlace)
+        public List<Parcel>? FindClosestPath(Parcel startingPlace)
         {
-            int x0 = startingPlace.Row, y0 = startingPlace.Col;
-            int x1 = Row, y1 = Col;
-
-            (int, int) startingCoordinate = (x0, y0);
-            (int, int) endingCoordinate = (x1, y1);
-            (int, int)? startingPoint = null;
-            (int, int)? endingPoint = null;
+            List<Parcel> openParcels = new() { startingPlace };
+            HashSet<Parcel> closedParcels = new();
+            int x0 = startingPlace.AbsoluteCoordinate.Item1, y0 = startingPlace.AbsoluteCoordinate.Item2;
+            int x1 = AbsoluteCoordinate.Item1, y1 = AbsoluteCoordinate.Item2;
 
             (int, int)?[,] map = startingPlace.Area.Zone.Region.Coordinates;
-            for (int x = 0; x < map.GetLength(0); x++)
+            (int, int) startingCoordinate = (x0, y0), endingCoordinate = (x1, y1);
+
+            // set start
+            startingPlace.G_Cost = 0;
+            startingPlace.H_Cost = RelativeDistance(startingCoordinate, endingCoordinate);
+            // loop
+            while (openParcels.Count > 0)
             {
-                for (int y = 0; y < map.GetLength(1); y++)
+                // find the closest parcel
+                Parcel currentParcel = openParcels[0];
+                foreach (Parcel parcel in openParcels)
                 {
-                    if (map[x,y] == startingCoordinate) startingPoint = (x, y);
-                    else if (map[x,y] == endingCoordinate) endingPoint = (x, y);
-                    if (startingPoint != null && endingPoint != null) break;
+                    // search for the closest
+                    if (parcel.F_Cost < currentParcel.F_Cost || (parcel.F_Cost == currentParcel.F_Cost && parcel.H_Cost < parcel.H_Cost))
+                        currentParcel = parcel;
                 }
-                if (startingPoint != null && endingPoint != null) break;
+
+                // target reached
+                if (currentParcel == this) return TrackPath(startingPlace);
+
+                openParcels.Remove(currentParcel);
+                closedParcels.Add(currentParcel);
+
+                // search for their neighbors
+                foreach (Parcel neighbor in currentParcel.Neighbors)
+                {
+                    if (closedParcels.Contains(neighbor)) continue; // repeat filter
+
+                    int newG_Cost = currentParcel.G_Cost + RelativeDistance(currentParcel.AbsoluteCoordinate, neighbor.AbsoluteCoordinate);
+                    // set neighbors
+                    if ((newG_Cost < neighbor.G_Cost) || !openParcels.Contains(neighbor))
+                    {
+                        neighbor.G_Cost = newG_Cost;    
+                        neighbor.H_Cost = RelativeDistance(currentParcel.AbsoluteCoordinate, AbsoluteCoordinate);
+                        neighbor.LastClosest = currentParcel;
+                        // add to open if isn't to start to making the path
+                        if (!openParcels.Contains(neighbor)) openParcels.Add(neighbor);
+                    }
+                }
             }
-
-            (int, int) sp = startingPoint != null ? (startingPoint.Value.Item1, startingPoint.Value.Item2) : (0, 0);
-            (int, int) ep = endingPoint != null ? (endingPoint.Value.Item1, endingPoint.Value.Item2) : (0, 0);
-            int distance = AbsoluteDistance(sp, ep, map);
+            return null;
         }
-
-        private int AbsoluteDistance((int, int) startingPoint, (int, int) endingPoint, (int, int)?[,] map)
+        private int RelativeDistance((int, int) startingPoint, (int, int) endingPoint) 
         {
             int x0 = startingPoint.Item1, y0 = startingPoint.Item2;
             int x1 = endingPoint.Item1, y1 = endingPoint.Item2;
+            int dx = Math.Abs(x1 - x0);
+            int dy = -Math.Abs(y1 - y0);
 
-            int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
-            int dy = -Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+            return dx < dy ? (dx - dy)*10 + dx*14 : (dy - dx)*10 + dy*14;
+        }
+        private List<Parcel> TrackPath(Parcel startPlace)
+        {
+            List<Parcel> path = new();
+            Parcel current = this;
+            while (current != startPlace)
+            {
+                if (current.LastClosest != null)
+                {
+                    path.Add(current);
+                    current = current.LastClosest;
+                }
+                else
+                    throw new Exception("Tracking Path failed: one of the tracked parcels failed to load its parent Parcel in its LastClosest property.");
+            }
 
-            return (int)Math.Sqrt(Math.Pow(dx,2) + Math.Pow(dy,2));
+            path.Reverse();
+            return path;
         }
 
         public Parcel Ken()
@@ -113,8 +303,9 @@ namespace SocietyBuilder.Models.Spaces
             return new Parcel()
             {
                 OID = OID,
-                Row = Row,
-                Col = Col,
+                RelativeRow = RelativeRow,
+                RelativeCol = RelativeCol,
+                AbsoluteCoordinate = AbsoluteCoordinate,
                 ID = ID,
                 AreaID = AreaID,
                 AreaOID = AreaOID,

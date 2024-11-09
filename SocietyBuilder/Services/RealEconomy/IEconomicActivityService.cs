@@ -5,6 +5,6 @@ namespace SocietyBuilder.Services.RealEconomy
 {
     public interface IEconomicActivityService
     {
-        Area CommandActivity(Area parcel);
+        Region CommandActivity(Region region);
     }
 }

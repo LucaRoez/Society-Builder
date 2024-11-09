@@ -6,9 +6,9 @@ namespace SocietyBuilder.Services.RealEconomy
 {
     public class EconomicActivityService : IEconomicActivityService
     {
-        public Area CommandActivity(Area parcel)
+        public Region CommandActivity(Region region)
         {
-            foreach (Parcel? space in parcel.Parcels)
+            foreach (Parcel? space in region.NorthCenter.South.Parcels)
             {
                 if (space != null)
                 {
@@ -19,15 +19,7 @@ namespace SocietyBuilder.Services.RealEconomy
                 }
             }
 
-            return parcel;
-        }
-
-        private List<Satiety> PrioritizeNecessities(List<Satiety> satieties, List<Parcel> knownPlaces)
-        {
-            foreach(Parcel possibleLocation in knownPlaces)
-            {
-                possibleLocation
-            }
+            return region;
         }
     }
 }

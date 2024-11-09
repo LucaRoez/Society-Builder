@@ -1,10 +1,13 @@
-﻿using SocietyBuilder.Models.Population.Features;
+﻿using SocietyBuilder.Models.Activity.Interfaces;
+using SocietyBuilder.Models.Population.Features;
 using SocietyBuilder.Models.Population.Interfaces;
 using SocietyBuilder.Models.Population.Interfaces.IDemography;
 using SocietyBuilder.Models.Population.Interfaces.ISociologic;
 using SocietyBuilder.Models.Production;
 using SocietyBuilder.Models.Production.Interfaces.IManufactured.Shared;
 using SocietyBuilder.Models.Spaces;
+using SocietyBuilder.Services.PopulationGenerator;
+using System.Linq;
 
 namespace SocietyBuilder.Models.Population
 {
@@ -15,21 +18,46 @@ namespace SocietyBuilder.Models.Population
         public Parcel Location { get; set; }
         public Parcel Home { get; set; }
         public List<Parcel> KnownPlaces { get; set; }
+
         public IFamily FamilyKind { get; set; }
         public IClass[] SocialClass { get; set; } = new IClass[3];
         public IStatus SocialStatus { get; set; }
         public List<INiche> WorkNiche { get; set; }
+
         public float Health { get; set; }
         public List<ICondition> Condition { get; set; }
         public float Capacity { get; set; }
-        public List<Satiety> Satieties { get; set; }
+        public Necessity[] Necessities { get; set; } = PopulationUtilities.Necessities;
+        public IActivity CurrentActivity { get; set; }
         public List<Product> Capital { get; set; }
 
         public Citizen()
         {
         }
 
-        float SetCapacity(INiche job, List<ITechnological> technologies, float capacity)
+        public void SearchForActivity()
+        {
+            PrioritizeNecessities();
+            Necessity goal = Necessities[0];
+            foreach (Parcel knownPlace in KnownPlaces)
+            {
+                if (knownPlace.Resources.Find(p => p.NecessitiesSatisfied.))
+                {
+
+                }
+            }
+        }
+        private void PrioritizeNecessities()
+        {
+            Necessities.OrderBy(n => n.Priority);
+            foreach (Necessity necessity in Necessities)
+            {
+                necessity.Priority = necessity.Priority + (necessity.Satiety * (1 / necessity.Weighing));
+            }
+            Necessities.OrderBy(n => n.Priority);
+        }
+
+        public float SetCapacity(INiche job, List<ITechnological> technologies, float capacity)
         {
             this.Capacity = this.Capacity - capacity;
             float capacityUsed = capacity * job.Level;
@@ -41,7 +69,7 @@ namespace SocietyBuilder.Models.Population
             return capacityUsed * improvements;
         }
 
-        (Product?, Lis﻿t<Product>) DoWork(Lis﻿t<Product> inputs, Product raw, INiche job)
+        public (Product?, Lis﻿t<Product>) DoWork(Lis﻿t<Product> inputs, Product raw, INiche job)
         {
             (bool value, Lis﻿t<Product>? missedInputs) response = raw.CanProduce(inputs, job);
             (Product?, Lis﻿t<Product>?) finalResponse = (null, response.missedInputs);

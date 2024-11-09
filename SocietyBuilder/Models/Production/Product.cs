@@ -1,4 +1,5 @@
-﻿using SocietyBuilder.Models.Population.Interfaces.IDemography;
+﻿using SocietyBuilder.Models.Population.Features;
+using SocietyBuilder.Models.Population.Interfaces.IDemography;
 using SocietyBuilder.Models.Production.General;
 using SocietyBuilder.Models.Production.Interfaces;
 
@@ -13,7 +14,9 @@ namespace SocietyBuilder.Models.Production
         public abstract Product ReturnProduct(int quantity);
         public abstract List<Product> ReturnWaste();
 
+        public Necessity[] NecessitiesSatisfied { get; set; }
         public float SatisfactionGiven { get; set; }
+        public abstract void SetNecessitiesSatisfied();
 
         public Product(int quantity)
         {
