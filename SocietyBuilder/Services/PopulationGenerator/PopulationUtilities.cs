@@ -1,4 +1,5 @@
-﻿using SocietyBuilder.Models.Population.Demography.Status;
+﻿using SocietyBuilder.Models.Activity.Interfaces;
+using SocietyBuilder.Models.Population.Demography.Status;
 using SocietyBuilder.Models.Population.Features;
 using SocietyBuilder.Models.Population.Interfaces.IDemography;
 using SocietyBuilder.Models.Population.Interfaces.ISociologic;
@@ -115,7 +116,6 @@ namespace SocietyBuilder.Services.PopulationGenerator
             { "Security", 0 },
             { "Knowledge", 0 }
         };
-
 
         internal static IStatus SetSocialStatus(string socialStatus)
         {

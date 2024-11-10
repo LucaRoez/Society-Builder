@@ -14,7 +14,6 @@ namespace SocietyBuilder.Services.RealEconomy
                 {
                     foreach (Citizen citizen in space.Population)
                     {
-                        citizen.Satieties = PrioritizeNecessities(citizen.Satieties, citizen.KnownPlaces);
                     }
                 }
             }

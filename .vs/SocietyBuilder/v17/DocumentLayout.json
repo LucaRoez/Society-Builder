@@ -7,28 +7,28 @@
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\population\\citizen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\production\\interfaces\\iproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\production\\interfaces\\iproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\services\\populationgenerator\\populationutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\services\\populationgenerator\\populationutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\production\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\production\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\services\\populationgenerator\\populationutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\services\\populationgenerator\\populationutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\production\\interfaces\\iproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\production\\interfaces\\iproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\population\\features\\necessity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\population\\features\\necessity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\services\\populationgenerator\\populationgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\services\\populationgenerator\\populationgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\services\\realeconomy\\economicactivityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\services\\realeconomy\\economicactivityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\services\\populationgenerator\\populationgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\services\\populationgenerator\\populationgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\services\\realeconomy\\ieconomicactivityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,8 +54,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -70,33 +74,16 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "EconomicActivityService.cs",
               "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\RealEconomy\\EconomicActivityService.cs",
               "RelativeDocumentMoniker": "SocietyBuilder\\Services\\RealEconomy\\EconomicActivityService.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\RealEconomy\\EconomicActivityService.cs",
               "RelativeToolTip": "SocietyBuilder\\Services\\RealEconomy\\EconomicActivityService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-01T00:37:16.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PopulationGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
-              "RelativeDocumentMoniker": "SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
-              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
-              "RelativeToolTip": "SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAIA4wCYAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T23:33:36.554Z",
               "EditorCaption": ""
             },
             {
@@ -107,20 +94,20 @@
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Population\\Citizen.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Population\\Citizen.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\Population\\Citizen.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAADwvysAAABKAAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAkwC4AAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T02:18:36.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "PopulationUtilities.cs",
               "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\PopulationGenerator\\PopulationUtilities.cs",
               "RelativeDocumentMoniker": "SocietyBuilder\\Services\\PopulationGenerator\\PopulationUtilities.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\PopulationGenerator\\PopulationUtilities.cs",
               "RelativeToolTip": "SocietyBuilder\\Services\\PopulationGenerator\\PopulationUtilities.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAAAGUAAAAbAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAQwHkAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T23:41:43.023Z",
               "EditorCaption": ""
@@ -133,23 +120,35 @@
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Production\\Product.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\Product.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\Production\\Product.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAQwBIAAAA3AAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAA8wBUAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T19:15:24.397Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "IProduct.cs",
               "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\Production\\Interfaces\\IProduct.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAnAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T21:26:33.697Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PopulationGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
+              "RelativeDocumentMoniker": "SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
+              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
+              "RelativeToolTip": "SocietyBuilder\\Services\\PopulationGenerator\\PopulationGenerator.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAIA4wCYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T23:33:36.554Z"
             },
             {
               "$type": "Document",
@@ -161,8 +160,7 @@
               "RelativeToolTip": "SocietyBuilder\\Services\\RealEconomy\\IEconomicActivityService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T10:41:16.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T10:41:16.984Z"
             },
             {
               "$type": "Document",
@@ -174,8 +172,7 @@
               "RelativeToolTip": "SocietyBuilder\\Services\\PhysicSpace\\PhysicSpaceConstructor.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T04:59:15.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T04:59:15.337Z"
             },
             {
               "$type": "Document",

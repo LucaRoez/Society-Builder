@@ -220,7 +220,7 @@ namespace SocietyBuilder.Models.Spaces
             return null;
         }
 
-        public List<Parcel>? FindClosestPath(Parcel startingPlace)
+        public (int, List<Parcel>)? FindClosestPath(Parcel startingPlace)
         {
             List<Parcel> openParcels = new() { startingPlace };
             HashSet<Parcel> closedParcels = new();
@@ -270,7 +270,7 @@ namespace SocietyBuilder.Models.Spaces
             }
             return null;
         }
-        private int RelativeDistance((int, int) startingPoint, (int, int) endingPoint) 
+        private int RelativeDistance((int, int) startingPoint, (int, int) endingPoint)
         {
             int x0 = startingPoint.Item1, y0 = startingPoint.Item2;
             int x1 = endingPoint.Item1, y1 = endingPoint.Item2;
@@ -279,7 +279,7 @@ namespace SocietyBuilder.Models.Spaces
 
             return dx < dy ? (dx - dy)*10 + dx*14 : (dy - dx)*10 + dy*14;
         }
-        private List<Parcel> TrackPath(Parcel startPlace)
+        private (int, List<Parcel>) TrackPath(Parcel startPlace)
         {
             List<Parcel> path = new();
             Parcel current = this;
@@ -293,9 +293,8 @@ namespace SocietyBuilder.Models.Spaces
                 else
                     throw new Exception("Tracking Path failed: one of the tracked parcels failed to load its parent Parcel in its LastClosest property.");
             }
-
             path.Reverse();
-            return path;
+            return (startPlace.G_Cost, path);
         }
 
         public Parcel Ken()

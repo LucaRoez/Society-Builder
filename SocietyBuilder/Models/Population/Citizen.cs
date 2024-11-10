@@ -28,7 +28,7 @@ namespace SocietyBuilder.Models.Population
         public List<ICondition> Condition { get; set; }
         public float Capacity { get; set; }
         public Necessity[] Necessities { get; set; } = PopulationUtilities.Necessities;
-        public IActivity CurrentActivity { get; set; }
+        public (IActivity, Parcel) CurrentActivity { get; set; }
         public List<Product> Capital { get; set; }
 
         public Citizen()
@@ -39,13 +39,38 @@ namespace SocietyBuilder.Models.Population
         {
             PrioritizeNecessities();
             Necessity goal = Necessities[0];
+            List<Parcel> foundPlaces = new();
+            List<(Product, int, Parcel)> possibleProducts = new();
+
             foreach (Parcel knownPlace in KnownPlaces)
             {
-                if (knownPlace.Resources.Find(p => p.NecessitiesSatisfied.))
+                if (knownPlace.Resources.Any(p => p.NecessitiesSatisfied.Any(n => n.Item1.Name == goal.Name)))
                 {
-
+                    foundPlaces.Add(knownPlace);
                 }
             }
+            if (foundPlaces.Count > 0)
+            {
+                foreach (Parcel foundPlace in foundPlaces)
+                {
+                    // this takes the possible places to work
+                    (int, List<Parcel>)? path = foundPlace.FindClosestPath(Location);
+                    if (path != null)
+                    {
+                        // this takes the benefits of each work offer
+                        foreach (Product product in foundPlace.Resources)
+                        {
+                            if (product.NecessitiesSatisfied.Any(p => p.Item1.Name == goal.Name))
+                                possibleProducts.Add((product, path.Value.Item1, foundPlace));
+                        }
+                    }
+                }
+                // final cost calculation (in this primary test: "go there and take" => the net benefit - plain transportation)
+                possibleProducts.OrderBy(p => p.Item1.SatisfactionGiven - p.Item2);
+            }
+            IActivity activityChosen = possibleProducts[0].Item1.GetActivity(goal);
+
+            CurrentActivity = (activityChosen, possibleProducts[0].Item3);
         }
         private void PrioritizeNecessities()
         {
