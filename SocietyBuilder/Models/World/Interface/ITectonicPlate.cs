@@ -4,5 +4,8 @@
     {
         int Id { get; }
         bool IsContinental { get; }
+        bool IsShield { get; }
+        bool IsMassif { get; }
+        int[] Direction { get; }
     }
 }

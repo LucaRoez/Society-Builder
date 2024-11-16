@@ -5,6 +5,8 @@
     {
         public (int, int) Position { get; }
         public bool IsMagmaHub { get; }
+        public bool IsBorder { get; }
+        public bool IsDivergent { get; }
         public TectonicPlate[] TectonicPlates { get; }
 
         public WorldPart((int, int) position, TectonicPlate[] platesNumber, bool? isMagmaHub = null)

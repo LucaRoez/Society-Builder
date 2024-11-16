@@ -40,6 +40,8 @@ namespace SocietyBuilder.Models.World
             TectonicPlate[] biBorderPlate = new TectonicPlate[2];
             TectonicPlate[] triBorderPlate = new TectonicPlate[3];
             int slot = 1;
+            bool isLonely;
+            bool isBiBorder;
             // length to height: 6000 Parcels; length to width: 11.550 Parcels ( 340.000 x 693.000 meters )
             if (size == "small")
             {
@@ -53,32 +55,107 @@ namespace SocietyBuilder.Models.World
                 TectonicPlate littlePlate = new(3, false);
                 TectonicPlate oceanPlate = new(4, false);
                 TectonicPlate southPlate = new(5, true);
-                bool isLonely;
-                bool isBiBorder;
 
                 worldParts = new WorldPart[5, 7];
                 for (int r = 0; r < 5; r++)
                 {
-                    if (r == 0 && r == 5) isLonely = true;
-                    else isLonely = false;
                     for (int c = 0; c < 7; c++)
                     {
-                        if (r == 3 && (c == 0 || c == 3 || c == 4 || c == 6)) isLonely = true;
+                        // row 1
+                        if (r == 0)
+                        {
+                            lonelyPlate[0] = northPlate;
+                            (isLonely, isBiBorder) = IsLonelyPlate();
+                        }
 
-                        if (r == 0) lonelyPlate[0] = northPlate;
-                        else if (r == 1 && c >= 1 && c <= 5)
+                        // row 2
+                        else if (r == 1 && (c == 0 || c == 6))
                         {
                             biBorderPlate[0] = northPlate;
-                            biBorderPlate[1] = mainPlate;
+                            biBorderPlate[1] = oceanPlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
                         }
                         else if (r == 1 && c == 1)
                         {
                             triBorderPlate[0] = northPlate;
                             triBorderPlate[1] = mainPlate;
                             triBorderPlate[2] = littlePlate;
+                            (isLonely, isBiBorder) = IsTriBorderPlate();
+                        }
+                        else if (r == 1 && c >= 2 && c <= 5)
+                        {
+                            biBorderPlate[0] = northPlate;
+                            biBorderPlate[1] = mainPlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
                         }
 
-                        worldParts[r, c] = new WorldPart((r, c), isLonely ? lonelyPlate : isBiBorder ? biBorderPlate : triBorderPlate, slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
+                        // row 3 (and some of the 4th)
+                        else if (r == 2 && (c == 0 || c == 6))
+                        {
+                            lonelyPlate[0] = oceanPlate;
+                            (isLonely, isBiBorder) = IsLonelyPlate();
+                        }
+                        else if ((r == 2 || r == 3) && c == 1) // peace of row 4
+                        {
+                            biBorderPlate[0] = oceanPlate;
+                            biBorderPlate[1] = littlePlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
+                        }
+                        else if (r == 2 && c == 2)
+                        {
+                            biBorderPlate[0] = littlePlate;
+                            biBorderPlate[1] = mainPlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
+                        }
+                        else if (r == 2 && (c == 3 || c == 4))
+                        {
+                            lonelyPlate[0] = mainPlate;
+                            (isLonely, isBiBorder) = IsLonelyPlate();
+                        }
+                        else if ((r == 2 || r == 3) && c == 5) // peace of row 4
+                        {
+                            biBorderPlate[0] = mainPlate;
+                            biBorderPlate[1] = oceanPlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
+                        }
+
+                        // row 4
+                        else if (r == 3 && (c == 0 || c == 6))
+                        {
+                            biBorderPlate[0] = oceanPlate;
+                            biBorderPlate[1] = southPlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
+                        }
+                        else if (r == 3 && c == 2)
+                        {
+                            biBorderPlate[0] = littlePlate;
+                            biBorderPlate[1] = southPlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
+                        }
+                        else if (r == 3 && c == 3)
+                        {
+                            triBorderPlate[0] = littlePlate;
+                            triBorderPlate[1] = mainPlate;
+                            triBorderPlate[2] = southPlate;
+                            (isLonely, isBiBorder) = IsTriBorderPlate();
+                        }
+                        else if (r == 3 && c == 4)
+                        {
+                            biBorderPlate[0] = mainPlate;
+                            biBorderPlate[1] = southPlate;
+                            (isLonely, isBiBorder) = IsBiBorderPlate();
+                        }
+
+                        // remaining row 5 (r == 4)
+                        else
+                        {
+                            lonelyPlate[0] = southPlate;
+                            (isLonely, isBiBorder) = IsLonelyPlate();
+                        }
+
+                        worldParts[r, c] = new WorldPart((r, c),
+                            isLonely ? lonelyPlate : isBiBorder ? biBorderPlate : triBorderPlate,
+                            slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
                         slot++;
                     }
                 }
@@ -99,7 +176,9 @@ namespace SocietyBuilder.Models.World
                 {
                     for (int c = 0; c < 9; c++)
                     {
-                        worldParts[r, c] = new WorldPart((r, c), slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
+                        worldParts[r, c] = new WorldPart((r, c),
+                            isLonely ? lonelyPlate : isBiBorder ? biBorderPlate : triBorderPlate,
+                            slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
                         slot++;
                     }
                 }
@@ -113,12 +192,17 @@ namespace SocietyBuilder.Models.World
                 {
                     for (int c = 0; c < 9; c++)
                     {
-                        worldParts[r, c] = new WorldPart((r, c), slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
+                        worldParts[r, c] = new WorldPart((r, c),
+                            isLonely ? lonelyPlate : isBiBorder ? biBorderPlate : triBorderPlate,
+                            slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
                         slot++;
                     }
                 }
                 return worldParts;
             }
         }
+        private (bool, bool) IsLonelyPlate() => (true, false);
+        private (bool, bool) IsBiBorderPlate() => (false, true);
+        private (bool, bool) IsTriBorderPlate() => (false, false);
     }
 }
