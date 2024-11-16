@@ -1,8 +1,10 @@
-﻿namespace SocietyBuilder.Models.Activity.Interfaces
+﻿using SocietyBuilder.Models.Population.Interfaces.IDemography;
+using SocietyBuilder.Models.Production;
+
+namespace SocietyBuilder.Models.Activity.Interfaces
 {
     public interface IActivity
     {
-        public Dictionary<string, int> Ask { get; set; }
-        public Dictionary<IActivity, double> Bid { get; set; }
+        public int Id { get; }
     }
 }

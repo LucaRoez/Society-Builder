@@ -102,57 +102,57 @@ namespace SocietyBuilder.Models.Spaces
             foreach (Parcel? parcel in region.NorthCenter.South.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.NorthCenter.West.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.NorthCenter.East.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             // north west
             foreach (Parcel? parcel in region.NorthWest.North.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.NorthWest.West.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.NorthWest.East.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             // north east
             foreach (Parcel? parcel in region.NorthEast.North.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.NorthEast.West.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.NorthEast.East.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             return null;
@@ -164,63 +164,63 @@ namespace SocietyBuilder.Models.Spaces
             foreach (Parcel? parcel in region.SouthCenter.South.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.SouthCenter.West.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.SouthCenter.East.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             // south west
             foreach (Parcel? parcel in region.SouthWest.North.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.SouthWest.West.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.SouthWest.East.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             // south east
             foreach (Parcel? parcel in region.SouthEast.North.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.SouthEast.West.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             foreach (Parcel? parcel in region.SouthEast.East.Parcels)
             {
                 if (parcel != null)
-                    if (parcel.Row == neighborCoordinate.Item1 && parcel.Col == neighborCoordinate.Item2)
+                    if (parcel.AbsoluteCoordinate.Item1 == neighborCoordinate.Item1 && parcel.AbsoluteCoordinate.Item2 == neighborCoordinate.Item2)
                         return parcel;
             }
             return null;
         }
 
-        public (int, List<Parcel>)? FindClosestPath(Parcel startingPlace)
+        public (float, List<Parcel>)? FindClosestPath(Parcel startingPlace)
         {
             List<Parcel> openParcels = new() { startingPlace };
             HashSet<Parcel> closedParcels = new();
@@ -279,7 +279,7 @@ namespace SocietyBuilder.Models.Spaces
 
             return dx < dy ? (dx - dy)*10 + dx*14 : (dy - dx)*10 + dy*14;
         }
-        private (int, List<Parcel>) TrackPath(Parcel startPlace)
+        private (float, List<Parcel>) TrackPath(Parcel startPlace)
         {
             List<Parcel> path = new();
             Parcel current = this;
@@ -294,7 +294,7 @@ namespace SocietyBuilder.Models.Spaces
                     throw new Exception("Tracking Path failed: one of the tracked parcels failed to load its parent Parcel in its LastClosest property.");
             }
             path.Reverse();
-            return (startPlace.G_Cost, path);
+            return (startPlace.G_Cost * 0.1f, path);
         }
 
         public Parcel Ken()

@@ -1,9 +1,10 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces;
+﻿using SocietyBuilder.Models.Activity;
 using SocietyBuilder.Models.Population.Features;
 using SocietyBuilder.Models.Population.Interfaces.IDemography;
 using SocietyBuilder.Models.Production.General;
 using SocietyBuilder.Models.Production.Interfaces;
-using SocietyBuilder.Services.PopulationGenerator;
+using SocietyBuilder.Services.RealEconomy;
+using SocietyBuilder.Services.UniversalServices;
 
 namespace SocietyBuilder.Models.Production
 {
@@ -12,19 +13,27 @@ namespace SocietyBuilder.Models.Production
         public int Id { get; }
         public float RateOfUsability { get; set; }
         public int Quantity { get; set; }
+        private readonly IExcelManager _excelManager;
+
         public List<Requirement> Requirements { get; set; }
         public abstract Product ReturnProduct(int quantity);
         public abstract List<Product> ReturnWaste();
 
-        public (Necessity, IActivity)[] NecessitiesSatisfied { get; set; }
-        public float SatisfactionGiven { get; set; }
-        public abstract void SetNecessitiesSatisfied();
-        public abstract IActivity GetActivity(Necessity goal);
+        public (Necessity, SocialActivity) NecessitiesSatisfied { get; }
+        public float Utility { get; set; }
 
-        public Product(int quantity)
+        public Product(string name, IExcelManager excelManager)
         {
-            Quantity = quantity;
+            (int, float) pack = GetData(name);
+            _excelManager = excelManager;
+            Id = pack.Item1;
+            Utility = pack.Item2;
+            Quantity = 1;
+            NecessitiesSatisfied = SetNecessitiesSatisfied();
         }
+
+        internal (int, float) GetData(string name) => _excelManager.GetProductData(name);
+        private (Necessity, SocialActivity) SetNecessitiesSatisfied() => ActivityUtilities.FindUtility(Id);
 
         // we gonna need that inputs list must have all required or optional inputs for this to work
         public (bool value, List<Product>? missedInputs) CanProduce(List<Product> inputs, INiche job)

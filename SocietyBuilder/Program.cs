@@ -3,6 +3,7 @@ using SocietyBuilder.Services.PhysicSpace;
 using SocietyBuilder.Services.PopulationGenerator;
 using SocietyBuilder.Services.Tenancy;
 using SocietyBuilder.Services.GameCore;
+using SocietyBuilder.Services.UniversalServices;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -11,12 +12,18 @@ var services = builder.Services;
 
 services.AddControllersWithViews();
 services.AddRouting(config => config.LowercaseQueryStrings = true);
+string universalSettings = "UniversalSettings";
+services.Configure<UniversalSettings>(builder.Configuration.GetSection(universalSettings));
 
+services.AddTransient<IExcelManager, ExcelManager>();
 services.AddTransient<IPhysicConstructor, PhysicSpaceConstructor>();
 services.AddTransient<IPopulationGenerator, PopulationGenerator>();
 services.AddTransient<ITenancyService, TenancyService>();
 services.AddTransient<IEconomicActivityService, EconomicActivityService>();
 services.AddTransient<IGameCore, GameCore>();
+
+// inject Service Provider
+UniversalServiceProvider.ServiceProvider = services.BuildServiceProvider();
 
 services.AddSwaggerGen();
 

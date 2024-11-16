@@ -20,5 +20,10 @@ namespace SocietyBuilder.Services.RealEconomy
 
             return region;
         }
+
+        private void LetDo()
+        {
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SocietyBuilder.Models.Activity.Interfaces;
+﻿using SocietyBuilder.Models.Activity;
 using SocietyBuilder.Models.Population.Features;
 using SocietyBuilder.Models.Population.Interfaces;
 using SocietyBuilder.Models.Population.Interfaces.IDemography;
@@ -17,18 +17,18 @@ namespace SocietyBuilder.Models.Population
         public IAge Age { get; set; }
         public Parcel Location { get; set; }
         public Parcel Home { get; set; }
-        public List<Parcel> KnownPlaces { get; set; }
+        public HashSet<Parcel> KnownPlaces { get; set; }
 
         public IFamily FamilyKind { get; set; }
         public IClass[] SocialClass { get; set; } = new IClass[3];
         public IStatus SocialStatus { get; set; }
-        public List<INiche> WorkNiche { get; set; }
+        public HashSet<INiche> WorkNiche { get; set; } = new();
 
         public float Health { get; set; }
         public List<ICondition> Condition { get; set; }
         public float Capacity { get; set; }
         public Necessity[] Necessities { get; set; } = PopulationUtilities.Necessities;
-        public (IActivity, Parcel) CurrentActivity { get; set; }
+        public (SocialActivity, Parcel) CurrentActivity { get; set; }
         public List<Product> Capital { get; set; }
 
         public Citizen()
@@ -39,44 +39,52 @@ namespace SocietyBuilder.Models.Population
         {
             PrioritizeNecessities();
             Necessity goal = Necessities[0];
-            List<Parcel> foundPlaces = new();
-            List<(Product, int, Parcel)> possibleProducts = new();
+// listing: the product, its trasportation cost & the place where it is
+            List<(Product, float, Parcel)> possibleProducts = new();
 
+            // forage what could please
             foreach (Parcel knownPlace in KnownPlaces)
             {
-                if (knownPlace.Resources.Any(p => p.NecessitiesSatisfied.Any(n => n.Item1.Name == goal.Name)))
+                if (knownPlace.Resources.Any(p => p.NecessitiesSatisfied.Item1.Name == goal.Name))
                 {
-                    foundPlaces.Add(knownPlace);
-                }
-            }
-            if (foundPlaces.Count > 0)
-            {
-                foreach (Parcel foundPlace in foundPlaces)
-                {
-                    // this takes the possible places to work
-                    (int, List<Parcel>)? path = foundPlace.FindClosestPath(Location);
+                    // take the possible places to work
+                    (float, List<Parcel>)? path = knownPlace.FindClosestPath(Location);
                     if (path != null)
                     {
-                        // this takes the benefits of each work offer
-                        foreach (Product product in foundPlace.Resources)
+                        // take the benefits of each work offer
+                        foreach (Product product in knownPlace.Resources)
                         {
-                            if (product.NecessitiesSatisfied.Any(p => p.Item1.Name == goal.Name))
-                                possibleProducts.Add((product, path.Value.Item1, foundPlace));
+                            if (product.NecessitiesSatisfied.Item1.Name == goal.Name)
+                                possibleProducts.Add((product, path.Value.Item1, knownPlace));
                         }
                     }
                 }
-                // final cost calculation (in this primary test: "go there and take" => the net benefit - plain transportation)
-                possibleProducts.OrderBy(p => p.Item1.SatisfactionGiven - p.Item2);
             }
-            IActivity activityChosen = possibleProducts[0].Item1.GetActivity(goal);
+            // final cost calculation (in this primary test: the net benefit * skill - plain transportation)
+            if (possibleProducts.Count > 0)
+                possibleProducts.OrderByDescending(
+                    p => (// this is the product by the skill level of the associated activity which is also associated to a job
+                        p.Item1.Utility * (
+                            WorkNiche.Contains(p.Item1.NecessitiesSatisfied.Item2.GetNiche(p.Item1))
+                            ? WorkNiche.FirstOrDefault(job => job.Id == p.Item1.NecessitiesSatisfied.Item2.GetNiche(p.Item1).Id).Level
+                        : 1)
+                    ) - p.Item2 // minus the transportation cost
+                );
 
-            CurrentActivity = (activityChosen, possibleProducts[0].Item3);
+            // and finally we choose the winner
+            (SocialActivity, INiche) activityChosen = (
+                possibleProducts[0].Item1.NecessitiesSatisfied.Item2, 
+                possibleProducts[0].Item1.NecessitiesSatisfied.Item2.GetNiche(possibleProducts[0].Item1)
+            );
+            CurrentActivity = (activityChosen.Item1, possibleProducts[0].Item3);
+            if (WorkNiche.Contains(activityChosen.Item2))
+                WorkNiche.Add(activityChosen.Item2);
         }
         private void PrioritizeNecessities()
         {
-            Necessities.OrderBy(n => n.Priority);
             foreach (Necessity necessity in Necessities)
             {
+            // first take the natural Priority, then modify it according to its current Satiety level but "strained" by how much it "weighs"
                 necessity.Priority = necessity.Priority + (necessity.Satiety * (1 / necessity.Weighing));
             }
             Necessities.OrderBy(n => n.Priority);
@@ -94,7 +102,7 @@ namespace SocietyBuilder.Models.Population
             return capacityUsed * improvements;
         }
 
-        public (Product?, Lis﻿t<Product>) DoWork(Lis﻿t<Product> inputs, Product raw, INiche job)
+        public (Product?, Lis﻿t<Product>) Produce(Lis﻿t<Product> inputs, Product raw, INiche job)
         {
             (bool value, Lis﻿t<Product>? missedInputs) response = raw.CanProduce(inputs, job);
             (Product?, Lis﻿t<Product>?) finalResponse = (null, response.missedInputs);
@@ -110,7 +118,7 @@ namespace SocietyBuilder.Models.Population
                     }
                 }
 
-                float capacity = this.SetCapacity(job, techs, Capacity);
+                float capacity = SetCapacity(job, techs, Capacity);
                 Product output = raw.BeUsed(capacity, inputs, job.Id);
                 Lis﻿t<Product> waste = raw.ConsumeInputs(output.Quantity, job.CapacityOfUse, inputs, job.Id);
                 return (output, waste);
