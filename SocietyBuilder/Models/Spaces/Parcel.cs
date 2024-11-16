@@ -5,6 +5,7 @@ using SocietyBuilder.Models.Production;
 
 namespace SocietyBuilder.Models.Spaces
 {
+    // we can imagine a Parcel like a 60x60 meters square
     public class Parcel : IPhysicalSpace
     {
         public Guid ID { get; set; } = Guid.NewGuid();
@@ -13,7 +14,15 @@ namespace SocietyBuilder.Models.Spaces
         public int AreaOID { get; set; }
         public Area Area { get; set; }
 
-        public IBuildable[,] Lands = new IBuildable[3,3];
+        public IOccupancy Kind { get; set; }
+        public IAltitude Altitude { get; }
+        public ITemperature Temperature { get; set; }
+        public IHumidity Humidity { get; set; }
+        public bool IsShore { get; set; } // this allows manage the tides
+        public IBiome? Biome { get; }
+        public ISoil? Soil { get; set; }
+        public bool IsGround { get; set; } // if not then is some kind of water soil
+        public IBuildable[,] Lands = new IBuildable[3,3];   // supposed to think each slot as 20x20 meters
 
         public int RelativeCol {  get; set; }
         public int RelativeRow { get; set; }

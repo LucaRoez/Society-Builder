@@ -41,6 +41,7 @@
     <Folder Include="Models\Production\Interfaces\IRaw\IChemicalSector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IConstructionSector\" />
     <Folder Include="Models\Production\Interfaces\IRaw\IIndustrialSector\" />
+    <Folder Include="Models\Spaces\Features\Soil\" />
     <Folder Include="Services\MarketHub\" />
   </ItemGroup>
 

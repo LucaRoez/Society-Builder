@@ -2,6 +2,7 @@
 {
     public interface ITerrainFeature
     {
+        int Id { get; }
         string Name { get; }
     }
 }

@@ -4,6 +4,6 @@ namespace SocietyBuilder.Services.GameCore
 {
     public interface IGameCore
     {
-        void NewGame(string difficult);
+        void NewGame(string[] difficultSettings);
     }
 }

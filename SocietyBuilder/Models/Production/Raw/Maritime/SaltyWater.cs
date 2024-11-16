@@ -5,9 +5,16 @@ using SocietyBuilder.Services.UniversalServices;
 
 namespace SocietyBuilder.Models.Production.Raw.Maritime
 {
-    public class SaltyWater : Product, IExtractable, IFoodSector, IEnergySector, IFoodClassification
+    public class Saltywater : Product, IExtractable, IFoodSector, IEnergySector, IFoodClassification
     {
-        public SaltyWater(string name, IExcelManager excelManager)
+        public float CoastalWater { get; set; }
+        public float SeaWater { get; set; }
+        public float OceanWater { get; set; }
+        public float DeepWater { get; set; }
+        public float DirtyWater { get; set; }
+        public float PoisonedWater { get; set; }
+
+        public Saltywater(string name, IExcelManager excelManager)
             : base(name, excelManager)
         {
         }

@@ -4,9 +4,9 @@ namespace SocietyBuilder.Services.PhysicSpace
 {
     public class PhysicSpaceConstructor : IPhysicConstructor
     {
-        public Region CreateNewRegion()
+        public Region CreateNewRegion(string latitude)
         {
-            Region region = new();
+            Region region = new(latitude);
             List<Zone> zones = new();
 
             (region, zones) = FillZones(region, zones);

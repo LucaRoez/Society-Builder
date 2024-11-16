@@ -12,6 +12,7 @@ namespace SocietyBuilder.Services.GameCore
         private readonly IPopulationGenerator _pop;
         private readonly ITenancyService _tenancy;
         private readonly IEconomicActivityService _activity;
+
         public GameCore(IPhysicConstructor space, IPopulationGenerator pop, ITenancyService tenancy, IEconomicActivityService activity)
         {
             _space = space;
@@ -20,12 +21,12 @@ namespace SocietyBuilder.Services.GameCore
             _activity = activity;
         }
 
-        public void NewGame(string difficult)
+        public void NewGame(string[] difficultSettings)
         {
-            Region space = _pop.NewGame(difficult, _space.CreateNewRegion());
+            Region space = _pop.NewGame(difficultSettings[0], _space.CreateNewRegion(difficultSettings[1]));
             Region region = _tenancy.Inhabit(space);
             _activity.CommandActivity(region);
-            //_activity.SwitchTurn();
+            //_activity.SwitchTurns();
         }
     }
 }

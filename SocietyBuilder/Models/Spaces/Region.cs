@@ -1,12 +1,15 @@
 ﻿using SocietyBuilder.Models.Population;
+using SocietyBuilder.Models.Spaces.Features.Latitude;
 using SocietyBuilder.Models.Spaces.Interfaces;
 
 namespace SocietyBuilder.Models.Spaces
 {
+    // Region length to height is 48 Parcels; length to width is 66 Parcels
     public class Region : IPhysicalSpace
     {
         public Guid ID { get; set; } = Guid.NewGuid();
         public Guid[] ZoneIDs { get; set; } = new Guid[6];
+        public ILatitude Latitude { get; set; }
         public Zone NorthCenter { get; set; }
         public Zone SouthCenter { get; set; }
         public Zone NorthWest { get; set; }
@@ -20,8 +23,16 @@ namespace SocietyBuilder.Models.Spaces
 
         public Polis Population { get; set; } = new Polis();
 
-        public Region()
+        public Region(string latitude)
         {
+            switch (latitude.ToLower())
+            {
+                case "tropical": Latitude = new Tropical(); break;
+                case "subtropical": Latitude = new Subtropical(); break;
+                case "subpolar": Latitude = new Subpolar(); break;
+                case "polar": Latitude = new Polar(); break;
+                default: Latitude = new Subtropical(); break;
+            }
         }
 
         // tool for drawing automation

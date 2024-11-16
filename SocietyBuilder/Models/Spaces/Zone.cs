@@ -3,6 +3,7 @@ using SocietyBuilder.Models.Spaces.Interfaces;
 
 namespace SocietyBuilder.Models.Spaces
 {
+    // length to height of the Zone is 48 Parcels; length to width is 64 Parcels
     public class Zone : IPhysicalSpace
     {
         public Guid ID { get; set; } = Guid.NewGuid();

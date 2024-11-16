@@ -4,6 +4,6 @@ namespace SocietyBuilder.Services.PhysicSpace
 {
     public interface IPhysicConstructor
     {
-        Region CreateNewRegion();
+        Region CreateNewRegion(string latitude);
     }
 }

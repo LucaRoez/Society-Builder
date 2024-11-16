@@ -8,6 +8,10 @@ namespace SocietyBuilder.Models.Production.Raw.Maritime
 {
     public class SweetWater : Product, IEdible, IExtractable, IFoodSector, IEnergySector, IFoodClassification
     {
+        public float DrinkingWater { get; set; }
+        public float DirtyWater { get; set; }
+        public float PoisonedWater { get; set; }
+
         public SweetWater(string name, IExcelManager excelManager)
             : base(name, excelManager)
         {            
