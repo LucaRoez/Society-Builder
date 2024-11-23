@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\world\\interface\\itectonicplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\world\\interface\\itectonicplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\world\\infiniteworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\world\\infiniteworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\world\\tectonicplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\world\\tectonicplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|c:\\users\\lucae\\onedrive\\documents\\my web sites\\societybuilder\\societybuilder\\models\\world\\interface\\itectonicplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{921BFF94-B8B0-453F-A5B3-C1DCC5723FAC}|SocietyBuilder\\SocietyBuilder.csproj|solutionrelative:societybuilder\\models\\world\\interface\\itectonicplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +34,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ITectonicPlate.cs",
               "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\Interface\\ITectonicPlate.cs",
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\World\\Interface\\ITectonicPlate.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\Interface\\ITectonicPlate.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\World\\Interface\\ITectonicPlate.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T18:35:57.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T18:35:57.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "WorldPart.cs",
               "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\WorldPart.cs",
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\World\\WorldPart.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\WorldPart.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\World\\WorldPart.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T10:57:45.599Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InfiniteWorld.cs",
-              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
-              "RelativeDocumentMoniker": "SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
-              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
-              "RelativeToolTip": "SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAmwAcAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T10:57:24.182Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "TectonicPlate.cs",
               "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\TectonicPlate.cs",
               "RelativeDocumentMoniker": "SocietyBuilder\\Models\\World\\TectonicPlate.cs",
               "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\TectonicPlate.cs",
               "RelativeToolTip": "SocietyBuilder\\Models\\World\\TectonicPlate.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAcAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAA2wAwAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T10:49:23.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InfiniteWorld.cs",
+              "DocumentMoniker": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
+              "RelativeDocumentMoniker": "SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
+              "ToolTip": "C:\\Users\\lucae\\OneDrive\\Documents\\My Web Sites\\SocietyBuilder\\SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
+              "RelativeToolTip": "SocietyBuilder\\Models\\World\\InfiniteWorld.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAuwEAAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T10:57:24.182Z",
               "EditorCaption": ""
             }
           ]

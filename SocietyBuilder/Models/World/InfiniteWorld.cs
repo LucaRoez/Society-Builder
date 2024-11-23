@@ -5,204 +5,75 @@ namespace SocietyBuilder.Models.World
     public class InfiniteWorld : IWorld
     {
         public int Size { get; }
-        public int NuclearMagmaHubs { get; }
+        public (int, int)[] NuclearMagmaHubs { get; }
         public WorldPart[,] World { get; }
-        public int MainContinents { get; }
-
-        public InfiniteWorld(string size, int? continents)
+        public (int, int)[] MainContinents { get; }
+        private static string[] _Directions = new string[8]
         {
-            size = size.ToLower();
-            switch (size)
-            {
-                case "small":
-                    Size = 1;
-                    NuclearMagmaHubs = 6;
-                    MainContinents = 1;
-                    break;
-                case "medium":
-                    Size = 2;
-                    NuclearMagmaHubs = 12;
-                    MainContinents = continents != null ? (int)continents : 1;
-                    break;
-                default:
-                    Size = 2;
-                    NuclearMagmaHubs = 12;
-                    MainContinents = continents != null ? (int)continents : 1;
-                    break;
-            }
-            World = CreateWorld(size);
+            "N", "S", "E", "W", "NE", "SE", "SW", "NW"
+        };
+
+        public InfiniteWorld()
+        {
         }
 
-        private WorldPart[,] CreateWorld(string size)
+        public InfiniteWorld(int size, int? continents)
         {
-            WorldPart[,] worldParts;
+            InfiniteWorld world = CreateWorld(size <= 0 ? 1 : size, continents);
+            Size = size;
+            NuclearMagmaHubs = world.NuclearMagmaHubs;
+            World = world.World;
+            MainContinents = world.MainContinents;
+        }
+
+        private InfiniteWorld CreateWorld(int size, int? continents)
+        {
+            // create the main matrix with default logarithmic values
+            var random = new Random();
+            (int x, int y) worldCoordinates = 
+                (
+                    Math.Max((int)Math.Log2(size) * 40, 16),        // width
+                    Math.Max((int)Math.Log2(size * 1.4) * 40, 22)   // height
+                );
+            WorldPart[,] worldParts = new WorldPart[worldCoordinates.x, worldCoordinates.y];
+
+            // calculate the magma hubs amount according to default proportional value
+            int hubAmount = worldCoordinates.y / 3;
+            // then calculate how many rows it will require
+            int rowAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (worldCoordinates.y / worldCoordinates.x)));
+            // and adjust it whether hubAmount doesn't reach to fill the last row
+            while (hubAmount % rowAmount != 0) hubAmount++;
+
+            // and calculate all again creating the magma hub array
+            (int, int)[] nuclearMagmaHubs = new (int, int)[hubAmount];
+            rowAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (worldCoordinates.y / worldCoordinates.x)));
+            int colAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (worldCoordinates.x / worldCoordinates.y)));
+
+            // calculate the step per axis to correctly scaling
+            int xStep = worldCoordinates.x / colAmount;
+            int yStep = worldCoordinates.y / rowAmount;
+            for (int i = 0; i  < nuclearMagmaHubs.Length; i++)
+            {
+                // prepare the iteration adjustment according to its axis
+                int col = i % colAmount; // set the number of rows filled with iteration cols
+                int row = i / colAmount; // set the number of rows already filled
+                // remember axis are semantically invert
+                int y = xStep / 2 + col * xStep; // take the col number and multiply it to its scale
+                int x = yStep / 2 + row * yStep; // take the current row to multiply it to its scale
+                // fill the arrays
+                nuclearMagmaHubs[i] = (x, y);
+            }
+
+            // setting the tectonic plates
+            // these are the possible plate amount within a single WorldPart
             TectonicPlate[] lonelyPlate = new TectonicPlate[1];
             TectonicPlate[] biBorderPlate = new TectonicPlate[2];
             TectonicPlate[] triBorderPlate = new TectonicPlate[3];
-            int slot = 1;
-            bool isLonely;
-            bool isBiBorder;
-            // length to height: 6000 Parcels; length to width: 11.550 Parcels ( 340.000 x 693.000 meters )
-            if (size == "small")
-            {
-                // [0][0][0][0][0][0][0]
-                // [0][X][0][X][0][X][0]
-                // [0][0][0][0][0][0][0]
-                // [0][X][0][X][0][X][0]
-                // [0][0][0][0][0][0][0]
-                TectonicPlate northPlate = new(1, false);
-                TectonicPlate mainPlate = new(2, true);
-                TectonicPlate littlePlate = new(3, false);
-                TectonicPlate oceanPlate = new(4, false);
-                TectonicPlate southPlate = new(5, true);
 
-                worldParts = new WorldPart[5, 7];
-                for (int r = 0; r < 5; r++)
-                {
-                    for (int c = 0; c < 7; c++)
-                    {
-                        // row 1
-                        if (r == 0)
-                        {
-                            lonelyPlate[0] = northPlate;
-                            (isLonely, isBiBorder) = IsLonelyPlate();
-                        }
-
-                        // row 2
-                        else if (r == 1 && (c == 0 || c == 6))
-                        {
-                            biBorderPlate[0] = northPlate;
-                            biBorderPlate[1] = oceanPlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-                        else if (r == 1 && c == 1)
-                        {
-                            triBorderPlate[0] = northPlate;
-                            triBorderPlate[1] = mainPlate;
-                            triBorderPlate[2] = littlePlate;
-                            (isLonely, isBiBorder) = IsTriBorderPlate();
-                        }
-                        else if (r == 1 && c >= 2 && c <= 5)
-                        {
-                            biBorderPlate[0] = northPlate;
-                            biBorderPlate[1] = mainPlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-
-                        // row 3 (and some of the 4th)
-                        else if (r == 2 && (c == 0 || c == 6))
-                        {
-                            lonelyPlate[0] = oceanPlate;
-                            (isLonely, isBiBorder) = IsLonelyPlate();
-                        }
-                        else if ((r == 2 || r == 3) && c == 1) // peace of row 4
-                        {
-                            biBorderPlate[0] = oceanPlate;
-                            biBorderPlate[1] = littlePlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-                        else if (r == 2 && c == 2)
-                        {
-                            biBorderPlate[0] = littlePlate;
-                            biBorderPlate[1] = mainPlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-                        else if (r == 2 && (c == 3 || c == 4))
-                        {
-                            lonelyPlate[0] = mainPlate;
-                            (isLonely, isBiBorder) = IsLonelyPlate();
-                        }
-                        else if ((r == 2 || r == 3) && c == 5) // peace of row 4
-                        {
-                            biBorderPlate[0] = mainPlate;
-                            biBorderPlate[1] = oceanPlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-
-                        // row 4
-                        else if (r == 3 && (c == 0 || c == 6))
-                        {
-                            biBorderPlate[0] = oceanPlate;
-                            biBorderPlate[1] = southPlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-                        else if (r == 3 && c == 2)
-                        {
-                            biBorderPlate[0] = littlePlate;
-                            biBorderPlate[1] = southPlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-                        else if (r == 3 && c == 3)
-                        {
-                            triBorderPlate[0] = littlePlate;
-                            triBorderPlate[1] = mainPlate;
-                            triBorderPlate[2] = southPlate;
-                            (isLonely, isBiBorder) = IsTriBorderPlate();
-                        }
-                        else if (r == 3 && c == 4)
-                        {
-                            biBorderPlate[0] = mainPlate;
-                            biBorderPlate[1] = southPlate;
-                            (isLonely, isBiBorder) = IsBiBorderPlate();
-                        }
-
-                        // remaining row 5 (r == 4)
-                        else
-                        {
-                            lonelyPlate[0] = southPlate;
-                            (isLonely, isBiBorder) = IsLonelyPlate();
-                        }
-
-                        worldParts[r, c] = new WorldPart((r, c),
-                            isLonely ? lonelyPlate : isBiBorder ? biBorderPlate : triBorderPlate,
-                            slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
-                        slot++;
-                    }
-                }
-                return worldParts;
-            }
-            // length to height: 8400 Parcels; length to width: 14.850 Parcels ( 504.000 x 891.000 meters )
-            else if (size == "medium")
-            {
-                // [0][0][0][0][0][0][0][0][0]
-                // [0][X][0][X][0][X][0][X][0]
-                // [0][0][0][0][0][0][0][0][0]
-                // [0][X][0][X][0][X][0][X][0]
-                // [0][0][0][0][0][0][0][0][0]
-                // [0][X][0][X][0][X][0][X][0]
-                // [0][0][0][0][0][0][0][0][0]
-                worldParts = new WorldPart[7, 9];
-                for (int r = 0; r < 7; r++)
-                {
-                    for (int c = 0; c < 9; c++)
-                    {
-                        worldParts[r, c] = new WorldPart((r, c),
-                            isLonely ? lonelyPlate : isBiBorder ? biBorderPlate : triBorderPlate,
-                            slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
-                        slot++;
-                    }
-                }
-                return worldParts;
-            }
-            else
-            {
-                // default world is the Medium
-                worldParts = new WorldPart[7, 9];
-                for (int r = 0; r < 7; r++)
-                {
-                    for (int c = 0; c < 9; c++)
-                    {
-                        worldParts[r, c] = new WorldPart((r, c),
-                            isLonely ? lonelyPlate : isBiBorder ? biBorderPlate : triBorderPlate,
-                            slot % 2 == 0 ? r % 2 != 0 ? true : false : false);
-                        slot++;
-                    }
-                }
-                return worldParts;
-            }
+            // set the plate amount according to the world size
+            int plateAmount = (int)Math.Min(Math.Max(Math.Sqrt(Math.Log2(size) * 1.5), 2), 8);
+            TectonicPlate[] tectonicPlates = new TectonicPlate[plateAmount];
+            for ()
         }
-        private (bool, bool) IsLonelyPlate() => (true, false);
-        private (bool, bool) IsBiBorderPlate() => (false, true);
-        private (bool, bool) IsTriBorderPlate() => (false, false);
     }
 }

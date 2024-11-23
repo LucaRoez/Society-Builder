@@ -5,14 +5,22 @@
     {
         public (int, int) Position { get; }
         public bool IsMagmaHub { get; }
+        public string? HubDirection { get; }
         public bool IsBorder { get; }
         public bool IsDivergent { get; }
         public TectonicPlate[] TectonicPlates { get; }
 
-        public WorldPart((int, int) position, TectonicPlate[] platesNumber, bool? isMagmaHub = null)
+        public WorldPart(
+            (int, int) position, TectonicPlate[] platesNumber,
+            bool isMagmaHub = false, bool isDivergent = false, string? hubDirection = null
+        )
         {
             Position = position;
-            IsMagmaHub = isMagmaHub != null ? (bool)isMagmaHub : false;
+            TectonicPlates = platesNumber;
+            IsMagmaHub = isMagmaHub;
+            HubDirection = isMagmaHub ? hubDirection : null;
+            IsBorder = platesNumber.Count() > 1 ? true : false;
+            IsDivergent = !IsBorder ? false : isDivergent;
         }
     }
 }
