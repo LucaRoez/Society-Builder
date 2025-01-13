@@ -5,20 +5,20 @@
     {
         public (int, int) Position { get; }
         public bool IsMagmaHub { get; }
-        public string? HubDirection { get; }
+        public (string, float) HubVector { get; }
         public bool IsBorder { get; }
         public bool IsDivergent { get; }
         public TectonicPlate[] TectonicPlates { get; }
 
         public WorldPart(
-            (int, int) position, TectonicPlate[] platesNumber,
-            bool isMagmaHub = false, bool isDivergent = false, string? hubDirection = null
+            (int, int) position, TectonicPlate[] platesNumber, (string, float) hubVector,
+            bool isMagmaHub = false, bool isDivergent = false
         )
         {
             Position = position;
             TectonicPlates = platesNumber;
             IsMagmaHub = isMagmaHub;
-            HubDirection = isMagmaHub ? hubDirection : null;
+            HubVector = hubVector;
             IsBorder = platesNumber.Count() > 1 ? true : false;
             IsDivergent = !IsBorder ? false : isDivergent;
         }

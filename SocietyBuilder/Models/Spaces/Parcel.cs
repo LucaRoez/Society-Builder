@@ -283,10 +283,9 @@ namespace SocietyBuilder.Models.Spaces
         {
             int x0 = startingPoint.Item1, y0 = startingPoint.Item2;
             int x1 = endingPoint.Item1, y1 = endingPoint.Item2;
-            int dx = Math.Abs(x1 - x0);
-            int dy = -Math.Abs(y1 - y0);
+            int dx = Math.Abs(x1 - x0), dy = Math.Abs(y1 - y0);
 
-            return dx < dy ? (dx - dy)*10 + dx*14 : (dy - dx)*10 + dy*14;
+            return Math.Min(dx, dy) * 14 + Math.Abs(dx - dy) * 10;
         }
         private (float, List<Parcel>) TrackPath(Parcel startPlace)
         {

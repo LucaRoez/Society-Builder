@@ -6,6 +6,5 @@
         bool IsContinental { get; }
         bool IsShield { get; }
         bool IsMassif { get; }
-        List<bool> Direction { get; }
     }
 }
