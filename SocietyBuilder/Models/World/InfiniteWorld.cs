@@ -16,6 +16,8 @@ namespace SocietyBuilder.Models.World
         {
             "N", "S", "E", "W", "NE", "SE", "SW", "NW"
         };
+        private int Width { get; set; }
+        private int Height { get; set; }
 
         public InfiniteWorld()
         {
@@ -32,48 +34,68 @@ namespace SocietyBuilder.Models.World
 
         private InfiniteWorld CreateWorld(int size, int? continents)
         {
-            System.Random random = new System.Random();
+            Random random = new Random();
             // create the main matrix with default logarithmic values
             (int x, int y) worldCoordinates =
             (
                 Math.Max((int)Math.Log(Size * 1.4) * 40, 22),   // width
                 Math.Max((int)Math.Log(Size) * 40, 16)          // height
             );
-            WorldPart[,] worldParts = new WorldPart[worldCoordinates.x, worldCoordinates.y];
+            Width = worldCoordinates.x; Height = worldCoordinates.y;
+            WorldPart[,] worldParts = new WorldPart[Width, Height];
 
-            /*   HERE'S JUST THE MAGMA GRID DISTRIBUTION LOGIC   */
-            // calculate the magma hubs amount according to default proportional value
-            int hubAmount = worldCoordinates.y / 3;
-            // then calculate how many rows it will step to keep magma hub proportions
-            int rowAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (worldCoordinates.y / worldCoordinates.x)));
-            // and adjust it whether hubAmount doesn't reach to fill the last row, to fill the leftover hub slots
-            while (hubAmount % rowAmount != 0) hubAmount++;
+            (int, int)[] nuclearMagmaHubs = CalculateMagmaHubsGrid(worldCoordinates);
+            (float magnitude, (float x, float y)? disaggregated)[,] magmaField =
+                CreateMagmaVectorField(worldCoordinates, nuclearMagmaHubs);
 
-            // and calculate all again creating the magma hub array
-            (int, int)[] nuclearMagmaHubs = new (int, int)[hubAmount];
-            rowAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (worldCoordinates.y / worldCoordinates.x)));
-            int colAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (worldCoordinates.x / worldCoordinates.y)));
 
-            // calculate the step per axis to correctly scaling
-            int xStep = worldCoordinates.x / colAmount;
-            int yStep = worldCoordinates.y / rowAmount;
-            for (int i = 0; i < hubAmount; i++)
+            // setting the tectonic plates
+            // these are the possible plate amount within a single WorldPart
+            TectonicPlate[] lonelyPlate = new TectonicPlate[1];
+            TectonicPlate[] biBorderPlate = new TectonicPlate[2];
+            TectonicPlate[] triBorderPlate = new TectonicPlate[3];
+
+            // set the plate amount according to the world size
+            int plateAmount = (int)Math.Min(Math.Max(Math.Sqrt(Math.Log2(size) * 1.5), 2), 8);
+            TectonicPlate[] tectonicPlates = new TectonicPlate[plateAmount];
+
+            // set a gradient field to measure the change rate
+            float[,] gradientField = new float[Width, Height];
+            for (int y = 1; y < Height - 1; y++)
             {
-                // prepare the iteration adjustment according to its axis
-                int col = i % colAmount; // set the number of rows filled with iteration cols
-                int row = i / colAmount; // set the number of rows already filled
-                                         // remember axis are semantically invert
-                int y = xStep / 2 + col * xStep; // take the col number and multiply it to its scale (both sum the half...)
-                int x = yStep / 2 + row * yStep; // take the current row to multiply it to its scale (...to reach the center)
-                                                 // fill the arrays
-                nuclearMagmaHubs[i] = (x, y);
+                for (int x = 1; x < Width - 1; x++)
+                {
+                    float dx = (magmaField[x + 1, y].magnitude - magmaField[x - 1, y].magnitude) / 2f;
+                    float dy = (magmaField[x, y + 1].magnitude - magmaField[x, y - 1].magnitude) / 2f;
+                    gradientField[x, y] = (float)Math.Sqrt(dx * dx + dy * dy);
+                }
+            }
+            // set the tectonic plates world new matrix
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    
+                }
             }
 
 
-            /*   HERE'S THE MAGMA VECTOR-FIELD FLOW LOGIC   */
+            // take the magma hubs coordinates to set them to its equivalent WorldPart element
+            foreach ((int, int) hubCoordinates in nuclearMagmaHubs)
+            {
+                worldParts[hubCoordinates.Item1, hubCoordinates.Item2] = new WorldPart(
+                    hubCoordinates, tectonicPlates, 
+                );
+            }
+        }
+
+        /*   HERE'S THE MAGMA VECTOR-FIELD FLOW LOGIC   */
+        private (float magnitude, (float x, float y)? disaggregated)[,] CreateMagmaVectorField((int x, int y) worldCoordinates, (int, int)[] nuclearMagmaHubs)
+        {
+            Random random = new Random();
             // make a matrix that simulates a vector-field
             (float magnitude, (float x, float y)? disaggregated)[,] magmaField =
-                new (float, (float, float)?)[worldCoordinates.x, worldCoordinates.y];
+                new (float, (float, float)?)[Width, Height];
             float mu = 0.9f; // resistance variable
             float distanceInfluence = 1.2f;
             float scale = 100f;
@@ -100,21 +122,25 @@ namespace SocietyBuilder.Models.World
             }).ToArray();
 
             // vector-field matrix building
-            for (int y = 0; y < worldCoordinates.y; y++)
+            for (int y = 0; y < Height; y++)
             {
-                for (int x = 0; x < worldCoordinates.x; x++)
+                for (int x = 0; x < Width; x++)
                 {
                     float totalXContribution = 0;
                     float totalYContribution = 0;
 
                     foreach (((int x, int y) position, float intensity) hub in magmaHubs)
                     {
-                        int straightX = x - hub.position.x, straightY = y - hub.position.y;
-                        int dx = Math.Abs(x - hub.position.x);      // toroidal connection
-                        dx = Math.Min(straightX, worldCoordinates.x - straightX);
-                        int mirroredY = worldCoordinates.y - 1 - y; // "Mercator" connection
-                        int dy = Math.Min(straightY, Math.Abs(mirroredY - hub.position.y));
-                        //dy = Math.Min(straightY, worldCoordinates.y - straightY);   // "Mercator" connection
+                        int straightX = x - hub.position.x, dy = y - hub.position.y;
+                        int dx = Math.Min(Math.Abs(straightX), Width - Math.Abs(straightX));    // toroidal connection
+                        int mirroredX = Width - 1 - x; // "Mercator" connection base
+                        int baseBottomDist = Height - 1 - y, bottomDistance = baseBottomDist + (Height - 1 - hub.position.y);
+                        int topDistance = y + hub.position.y;
+
+                        if (dx >= bottomDistance)
+                            dx = bottomDistance;
+                        else if (dx >= topDistance)
+                            dx = topDistance;
                         float distance = (float)Math.Sqrt(dx * dx + dy * dy) + distanceInfluence;
 
                         if (distance > 0)
@@ -141,8 +167,8 @@ namespace SocietyBuilder.Models.World
                                 dx / distance,
                                 dy / distance
                             // alternative squared formula
-                            //((x - hub.position.x + worldCoordinates.x) % worldCoordinates.x - dx) / distance,
-                            //((y - hub.position.y + worldCoordinates.y) % worldCoordinates.y - dy) / distance
+                            //((x - hub.position.x + Width) % Width - dx) / distance,
+                            //((y - hub.position.y + Height) % Height - dy) / distance
                             );
                             float contribution = (localIntensity * scale) / (distance * mu);
                             totalXContribution += contribution * direction.x;
@@ -172,35 +198,40 @@ namespace SocietyBuilder.Models.World
                     }
                 }
             }
+            return magmaField;
+        }
 
+        /*   HERE'S JUST THE MAGMA GRID DISTRIBUTION LOGIC   */
+        private (int, int)[] CalculateMagmaHubsGrid((int x, int y) worldCoordinates)
+        {
+            // calculate the magma hubs amount according to default proportional value
+            int hubAmount = Height / 3;
+            // then calculate how many rows it will step to keep magma hub proportions
+            int rowAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (Height / Width)));
+            // and adjust it whether hubAmount doesn't reach to fill the last row, to fill the leftover hub slots
+            while (hubAmount % rowAmount != 0) hubAmount++;
 
-            // setting the tectonic plates
-            // these are the possible plate amount within a single WorldPart
-            TectonicPlate[] lonelyPlate = new TectonicPlate[1];
-            TectonicPlate[] biBorderPlate = new TectonicPlate[2];
-            TectonicPlate[] triBorderPlate = new TectonicPlate[3];
+            // and calculate all again creating the magma hub array
+            (int, int)[] nuclearMagmaHubs = new (int, int)[hubAmount];
+            rowAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (Height / Width)));
+            int colAmount = (int)Math.Abs(Math.Sqrt(hubAmount * (Width / Height)));
 
-            // set the plate amount according to the world size
-            int plateAmount = (int)Math.Min(Math.Max(Math.Sqrt(Math.Log2(size) * 1.5), 2), 8);
-            TectonicPlate[] tectonicPlates = new TectonicPlate[plateAmount];
-
-            // set the tectonic plates world new matrix
-            for (int x = 0; x < worldCoordinates.x; x++)
+            // calculate the step per axis to correctly scaling
+            int xStep = Width / colAmount;
+            int yStep = Height / rowAmount;
+            for (int i = 0; i < hubAmount; i++)
             {
-                for (int y = 0; y < worldCoordinates.y; y++)
-                {
-                    
-                }
+                // prepare the iteration adjustment according to its axis
+                int col = i % colAmount; // set the number of rows filled with iteration cols
+                int row = i / colAmount; // set the number of rows already filled
+                                         // remember axis are semantically invert
+                int y = xStep / 2 + col * xStep; // take the col number and multiply it to its scale (both sum the half...)
+                int x = yStep / 2 + row * yStep; // take the current row to multiply it to its scale (...to reach the center)
+                                                 // fill the arrays
+                nuclearMagmaHubs[i] = (x, y);
             }
 
-
-            // take the magma hubs coordinates to set them to its equivalent WorldPart element
-            foreach ((int, int) hubCoordinates in nuclearMagmaHubs)
-            {
-                worldParts[hubCoordinates.Item1, hubCoordinates.Item2] = new WorldPart(
-                    hubCoordinates, tectonicPlates, 
-                );
-            }
+            return nuclearMagmaHubs;
         }
     }
 }
